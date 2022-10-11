@@ -19,6 +19,8 @@ public class Animal {
     this.cor = cor;
   }
 
+
+
   public String getNome() {
     return nome;
   }
