@@ -2,7 +2,6 @@ package entidades;
 
 public class Animal {
 
-
   private String nome;
   private String raca;
   private byte idade;
@@ -18,8 +17,6 @@ public class Animal {
     this.sexo = sexo;
     this.cor = cor;
   }
-
-
 
   public String getNome() {
     return nome;

@@ -6,13 +6,15 @@ public class Funcionario {
   private Integer telefone;
   private String email;
   private Integer salario;
+  private String endereco;
 
-  public Funcionario(Integer cpf, String nome, Integer telefone, String email, Integer salario) {
+  public Funcionario(Integer cpf, String nome, Integer telefone, String email, Integer salario, String endereco) {
     this.cpf = cpf;
     this.nome = nome;
     this.telefone = telefone;
     this.email = email;
     this.salario = salario;
+    this.endereco = endereco;
   }
 
   public Integer getCpf() {
@@ -53,5 +55,13 @@ public class Funcionario {
 
   public void setSalario(Integer salario) {
     this.salario = salario;
+  }
+
+  public String getEndereco() {
+    return endereco;
+  }
+
+  public void setEndereco(String endereco) {
+    this.endereco = endereco;
   }
 }
