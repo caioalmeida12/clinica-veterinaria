@@ -1,68 +1,67 @@
 package entidades;
+import java.util.Date;
 
 public class Animal {
-
-  private String nome;
-  private String raca;
-  private byte idade;
-  private String especie;
-  private char  sexo;
-  private String cor;
-
-  public Animal(String nome, String raca, byte idade, String especie, char sexo, String cor) {
-    this.nome = nome;
-    this.raca = raca;
-    this.idade = idade;
-    this.especie = especie;
-    this.sexo = sexo;
-    this.cor = cor;
+  private Integer idAnimal;
+  private String nomeAnimal;
+  private String racaAnimal;
+  private Date nascimentoAnimal;
+  private String especieAnimal;
+  private char  sexoAnimal;
+  private String corAnimal;
+  
+  public Animal(Integer idAnimal, String nomeAnimal, String racaAnimal, Date nascimentoAnimal, String especieAnimal,
+      char sexoAnimal, String corAnimal) {
+    this.idAnimal = idAnimal;
+    this.nomeAnimal = nomeAnimal;
+    this.racaAnimal = racaAnimal;
+    this.nascimentoAnimal = nascimentoAnimal;
+    this.especieAnimal = especieAnimal;
+    this.sexoAnimal = sexoAnimal;
+    this.corAnimal = corAnimal;
   }
 
-  public String getNome() {
-    return nome;
+  public Integer getIdAnimal() {
+    return idAnimal;
   }
-
-  public void setNome(String nome) {
-    this.nome = nome;
+  public void setIdAnimal(Integer idAnimal) {
+    this.idAnimal = idAnimal;
   }
-
-  public String getRaca() {
-    return raca;
+  public String getNomeAnimal() {
+    return nomeAnimal;
   }
-
-  public void setRaca(String raca) {
-    this.raca = raca;
+  public void setNomeAnimal(String nomeAnimal) {
+    this.nomeAnimal = nomeAnimal;
   }
-
-  public byte getIdade() {
-    return idade;
+  public String getRacaAnimal() {
+    return racaAnimal;
   }
-
-  public void setIdade(byte idade) {
-    this.idade = idade;
+  public void setRacaAnimal(String racaAnimal) {
+    this.racaAnimal = racaAnimal;
   }
-
-  public String getEspecie() {
-    return especie;
+  public Date getNascimentoAnimal() {
+    return nascimentoAnimal;
   }
-
-  public void setEspecie(String especie) {
-    this.especie = especie;
+  public void setNascimentoAnimal(Date nascimentoAnimal) {
+    this.nascimentoAnimal = nascimentoAnimal;
   }
-
-  public char getSexo() {
-    return sexo;
+  public String getEspecieAnimal() {
+    return especieAnimal;
   }
-
-  public void setSexo(char sexo) {
-    this.sexo = sexo;
+  public void setEspecieAnimal(String especieAnimal) {
+    this.especieAnimal = especieAnimal;
   }
-
-  public String getCor() {
-    return cor;
+  public char getSexoAnimal() {
+    return sexoAnimal;
   }
-
-  public void setCor(String cor) {
-    this.cor = cor;
+  public void setSexoAnimal(char sexoAnimal) {
+    this.sexoAnimal = sexoAnimal;
   }
+  public String getCorAnimal() {
+    return corAnimal;
+  }
+  public void setCorAnimal(String corAnimal) {
+    this.corAnimal = corAnimal;
+  }
+  
 }
