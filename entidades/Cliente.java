@@ -1,52 +1,80 @@
 package entidades;
+import java.util.Date;
 
 public class Cliente {
 
-  private String cpf;
-  private String nome;
-  private String email;
-  private Integer telefone;
-
-  public Cliente() {
+  private Integer idCliente;
+  private String cpfCliente;
+  private String nomeCliente;
+  private Date nascimentoCliente;
+  private String emailCliente;
+  private Integer telefoneCliente;
+  private Integer enderecoCliente;
+  
+  public Cliente(Integer idCliente, String cpfCliente, String nomeCliente, Date nascimentoCliente, String emailCliente,
+      Integer telefoneCliente, Integer enderecoCliente) {
+    this.idCliente = idCliente;
+    this.cpfCliente = cpfCliente;
+    this.nomeCliente = nomeCliente;
+    this.nascimentoCliente = nascimentoCliente;
+    this.emailCliente = emailCliente;
+    this.telefoneCliente = telefoneCliente;
+    this.enderecoCliente = enderecoCliente;
   }
 
-  public Cliente(String cpf, String nome, String email, Integer telefone) {
-    this.cpf=cpf;
-    this.nome = nome;
-    this.email = email;
-    this.telefone = telefone;
+  public Integer getIdCliente() {
+    return idCliente;
   }
 
-  public String getCpf() {
-    return cpf;
+  public void setIdCliente(Integer idCliente) {
+    this.idCliente = idCliente;
   }
 
-  public void setCpf(String cpf) {
-    this.cpf = cpf;
+  public String getCpfCliente() {
+    return cpfCliente;
   }
 
-  public String getNome() {
-    return nome;
+  public void setCpfCliente(String cpfCliente) {
+    this.cpfCliente = cpfCliente;
   }
 
-  public void setNome(String nome) {
-    this.nome = nome;
+  public String getNomeCliente() {
+    return nomeCliente;
   }
 
-  public String getEmail() {
-    return email;
+  public void setNomeCliente(String nomeCliente) {
+    this.nomeCliente = nomeCliente;
   }
 
-  public void setEmail(String email) {
-    this.email = email;
+  public Date getNascimentoCliente() {
+    return nascimentoCliente;
   }
 
-  public Integer getTelefone() {
-    return telefone;
+  public void setNascimentoCliente(Date nascimentoCliente) {
+    this.nascimentoCliente = nascimentoCliente;
   }
 
-  public void setTelefone(Integer telefone) {
-    this.telefone = telefone;
+  public String getEmailCliente() {
+    return emailCliente;
   }
 
+  public void setEmailCliente(String emailCliente) {
+    this.emailCliente = emailCliente;
+  }
+
+  public Integer getTelefoneCliente() {
+    return telefoneCliente;
+  }
+
+  public void setTelefoneCliente(Integer telefoneCliente) {
+    this.telefoneCliente = telefoneCliente;
+  }
+
+  public Integer getEnderecoCliente() {
+    return enderecoCliente;
+  }
+
+  public void setEnderecoCliente(Integer enderecoCliente) {
+    this.enderecoCliente = enderecoCliente;
+  }
 }

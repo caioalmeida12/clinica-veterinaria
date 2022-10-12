@@ -1,57 +1,79 @@
 package entidades;
 
 public class Funcionario {
-  private Integer cpf;
-  private String nome;
-  private Integer telefone;
-  private String email;
-  private Integer salario;
+  private Integer idFuncionario;
+  private Integer cpfFuncionario;
+  private String nomeFuncionario;
+  private Integer telefoneFuncionario;
+  private String emailFuncionario;
+  private Integer salarioFuncionario;
+  private String enderecoFuncionario;
 
-  public Funcionario(Integer cpf, String nome, Integer telefone, String email, Integer salario) {
-    this.cpf = cpf;
-    this.nome = nome;
-    this.telefone = telefone;
-    this.email = email;
-    this.salario = salario;
+  public Funcionario(Integer idFuncionario, Integer cpfFuncionario, String nomeFuncionario, Integer telefoneFuncionario,
+      String emailFuncionario, Integer salarioFuncionario, String enderecoFuncionario) {
+    this.idFuncionario = idFuncionario;
+    this.cpfFuncionario = cpfFuncionario;
+    this.nomeFuncionario = nomeFuncionario;
+    this.telefoneFuncionario = telefoneFuncionario;
+    this.emailFuncionario = emailFuncionario;
+    this.salarioFuncionario = salarioFuncionario;
+    this.enderecoFuncionario = enderecoFuncionario;
   }
 
-  public Integer getCpf() {
-    return cpf;
+  public Integer getIdFuncionario() {
+    return idFuncionario;
   }
 
-  public void setCpf(Integer cpf) {
-    this.cpf = cpf;
+  public void setIdFuncionario(Integer idFuncionario) {
+    this.idFuncionario = idFuncionario;
   }
 
-  public String getNome() {
-    return nome;
+  public Integer getCpfFuncionario() {
+    return cpfFuncionario;
   }
 
-  public void setNome(String nome) {
-    this.nome = nome;
+  public void setCpfFuncionario(Integer cpfFuncionario) {
+    this.cpfFuncionario = cpfFuncionario;
   }
 
-  public Integer getTelefone() {
-    return telefone;
+  public String getNomeFuncionario() {
+    return nomeFuncionario;
   }
 
-  public void setTelefone(Integer telefone) {
-    this.telefone = telefone;
+  public void setNomeFuncionario(String nomeFuncionario) {
+    this.nomeFuncionario = nomeFuncionario;
   }
 
-  public String getEmail() {
-    return email;
+  public Integer getTelefoneFuncionario() {
+    return telefoneFuncionario;
   }
 
-  public void setEmail(String email) {
-    this.email = email;
+  public void setTelefoneFuncionario(Integer telefoneFuncionario) {
+    this.telefoneFuncionario = telefoneFuncionario;
   }
 
-  public Integer getSalario() {
-    return salario;
+  public String getEmailFuncionario() {
+    return emailFuncionario;
   }
 
-  public void setSalario(Integer salario) {
-    this.salario = salario;
+  public void setEmailFuncionario(String emailFuncionario) {
+    this.emailFuncionario = emailFuncionario;
   }
+
+  public Integer getSalarioFuncionario() {
+    return salarioFuncionario;
+  }
+
+  public void setSalarioFuncionario(Integer salarioFuncionario) {
+    this.salarioFuncionario = salarioFuncionario;
+  }
+
+  public String getEnderecoFuncionario() {
+    return enderecoFuncionario;
+  }
+
+  public void setEnderecoFuncionario(String enderecoFuncionario) {
+    this.enderecoFuncionario = enderecoFuncionario;
+  }
+  
 }

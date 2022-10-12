@@ -2,41 +2,33 @@ package entidades;
 
 public class Produto {
 
-  private Integer quantidade;
-  private Double preco;
-  private String nome;
+  private Integer idProduto;
+  private String nomeProduto;
+  private Double precoProduto;
 
-  public Produto() {
+  public Produto(Integer idProduto, String nomeProduto, Double precoProduto) {
+    this.idProduto = idProduto;
+    this.nomeProduto = nomeProduto;
+    this.precoProduto = precoProduto;
   }
 
-  public Produto(Integer quantidade, Double preco, String nome) {
-    this.quantidade = quantidade;
-    this.preco = preco;
-    this.nome = nome;
+  public Integer getIdProduto() {
+    return idProduto;
   }
-
-  public Integer getQuantidade() {
-    return quantidade;
+  public void setIdProduto(Integer idProduto) {
+    this.idProduto = idProduto;
   }
-
-  public void setQuantidade(Integer quantidade) {
-    this.quantidade = quantidade;
+  public String getNomeProduto() {
+    return nomeProduto;
   }
-
-  public Double getPreco() {
-    return preco;
+  public void setNomeProduto(String nomeProduto) {
+    this.nomeProduto = nomeProduto;
   }
-
-  public void setPreco(Double preco) {
-    this.preco = preco;
+  public Double getPrecoProduto() {
+    return precoProduto;
   }
-
-  public String getNome() {
-    return nome;
-  }
-
-  public void setNome(String nome) {
-    this.nome = nome;
+  public void setPrecoProduto(Double precoProduto) {
+    this.precoProduto = precoProduto;
   }
 
 }
