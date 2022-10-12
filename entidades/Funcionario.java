@@ -1,23 +1,26 @@
 package entidades;
+import java.util.Date;
 
 public class Funcionario {
   private Integer idFuncionario;
   private Integer cpfFuncionario;
   private String nomeFuncionario;
-  private Integer telefoneFuncionario;
+  private Date nascimentoFuncionario;
   private String emailFuncionario;
   private Integer salarioFuncionario;
   private String enderecoFuncionario;
-
-  public Funcionario(Integer idFuncionario, Integer cpfFuncionario, String nomeFuncionario, Integer telefoneFuncionario,
-      String emailFuncionario, Integer salarioFuncionario, String enderecoFuncionario) {
+  private Integer telefoneFuncionario;
+  
+  public Funcionario(Integer idFuncionario, Integer cpfFuncionario, String nomeFuncionario, Date nascimentoFuncionario,
+      String emailFuncionario, Integer salarioFuncionario, String enderecoFuncionario, Integer telefoneFuncionario) {
     this.idFuncionario = idFuncionario;
     this.cpfFuncionario = cpfFuncionario;
     this.nomeFuncionario = nomeFuncionario;
-    this.telefoneFuncionario = telefoneFuncionario;
+    this.nascimentoFuncionario = nascimentoFuncionario;
     this.emailFuncionario = emailFuncionario;
     this.salarioFuncionario = salarioFuncionario;
     this.enderecoFuncionario = enderecoFuncionario;
+    this.telefoneFuncionario = telefoneFuncionario;
   }
 
   public Integer getIdFuncionario() {
@@ -44,12 +47,12 @@ public class Funcionario {
     this.nomeFuncionario = nomeFuncionario;
   }
 
-  public Integer getTelefoneFuncionario() {
-    return telefoneFuncionario;
+  public Date getnascimentoFuncionario() {
+    return nascimentoFuncionario;
   }
 
-  public void setTelefoneFuncionario(Integer telefoneFuncionario) {
-    this.telefoneFuncionario = telefoneFuncionario;
+  public void setnascimentoFuncionario(Date nascimentoFuncionario) {
+    this.nascimentoFuncionario = nascimentoFuncionario;
   }
 
   public String getEmailFuncionario() {
@@ -75,5 +78,14 @@ public class Funcionario {
   public void setEnderecoFuncionario(String enderecoFuncionario) {
     this.enderecoFuncionario = enderecoFuncionario;
   }
+
+  public Integer getTelefoneFuncionario() {
+    return telefoneFuncionario;
+  }
+
+  public void setTelefoneFuncionario(Integer telefoneFuncionario) {
+    this.telefoneFuncionario = telefoneFuncionario;
+  }
+
   
 }
