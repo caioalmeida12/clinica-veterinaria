@@ -28,41 +28,23 @@ class Main {
 
 
 
-      try {
 
-          // Prepare a statement to insert a record
-          String sql = "INSERT INTO agendamento (idAgendamento, idAnimal, `idFuncionario`, `idServico`, `dataAgendamento`, `situacaoAgendamento`) VALUES\n" +
-                  "(1, 1, 1, 1, 2022-10-13 21:07:21, adiado),\n" +
-                  "(2, 2, 2, 2, 2022-10-13 21:07:56, adiado)";
-
-          // Execute the insert statement
-          Statement stmt = (Statement) connection.prepareStatement(sql);
-
-          stmt.execute(sql);
-
-      } catch (SQLException e) {
-      }
 
 
 
 
       int n = sc.nextInt();
-    Servico[] vect = new Servico[n];
+    Produto[] vect = new Produto[n];
 
     for (int i = 0; i < vect.length; i++){
       sc.nextLine();
-      String tipoServico = sc.nextLine();
-      double valorServico = sc.nextDouble();
-      vect[i] = new Servico(tipoServico,valorServico);
+      String nomeProduto = sc.nextLine();
+      double valorProduto = sc.nextDouble();
+      vect[i] = new Produto(nomeProduto,valorProduto);
 
     }
 
-    for (int i = 0; i < vect.length; i++) {
 
-      System.out.println("Tipo do servico,"+ vect[i].getTipoServico());
-      System.out.println("valor,"+ vect[i].getValorServico());
-
-    }
 
 
 

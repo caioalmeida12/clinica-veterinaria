@@ -5,14 +5,15 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conexao {
+    private Connection conn = null;
+    public Connection getConexao(){
 
-    public static Connection getConexao(){
 
-        Connection conn = null;
 try {
 
     String url = "jdbc:mysql://localhost:3306/clinica_veterinaria?user=root&password=";
 conn = DriverManager.getConnection(url);
+
 
 }catch (SQLException e){
 
@@ -24,6 +25,14 @@ conn = DriverManager.getConnection(url);
 
 return conn;
 
+    }
+
+    public void FechaConexao(){
+        try {
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println("Não conectado!!\n"+ex);
+        }
     }
 
 }
