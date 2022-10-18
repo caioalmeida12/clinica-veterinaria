@@ -1,4 +1,5 @@
 package entidades;
+
 import java.util.Date;
 
 public class Cliente {
@@ -8,14 +9,14 @@ public class Cliente {
   private String nomeCliente;
   private Date nascimentoCliente;
   private String emailCliente;
-  private Integer telefoneCliente;
-  private Integer enderecoCliente;
-  
-  public Cliente(Integer idCliente, String cpfCliente, String nomeCliente, Date nascimentoCliente, String emailCliente,
-      Integer telefoneCliente, Integer enderecoCliente) {
+  private String telefoneCliente;
+  private String enderecoCliente;
+
+  public Cliente(Integer idCliente, String nomeCliente, String cpfCliente, Date nascimentoCliente, String emailCliente,
+      String telefoneCliente, String enderecoCliente) {
     this.idCliente = idCliente;
-    this.cpfCliente = cpfCliente;
     this.nomeCliente = nomeCliente;
+    this.cpfCliente = cpfCliente;
     this.nascimentoCliente = nascimentoCliente;
     this.emailCliente = emailCliente;
     this.telefoneCliente = telefoneCliente;
@@ -62,19 +63,19 @@ public class Cliente {
     this.emailCliente = emailCliente;
   }
 
-  public Integer getTelefoneCliente() {
+  public String getTelefoneCliente() {
     return telefoneCliente;
   }
 
-  public void setTelefoneCliente(Integer telefoneCliente) {
+  public void setTelefoneCliente(String telefoneCliente) {
     this.telefoneCliente = telefoneCliente;
   }
 
-  public Integer getEnderecoCliente() {
+  public String getEnderecoCliente() {
     return enderecoCliente;
   }
 
-  public void setEnderecoCliente(Integer enderecoCliente) {
+  public void setEnderecoCliente(String enderecoCliente) {
     this.enderecoCliente = enderecoCliente;
   }
 }
