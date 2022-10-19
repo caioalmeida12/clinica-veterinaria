@@ -16,8 +16,8 @@ class Main {
     try {
       mysql.conectar();
 
-      var resultado = mysql.getFuncionario("");
-      System.out.println(resultado.get(1).getNomeFuncionario());
+      var resultado = mysql.getProduto("");
+      System.out.println(resultado.get(0).getNomeProduto());
 
     } catch (Exception e) {
       System.out.println(e);
