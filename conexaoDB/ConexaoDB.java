@@ -27,12 +27,45 @@ public class ConexaoDB {
 
     // Retorna todos os dados da tabela cliente de acordo com um filtro,
     // que pode ser vazio
+    public List<Animal> getAnimal(String filtro) throws Exception {
+        try {
+            // Armazena todos os dados retornados
+            List<Animal> resultado = new ArrayList<Animal>();
+            // Executa a consulta
+            resultSet = statement.executeQuery("SELECT * FROM animal" + filtro);
+            while (resultSet.next()) {
+                // Tratamento dos dados
+                var idAnimal = (Integer) resultSet.getInt("idAnimal");
+                var nomeAnimal = resultSet.getString("nomeAnimal");
+                var racaAnimal = resultSet.getString("racaAnimal");
+                var nascimentoAnimal = resultSet.getDate("nascimentoAnimal");
+                var especieAnimal = resultSet.getString("especieAnimal");
+                var sexoAnimal = resultSet.getString("sexoAnimal").charAt(0);
+                var corAnimal = resultSet.getString("corAnimal");
+
+                // Instancia uma tupla da entidade Animal
+                Animal temporario = new Animal(idAnimal, nomeAnimal, racaAnimal, nascimentoAnimal, especieAnimal,
+                        sexoAnimal, corAnimal);
+
+                // Envia a entidade para o resultado
+                resultado.add(temporario);
+            }
+            return resultado;
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            close();
+        }
+    }
+
+    // Retorna todos os dados da tabela cliente de acordo com um filtro,
+    // que pode ser vazio
     public List<Cliente> getCliente(String filtro) throws Exception {
         try {
             // Armazena todos os dados retornados
             List<Cliente> resultado = new ArrayList<Cliente>();
             // Executa a consulta
-            resultSet = statement.executeQuery("SELECT * FROM CLIENTE" + filtro);
+            resultSet = statement.executeQuery("SELECT * FROM cliente" + filtro);
             while (resultSet.next()) {
                 // Tratamento dos dados
                 var idCliente = (Integer) resultSet.getInt("idCliente");

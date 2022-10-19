@@ -16,8 +16,8 @@ class Main {
     try {
       mysql.conectar();
 
-      var resultado = mysql.getCliente("");
-      System.out.println(resultado.get(1).getNomeCliente());
+      var resultado = mysql.getAnimal("");
+      System.out.println(resultado.get(1).getNomeAnimal());
 
     } catch (Exception e) {
       System.out.println(e);
