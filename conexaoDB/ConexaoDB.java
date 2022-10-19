@@ -25,7 +25,7 @@ public class ConexaoDB {
         }
     }
 
-    // Retorna todos os dados da tabela cliente de acordo com um filtro,
+    // Retorna todos os dados da tabela animal de acordo com um filtro,
     // que pode ser vazio
     public List<Animal> getAnimal(String filtro) throws Exception {
         try {
@@ -79,6 +79,40 @@ public class ConexaoDB {
                 // Instancia uma tupla da entidade Cliente
                 Cliente temporario = new Cliente(idCliente, nomeCliente, cpfCliente, nascimentoCliente, emailCliente,
                         telefoneCliente, enderecoCliente);
+
+                // Envia a entidade para o resultado
+                resultado.add(temporario);
+            }
+            return resultado;
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            close();
+        }
+    }
+
+    // Retorna todos os dados da tabela funcionario de acordo com um filtro,
+    // que pode ser vazio
+    public List<Funcionario> getFuncionario(String filtro) throws Exception {
+        try {
+            // Armazena todos os dados retornados
+            List<Funcionario> resultado = new ArrayList<Funcionario>();
+            // Executa a consulta
+            resultSet = statement.executeQuery("SELECT * FROM funcionario" + filtro);
+            while (resultSet.next()) {
+                // Tratamento dos dados
+                var idFuncionario = (Integer) resultSet.getInt("idFuncionario");
+                var nomeFuncionario = resultSet.getString("nomeFuncionario");
+                var cpfFuncionario = (Integer) resultSet.getInt("cpfFuncionario");
+                var nascimentoFuncionario = resultSet.getDate("nascimentoFuncionario");
+                var emailFuncionario = resultSet.getString("emailFuncionario");
+                var salarioFuncionario = (Float) resultSet.getFloat("salarioFuncionario");
+                var telefoneFuncionario = resultSet.getString("telefoneFuncionario");
+                var enderecoFuncionario = resultSet.getString("enderecoFuncionario");
+
+                // Instancia uma tupla da entidade Funcionario
+                Funcionario temporario = new Funcionario(idFuncionario, nomeFuncionario, cpfFuncionario,
+                        nascimentoFuncionario, emailFuncionario, salarioFuncionario, telefoneFuncionario, enderecoFuncionario);
 
                 // Envia a entidade para o resultado
                 resultado.add(temporario);
