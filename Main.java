@@ -16,8 +16,8 @@ class Main {
     try {
       mysql.conectar();
 
-      var resultado = mysql.getCliente("nomeCliente LIKE '%1%'");
-      System.out.println(resultado.get(0).getNomeCliente());
+      var resultado = mysql.getCliente("");
+      System.out.println(resultado.get(1).getNomeCliente());
 
     } catch (Exception e) {
       System.out.println(e);

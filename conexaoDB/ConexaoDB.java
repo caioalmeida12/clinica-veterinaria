@@ -25,45 +25,16 @@ public class ConexaoDB {
         }
     }
 
-    // Retorna todos os dados da tabela cliente
-    public List<Cliente> getCliente() throws Exception {
-        try {
-            // Armazena todos os dados retornados
-            List<Cliente> resultado = new ArrayList<Cliente>();
-            resultSet = statement.executeQuery("SELECT * FROM CLIENTE");
-            while (resultSet.next()) {
-                // Executa uma busca de tabela
-                var idCliente = (Integer) resultSet.getInt("idCliente");
-                var nomeCliente = resultSet.getString("nomeCliente");
-                var cpfCliente = resultSet.getString("cpfCliente");
-                var nascimentoCliente = resultSet.getDate("nascimentoCliente");
-                var emailCliente = resultSet.getString("emailCliente");
-                var telefoneCliente = resultSet.getString("telefoneCliente");
-                var enderecoCliente = resultSet.getString("enderecoCliente");
-
-                // Instancia uma tupla da entidade Cliente
-                Cliente temporario = new Cliente(idCliente, nomeCliente, cpfCliente, nascimentoCliente, emailCliente,
-                        telefoneCliente, enderecoCliente);
-
-                // Envia a entidade para o resultado
-                resultado.add(temporario);
-            }
-            return resultado;
-        } catch (Exception e) {
-            throw e;
-        } finally {
-            resultSet.close();
-        }
-    }
-
-    // Retorna todos os dados da tabela cliente de acordo com um filtro
+    // Retorna todos os dados da tabela cliente de acordo com um filtro,
+    // que pode ser vazio
     public List<Cliente> getCliente(String filtro) throws Exception {
         try {
             // Armazena todos os dados retornados
             List<Cliente> resultado = new ArrayList<Cliente>();
-            resultSet = statement.executeQuery("SELECT * FROM CLIENTE WHERE " + filtro);
+            // Executa a consulta
+            resultSet = statement.executeQuery("SELECT * FROM CLIENTE" + filtro);
             while (resultSet.next()) {
-                // Executa uma busca de tabela
+                // Tratamento dos dados
                 var idCliente = (Integer) resultSet.getInt("idCliente");
                 var nomeCliente = resultSet.getString("nomeCliente");
                 var cpfCliente = resultSet.getString("cpfCliente");
