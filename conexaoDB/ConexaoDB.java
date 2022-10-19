@@ -142,7 +142,36 @@ public class ConexaoDB {
 
                 // Instancia uma tupla da entidade Funcionario
                 Produto temporario = new Produto(idProduto, nomeProduto, precoProduto);
-                
+
+                // Envia a entidade para o resultado
+                resultado.add(temporario);
+            }
+            return resultado;
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            close();
+        }
+    }
+
+    // Retorna todos os dados da tabela Servico de acordo com um filtro,
+    // que pode ser vazio
+    public List<Servico> getServico(String filtro) throws Exception {
+        try {
+            // Armazena todos os dados retornados
+            List<Servico> resultado = new ArrayList<Servico>();
+            // Executa a consulta
+            resultSet = statement.executeQuery("SELECT * FROM Servico" + filtro);
+            while (resultSet.next()) {
+                // Tratamento dos dados
+                var idServico = (Integer) resultSet.getInt("idServico");
+                var tipoServico = resultSet.getString("tipoServico");
+                var descricaoServico = resultSet.getString("descricaoServico");
+                var precoServico = (Float) resultSet.getFloat("precoServico");
+
+                // Instancia uma tupla da entidade Funcionario
+                Servico temporario = new Servico(idServico, tipoServico, descricaoServico, precoServico);
+
                 // Envia a entidade para o resultado
                 resultado.add(temporario);
             }
