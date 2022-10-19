@@ -9,15 +9,15 @@ class Main {
 
   public static void main(String[] args) {
     Locale.setDefault(Locale.US);
-    Scanner sc = new Scanner(System.in);
+    Scanner input = new Scanner(System.in);
 
     ConexaoDB mysql = new ConexaoDB();
 
     try {
       mysql.conectar();
 
-      var resultado = mysql.getCliente();
-      System.out.println(resultado.getEmailCliente());
+      var resultado = mysql.getCliente("nomeCliente LIKE '%1%'");
+      System.out.println(resultado.get(0).getNomeCliente());
 
     } catch (Exception e) {
       System.out.println(e);
