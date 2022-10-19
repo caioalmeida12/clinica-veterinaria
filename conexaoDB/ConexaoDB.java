@@ -11,6 +11,14 @@ public class ConexaoDB {
     private PreparedStatement preparedStatement = null;
     private ResultSet resultSet = null;
 
+    public ConexaoDB() {
+        try {
+            conectar();
+        } catch (Exception e) {
+            System.out.println("Não foi possível conectar ao BD");
+        }
+    }
+
     public void conectar() throws Exception {
         try {
             // Tenta conectar o DB
@@ -21,6 +29,7 @@ public class ConexaoDB {
 
             statement = connect.createStatement();
         } catch (Exception e) {
+            System.out.println("Erro ao conectar com o BD");
             throw e;
         }
     }
@@ -32,7 +41,7 @@ public class ConexaoDB {
             // Armazena todos os dados retornados
             List<Animal> resultado = new ArrayList<Animal>();
             // Executa a consulta
-            resultSet = statement.executeQuery("SELECT * FROM animal" + filtro);
+            resultSet = statement.executeQuery("SELECT * FROM animal " + filtro);
             while (resultSet.next()) {
                 // Tratamento dos dados
                 var idAnimal = (Integer) resultSet.getInt("idAnimal");
@@ -65,7 +74,7 @@ public class ConexaoDB {
             // Armazena todos os dados retornados
             List<Cliente> resultado = new ArrayList<Cliente>();
             // Executa a consulta
-            resultSet = statement.executeQuery("SELECT * FROM cliente" + filtro);
+            resultSet = statement.executeQuery("SELECT * FROM cliente " + filtro);
             while (resultSet.next()) {
                 // Tratamento dos dados
                 var idCliente = (Integer) resultSet.getInt("idCliente");
@@ -98,7 +107,7 @@ public class ConexaoDB {
             // Armazena todos os dados retornados
             List<Funcionario> resultado = new ArrayList<Funcionario>();
             // Executa a consulta
-            resultSet = statement.executeQuery("SELECT * FROM funcionario" + filtro);
+            resultSet = statement.executeQuery("SELECT * FROM funcionario " + filtro);
             while (resultSet.next()) {
                 // Tratamento dos dados
                 var idFuncionario = (Integer) resultSet.getInt("idFuncionario");
@@ -133,7 +142,7 @@ public class ConexaoDB {
             // Armazena todos os dados retornados
             List<Produto> resultado = new ArrayList<Produto>();
             // Executa a consulta
-            resultSet = statement.executeQuery("SELECT * FROM produto" + filtro);
+            resultSet = statement.executeQuery("SELECT * FROM produto " + filtro);
             while (resultSet.next()) {
                 // Tratamento dos dados
                 var idProduto = (Integer) resultSet.getInt("idProduto");
@@ -161,7 +170,7 @@ public class ConexaoDB {
             // Armazena todos os dados retornados
             List<Servico> resultado = new ArrayList<Servico>();
             // Executa a consulta
-            resultSet = statement.executeQuery("SELECT * FROM Servico" + filtro);
+            resultSet = statement.executeQuery("SELECT * FROM Servico " + filtro);
             while (resultSet.next()) {
                 // Tratamento dos dados
                 var idServico = (Integer) resultSet.getInt("idServico");
@@ -169,8 +178,39 @@ public class ConexaoDB {
                 var descricaoServico = resultSet.getString("descricaoServico");
                 var precoServico = (Float) resultSet.getFloat("precoServico");
 
-                // Instancia uma tupla da entidade Funcionario
+                // Instancia uma tupla da entidade Servico
                 Servico temporario = new Servico(idServico, tipoServico, descricaoServico, precoServico);
+
+                // Envia a entidade para o resultado
+                resultado.add(temporario);
+            }
+            return resultado;
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            close();
+        }
+    }
+
+    // Retorna todos os dados da tabela Venda de acordo com um filtro,
+    // que pode ser vazio
+    public List<Venda> getVenda(String filtro) throws Exception {
+        try {
+            // Armazena todos os dados retornados
+            List<Venda> resultado = new ArrayList<Venda>();
+            // Executa a consulta
+            resultSet = statement.executeQuery("SELECT * FROM venda " + filtro);
+            while (resultSet.next()) {
+                // Tratamento dos dados
+                var idVenda = (Integer) resultSet.getInt("idVenda");
+                var idProduto = (Integer) resultSet.getInt("idProduto");
+                var idCliente = (Integer) resultSet.getInt("idCliente");
+                var idFuncionario = (Integer) resultSet.getInt("idFuncionario");
+                var dataVenda = resultSet.getDate("dataVenda");
+                var quantidadeVenda = (Integer) resultSet.getInt("quantidadeProduto");
+
+                // Instancia uma tupla da entidade Venda
+                Venda temporario = new Venda(idVenda, idProduto, idCliente, idFuncionario, dataVenda, quantidadeVenda);
 
                 // Envia a entidade para o resultado
                 resultado.add(temporario);

@@ -1,7 +1,7 @@
-
+import conexaoDB.*;
 import entidades.*;
 
-import conexaoDB.*;
+import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -14,10 +14,8 @@ class Main {
     ConexaoDB mysql = new ConexaoDB();
 
     try {
-      mysql.conectar();
-
-      var resultado = mysql.getServico("");
-      System.out.println(resultado.get(0).getTipoServico());
+      var resultado = mysql.getVenda("WHERE idVenda = 2").get(0);
+      System.out.println(resultado.getValorVenda());
 
     } catch (Exception e) {
       System.out.println(e);
