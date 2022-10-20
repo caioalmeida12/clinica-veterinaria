@@ -11,9 +11,10 @@ class Main {
     Locale.setDefault(Locale.US);
     Scanner input = new Scanner(System.in);
 
-    ConexaoDB mysql = new ConexaoDB();
+    ConexaoDB mysql = null;
 
     try {
+      mysql = new ConexaoDB();
       var resultado = mysql.getVenda("WHERE idVenda = 2").get(0);
       System.out.println(resultado.getValorVenda());
 

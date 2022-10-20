@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Venda {
 
-    ConexaoDB mysql = new ConexaoDB();
+    ConexaoDB mysql = null;
 
     Integer idVenda;
     int idProduto, idCliente, idFuncionario;
@@ -22,11 +22,12 @@ public class Venda {
         this.idVenda = (Integer) idVenda;
 
         try {
+            mysql = new ConexaoDB();
             this.produtoVenda = mysql.getProduto("WHERE idProduto = " + idProduto).get(0);
-            // this.clienteVenda = mysql.getCliente("WHERE idCliente = " +
-            // idCliente).get(0);
-            // this.funcionarioVenda = mysql.getFuncionario("WHERE idFuncionario = " +
-            // idFuncionario).get(0);
+            mysql = new ConexaoDB();
+            this.clienteVenda = mysql.getCliente("WHERE idCliente = " + idCliente).get(0);
+            mysql = new ConexaoDB();
+            this.funcionarioVenda = mysql.getFuncionario("WHERE idFuncionario = " + idFuncionario).get(0);
             this.dataVenda = dataVenda;
             this.quantidadeProduto = quantidadeVenda;
             this.valorVenda = this.produtoVenda.getPrecoProduto();
