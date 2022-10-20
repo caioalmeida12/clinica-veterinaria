@@ -1,5 +1,7 @@
 package View;
 
+import conexaoDB.ConexaoDB;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,8 +9,10 @@ import java.awt.event.ActionListener;
 public class PrdoutoView extends JFrame {
     private JButton texto;
     private JPanel main;
+    private JButton cadastrarProdutoButton;
+    private JTextField txtNome;
+    private JTextField txtPreco;
     private JTextField txtId;
-    private JLabel label;
 
 
     public PrdoutoView() {
@@ -29,13 +33,13 @@ setContentPane(main);
                 int id = Integer.parseInt(txtId.getText());
                 System.out.println("texto do botão");
                 System.out.println(id);
+
+
+
+
             }
         });
     }
 
-    public static void main(String[] args) {
 
-
-        PrdoutoView pdView = new PrdoutoView();
-    }
 }
