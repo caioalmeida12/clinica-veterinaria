@@ -32,7 +32,7 @@ public class ConexaoDB {
 
             statement = connect.createStatement();
         } catch (Exception e) {
-            System.out.println("Erro ao conectar com o BD");
+            System.out.println("Erro na função conectar() da classe ConexaoDB");
             throw e;
         }
     }
@@ -64,6 +64,7 @@ public class ConexaoDB {
             }
             return resultado;
         } catch (Exception e) {
+            System.out.println("Erro na função selectAnimal() da classe ConexaoDB");
             throw e;
         } finally {
             close();
@@ -118,6 +119,7 @@ public class ConexaoDB {
             }
             return resultado;
         } catch (Exception e) {
+            System.out.println("Erro na função selectCliente() da classe ConexaoDB");
             throw e;
         } finally {
             close();
@@ -154,6 +156,7 @@ public class ConexaoDB {
             }
             return resultado;
         } catch (Exception e) {
+            System.out.println("Erro na função selectFuncionario() da classe ConexaoDB");
             throw e;
         } finally {
             close();
@@ -182,6 +185,7 @@ public class ConexaoDB {
             }
             return resultado;
         } catch (Exception e) {
+            System.out.println("Erro na função selectProduto() da classe ConexaoDB");
             throw e;
         } finally {
             close();
@@ -211,6 +215,7 @@ public class ConexaoDB {
             }
             return resultado;
         } catch (Exception e) {
+            System.out.println("Erro na função selectServico() da classe ConexaoDB");
             throw e;
         } finally {
             close();
@@ -242,6 +247,7 @@ public class ConexaoDB {
             }
             return resultado;
         } catch (Exception e) {
+            System.out.println("Erro na função selectVenda() da classe ConexaoDB");
             throw e;
         } finally {
             close();
@@ -263,7 +269,7 @@ public class ConexaoDB {
                 connect.close();
             }
         } catch (Exception e) {
-
+            System.out.println("Erro na função close() da classe ConexaoDB \n" + e);
         }
     }
 
