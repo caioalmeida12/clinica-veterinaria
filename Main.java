@@ -17,8 +17,7 @@ class Main {
       mysql = new ConexaoDB();
       var resultado = mysql.selectAnimal("WHERE idAnimal = 2").get(0);
       mysql = new ConexaoDB();
-      mysql.insertAnimal(resultado.getNomeAnimal(), resultado.getRacaAnimal(), resultado.getNascimentoAnimal(),
-          resultado.getEspecieAnimal(), resultado.getSexoAnimal(), resultado.getCorAnimal());
+      mysql.insertAnimal(resultado);
 
     } catch (Exception e) {
       System.out.println(e);

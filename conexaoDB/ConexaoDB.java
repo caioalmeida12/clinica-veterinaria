@@ -72,17 +72,16 @@ public class ConexaoDB {
     }
 
     // Insere uma nova entrada do tipo Animal no banco de dados
-    public void insertAnimal(String nomeAnimal, String racaAnimal, Date nascimentoAnimal, String especieAnimal,
-            Character sexoAnimal, String corAnimal) throws Exception {
+    public void insertAnimal(Animal animal) throws Exception {
         try {
             preparedStatement = connect.prepareStatement(
                     "INSERT INTO `animal` (`nomeAnimal`, `racaAnimal`, `nascimentoAnimal`, `especieAnimal`, `sexoAnimal`, `corAnimal`) VALUES (?, ?, ?, ?, ?, ?)");
-            preparedStatement.setString(1, nomeAnimal);
-            preparedStatement.setString(2, racaAnimal);
-            preparedStatement.setDate(3, (java.sql.Date) nascimentoAnimal);
-            preparedStatement.setString(4, especieAnimal);
-            preparedStatement.setString(5, Character.toString(sexoAnimal));
-            preparedStatement.setString(6, corAnimal);
+            preparedStatement.setString(1, animal.getNomeAnimal());
+            preparedStatement.setString(2, animal.getRacaAnimal());
+            preparedStatement.setDate(3, (java.sql.Date) animal.getNascimentoAnimal());
+            preparedStatement.setString(4, animal.getEspecieAnimal());
+            preparedStatement.setString(5, Character.toString(animal.getSexoAnimal()));
+            preparedStatement.setString(6, animal.getCorAnimal());
             preparedStatement.execute();
         } catch (Exception e) {
             System.out.println("Erro na função insertAnimal() da classe ConexaoDB");
@@ -123,6 +122,20 @@ public class ConexaoDB {
             throw e;
         } finally {
             close();
+        }
+    }
+
+    // Insere uma nova entrada do tipo CLiente no banco de dados
+    public void insertCliente(Cliente cliente) throws Exception {
+        try {
+            preparedStatement = connect.prepareStatement(
+                    "INSERT INTO `cliente` (`nomeCliente`, `cpfCliente`, `nascimentoCliente`, `emailCliente`, `telefoneCliente`, `enderecoCliente`) VALUES (?, ?, ?, ?, ?, ?)");
+            preparedStatement.setString(1, null);
+        } catch (Exception e) {
+            System.out.println("Erro na função insertCliente() da classe ConexaoDB");
+            throw e;
+        } finally {
+
         }
     }
 
