@@ -23,11 +23,11 @@ public class Venda {
 
         try {
             mysql = new ConexaoDB();
-            this.produtoVenda = mysql.getProduto("WHERE idProduto = " + idProduto).get(0);
+            this.produtoVenda = mysql.selectProduto("WHERE idProduto = " + idProduto).get(0);
             mysql = new ConexaoDB();
-            this.clienteVenda = mysql.getCliente("WHERE idCliente = " + idCliente).get(0);
+            this.clienteVenda = mysql.selectCliente("WHERE idCliente = " + idCliente).get(0);
             mysql = new ConexaoDB();
-            this.funcionarioVenda = mysql.getFuncionario("WHERE idFuncionario = " + idFuncionario).get(0);
+            this.funcionarioVenda = mysql.selectFuncionario("WHERE idFuncionario = " + idFuncionario).get(0);
             this.dataVenda = dataVenda;
             this.quantidadeProduto = quantidadeVenda;
             this.valorVenda = this.produtoVenda.getPrecoProduto();
