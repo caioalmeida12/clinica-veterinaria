@@ -141,7 +141,7 @@ public class ConexaoDB {
             System.out.println("Erro na função insertCliente() da classe ConexaoDB");
             throw e;
         } finally {
-
+            close();
         }
     }
 
@@ -176,6 +176,27 @@ public class ConexaoDB {
             return resultado;
         } catch (Exception e) {
             System.out.println("Erro na função selectFuncionario() da classe ConexaoDB");
+            throw e;
+        } finally {
+            close();
+        }
+    }
+
+    // Insere uma nova entrada do tipo Funcionario no banco de dados
+    public void insertFuncionario(Funcionario funcionario) throws Exception {
+        try {
+            preparedStatement = connect.prepareStatement(
+                    "INSERT INTO `funcionario` (`cpfFuncionario`, `nomeFuncionario`, `nascimentoFuncionario`, `emailFuncionario`, `salarioFuncionario`, `enderecoFuncionario`, `telefoneFuncionario`) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            preparedStatement.setInt(1, funcionario.getCpfFuncionario());
+            preparedStatement.setString(2, funcionario.getNomeFuncionario());
+            preparedStatement.setDate(3, (java.sql.Date) funcionario.getNascimentoFuncionario());
+            preparedStatement.setString(4, funcionario.getEmailFuncionario());
+            preparedStatement.setFloat(5, funcionario.getSalarioFuncionario());
+            preparedStatement.setString(6, funcionario.getEnderecoFuncionario());
+            preparedStatement.setString(7, funcionario.getTelefoneFuncionario());
+            preparedStatement.execute();
+        } catch (Exception e) {
+            System.out.println("Erro na função insertFuncionario() da classe ConexaoDB");
             throw e;
         } finally {
             close();

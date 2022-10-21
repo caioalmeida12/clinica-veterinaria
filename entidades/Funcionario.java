@@ -48,11 +48,11 @@ public class Funcionario {
     this.nomeFuncionario = nomeFuncionario;
   }
 
-  public Date getnascimentoFuncionario() {
+  public Date getNascimentoFuncionario() {
     return nascimentoFuncionario;
   }
 
-  public void setnascimentoFuncionario(Date nascimentoFuncionario) {
+  public void setNascimentoFuncionario(Date nascimentoFuncionario) {
     this.nascimentoFuncionario = nascimentoFuncionario;
   }
 
@@ -87,7 +87,5 @@ public class Funcionario {
   public void setTelefoneFuncionario(String telefoneFuncionario) {
     this.telefoneFuncionario = telefoneFuncionario;
   }
-
-
 
 }
