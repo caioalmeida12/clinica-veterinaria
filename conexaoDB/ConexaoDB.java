@@ -38,7 +38,7 @@ public class ConexaoDB {
 
     // Retorna todos os dados da tabela animal de acordo com um filtro,
     // que pode ser vazio
-    public List<Animal> getAnimal(String filtro) throws Exception {
+    public List<Animal> selectAnimal(String filtro) throws Exception {
         try {
             // Armazena todos os dados retornados
             List<Animal> resultado = new ArrayList<Animal>();
@@ -71,7 +71,7 @@ public class ConexaoDB {
 
     // Retorna todos os dados da tabela cliente de acordo com um filtro,
     // que pode ser vazio
-    public List<Cliente> getCliente(String filtro) throws Exception {
+    public List<Cliente> selectCliente(String filtro) throws Exception {
         try {
             // Armazena todos os dados retornados
             List<Cliente> resultado = new ArrayList<Cliente>();
@@ -104,7 +104,7 @@ public class ConexaoDB {
 
     // Retorna todos os dados da tabela funcionario de acordo com um filtro,
     // que pode ser vazio
-    public List<Funcionario> getFuncionario(String filtro) throws Exception {
+    public List<Funcionario> selectFuncionario(String filtro) throws Exception {
         try {
             // Armazena todos os dados retornados
             List<Funcionario> resultado = new ArrayList<Funcionario>();
@@ -140,7 +140,7 @@ public class ConexaoDB {
 
     // Retorna todos os dados da tabela Produto de acordo com um filtro,
     // que pode ser vazio
-    public List<Produto> getProduto(String filtro) throws Exception {
+    public List<Produto> selectProduto(String filtro) throws Exception {
         try {
             // Armazena todos os dados retornados
             List<Produto> resultado = new ArrayList<Produto>();
@@ -168,7 +168,7 @@ public class ConexaoDB {
 
     // Retorna todos os dados da tabela Servico de acordo com um filtro,
     // que pode ser vazio
-    public List<Servico> getServico(String filtro) throws Exception {
+    public List<Servico> selectServico(String filtro) throws Exception {
         try {
             // Armazena todos os dados retornados
             List<Servico> resultado = new ArrayList<Servico>();
@@ -197,7 +197,7 @@ public class ConexaoDB {
 
     // Retorna todos os dados da tabela Venda de acordo com um filtro,
     // que pode ser vazio
-    public List<Venda> getVenda(String filtro) throws Exception {
+    public List<Venda> selectVenda(String filtro) throws Exception {
         try {
             // Armazena todos os dados retornados
             List<Venda> resultado = new ArrayList<Venda>();
