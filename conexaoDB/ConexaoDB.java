@@ -130,7 +130,13 @@ public class ConexaoDB {
         try {
             preparedStatement = connect.prepareStatement(
                     "INSERT INTO `cliente` (`nomeCliente`, `cpfCliente`, `nascimentoCliente`, `emailCliente`, `telefoneCliente`, `enderecoCliente`) VALUES (?, ?, ?, ?, ?, ?)");
-            preparedStatement.setString(1, null);
+            preparedStatement.setString(1, cliente.getNomeCliente());
+            preparedStatement.setString(2, cliente.getCpfCliente());
+            preparedStatement.setDate(3, (java.sql.Date) cliente.getNascimentoCliente());
+            preparedStatement.setString(4, cliente.getEmailCliente());
+            preparedStatement.setString(5, cliente.getTelefoneCliente());
+            preparedStatement.setString(6, cliente.getEnderecoCliente());
+            preparedStatement.execute();
         } catch (Exception e) {
             System.out.println("Erro na função insertCliente() da classe ConexaoDB");
             throw e;
