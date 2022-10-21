@@ -32,7 +32,7 @@ public class ConexaoDB {
 
             statement = connect.createStatement();
         } catch (Exception e) {
-            System.out.println("Erro ao conectar com o BD");
+            System.out.println("Erro na função conectar() da classe ConexaoDB");
             throw e;
         }
     }
@@ -64,6 +64,7 @@ public class ConexaoDB {
             }
             return resultado;
         } catch (Exception e) {
+            System.out.println("Erro na função selectAnimal() da classe ConexaoDB");
             throw e;
         } finally {
             close();
@@ -71,17 +72,16 @@ public class ConexaoDB {
     }
 
     // Insere uma nova entrada do tipo Animal no banco de dados
-    public void insertAnimal(String nomeAnimal, String racaAnimal, Date nascimentoAnimal, String especieAnimal,
-            Character sexoAnimal, String corAnimal) throws Exception {
+    public void insertAnimal(Animal animal) throws Exception {
         try {
             preparedStatement = connect.prepareStatement(
                     "INSERT INTO `animal` (`nomeAnimal`, `racaAnimal`, `nascimentoAnimal`, `especieAnimal`, `sexoAnimal`, `corAnimal`) VALUES (?, ?, ?, ?, ?, ?)");
-            preparedStatement.setString(1, nomeAnimal);
-            preparedStatement.setString(2, racaAnimal);
-            preparedStatement.setDate(3, (java.sql.Date) nascimentoAnimal);
-            preparedStatement.setString(4, especieAnimal);
-            preparedStatement.setString(5, Character.toString(sexoAnimal));
-            preparedStatement.setString(6, corAnimal);
+            preparedStatement.setString(1, animal.getNomeAnimal());
+            preparedStatement.setString(2, animal.getRacaAnimal());
+            preparedStatement.setDate(3, (java.sql.Date) animal.getNascimentoAnimal());
+            preparedStatement.setString(4, animal.getEspecieAnimal());
+            preparedStatement.setString(5, Character.toString(animal.getSexoAnimal()));
+            preparedStatement.setString(6, animal.getCorAnimal());
             preparedStatement.execute();
         } catch (Exception e) {
             System.out.println("Erro na função insertAnimal() da classe ConexaoDB");
@@ -118,9 +118,30 @@ public class ConexaoDB {
             }
             return resultado;
         } catch (Exception e) {
+            System.out.println("Erro na função selectCliente() da classe ConexaoDB");
             throw e;
         } finally {
             close();
+        }
+    }
+
+    // Insere uma nova entrada do tipo CLiente no banco de dados
+    public void insertCliente(Cliente cliente) throws Exception {
+        try {
+            preparedStatement = connect.prepareStatement(
+                    "INSERT INTO `cliente` (`nomeCliente`, `cpfCliente`, `nascimentoCliente`, `emailCliente`, `telefoneCliente`, `enderecoCliente`) VALUES (?, ?, ?, ?, ?, ?)");
+            preparedStatement.setString(1, cliente.getNomeCliente());
+            preparedStatement.setString(2, cliente.getCpfCliente());
+            preparedStatement.setDate(3, (java.sql.Date) cliente.getNascimentoCliente());
+            preparedStatement.setString(4, cliente.getEmailCliente());
+            preparedStatement.setString(5, cliente.getTelefoneCliente());
+            preparedStatement.setString(6, cliente.getEnderecoCliente());
+            preparedStatement.execute();
+        } catch (Exception e) {
+            System.out.println("Erro na função insertCliente() da classe ConexaoDB");
+            throw e;
+        } finally {
+
         }
     }
 
@@ -154,6 +175,7 @@ public class ConexaoDB {
             }
             return resultado;
         } catch (Exception e) {
+            System.out.println("Erro na função selectFuncionario() da classe ConexaoDB");
             throw e;
         } finally {
             close();
@@ -182,6 +204,7 @@ public class ConexaoDB {
             }
             return resultado;
         } catch (Exception e) {
+            System.out.println("Erro na função selectProduto() da classe ConexaoDB");
             throw e;
         } finally {
             close();
@@ -211,6 +234,7 @@ public class ConexaoDB {
             }
             return resultado;
         } catch (Exception e) {
+            System.out.println("Erro na função selectServico() da classe ConexaoDB");
             throw e;
         } finally {
             close();
@@ -242,6 +266,7 @@ public class ConexaoDB {
             }
             return resultado;
         } catch (Exception e) {
+            System.out.println("Erro na função selectVenda() da classe ConexaoDB");
             throw e;
         } finally {
             close();
@@ -263,7 +288,7 @@ public class ConexaoDB {
                 connect.close();
             }
         } catch (Exception e) {
-
+            System.out.println("Erro na função close() da classe ConexaoDB \n" + e);
         }
     }
 
