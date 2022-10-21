@@ -2,6 +2,7 @@ package conexaoDB;
 
 import java.sql.*;
 import entidades.*;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,6 +64,27 @@ public class ConexaoDB {
             }
             return resultado;
         } catch (Exception e) {
+            throw e;
+        } finally {
+            close();
+        }
+    }
+
+    // Insere uma nova entrada do tipo Animal no banco de dados
+    public void insertAnimal(String nomeAnimal, String racaAnimal, Date nascimentoAnimal, String especieAnimal,
+            Character sexoAnimal, String corAnimal) throws Exception {
+        try {
+            preparedStatement = connect.prepareStatement(
+                    "INSERT INTO `animal` (`nomeAnimal`, `racaAnimal`, `nascimentoAnimal`, `especieAnimal`, `sexoAnimal`, `corAnimal`) VALUES (?, ?, ?, ?, ?, ?)");
+            preparedStatement.setString(1, nomeAnimal);
+            preparedStatement.setString(2, racaAnimal);
+            preparedStatement.setDate(3, (java.sql.Date) nascimentoAnimal);
+            preparedStatement.setString(4, especieAnimal);
+            preparedStatement.setString(5, Character.toString(sexoAnimal));
+            preparedStatement.setString(6, corAnimal);
+            preparedStatement.execute();
+        } catch (Exception e) {
+            System.out.println("Erro na função insertAnimal() da classe ConexaoDB");
             throw e;
         } finally {
             close();
