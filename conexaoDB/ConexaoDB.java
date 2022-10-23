@@ -232,6 +232,22 @@ public class ConexaoDB {
         }
     }
 
+    // Insere uma nova entrada do tipo Produto no banco de dados
+    public void insertProduto(Produto produto) throws Exception {
+        try {
+            preparedStatement = connect
+                    .prepareStatement("INSERT INTO `produto` (`nomeProduto`, `precoProduto`) VALUES (?, ?)");
+            preparedStatement.setString(1, produto.getNomeProduto());
+            preparedStatement.setDouble(2, produto.getPrecoProduto());
+            preparedStatement.execute();
+        } catch (Exception e) {
+            System.out.println("Erro na função insertProduto() da classe ConexaoDB");
+            throw e;
+        } finally {
+            close();
+        }
+    }
+
     // Retorna todos os dados da tabela Servico de acordo com um filtro,
     // que pode ser vazio
     public List<Servico> selectServico(String filtro) throws Exception {

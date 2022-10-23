@@ -15,14 +15,9 @@ class Main {
 
     try {
       mysql = new ConexaoDB();
-      // var resultado = mysql.selectCliente("WHERE idCliente = 2").get(0);
-      // mysql = new ConexaoDB();
-      var resultado = new Funcionario((Integer) 5, "mateur", (Integer) 0101010101, new java.sql.Date(2022, 01, 07),
-          "mateu@gmail.com",
-          (Float) 2424f,
-          "92812837",
-          "tesss");
-      mysql.insertFuncionario(resultado);
+      var resultado = mysql.selectProduto("").get(0);
+      mysql = new ConexaoDB();
+      mysql.insertProduto(resultado);
 
     } catch (Exception e) {
       System.out.println(e);
