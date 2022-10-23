@@ -1,5 +1,6 @@
 package conexaoDB;
 
+import java.io.Console;
 import java.sql.*;
 import entidades.*;
 import java.util.Date;
@@ -33,6 +34,20 @@ public class ConexaoDB {
             statement = connect.createStatement();
         } catch (Exception e) {
             System.out.println("Erro na função conectar() da classe ConexaoDB");
+            throw e;
+        }
+    }
+
+    // Converte o parametro em um formato datetime legivel para o mysql
+    public String dateToDatetime(Date date) throws Exception {
+        try {
+            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+            String currentTime = sdf.format(date);
+
+            return currentTime;
+        } catch (Exception e) {
+            System.out.println("Erro na função dateToDatetime() da classe ConexaoDB");
             throw e;
         }
     }
@@ -321,6 +336,25 @@ public class ConexaoDB {
             return resultado;
         } catch (Exception e) {
             System.out.println("Erro na função selectVenda() da classe ConexaoDB");
+            throw e;
+        } finally {
+            close();
+        }
+    }
+
+    // Insere uma nova entrada do tipo Venda no banco de dados
+    public void insertVenda(Venda venda) throws Exception {
+        try {
+            preparedStatement = connect.prepareStatement(
+                    "INSERT INTO `venda` (`idProduto`, `idCliente`, `idFuncionario`, `dataVenda`, `quantidadeProduto`) VALUES (?, ?, ?, ?, ?)");
+            preparedStatement.setInt(1, venda.getProdutoVenda().getIdProduto());
+            preparedStatement.setInt(2, venda.getClienteVenda().getIdCliente());
+            preparedStatement.setInt(3, venda.getFuncionarioVenda().getIdFuncionario());
+            preparedStatement.setString(4, dateToDatetime(new Date()));
+            preparedStatement.setInt(5, venda.getQuantidadeProduto());
+            preparedStatement.execute();
+        } catch (Exception e) {
+            System.out.println("Erro na função insertVenda() da classe ConexaoDB");
             throw e;
         } finally {
             close();
