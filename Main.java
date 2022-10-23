@@ -15,9 +15,7 @@ class Main {
 
     try {
       mysql = new ConexaoDB();
-      var resultado = mysql.selectVenda("").get(0);
-      mysql = new ConexaoDB();
-      mysql.insertVenda(resultado);
+      mysql.insertAnimalCliente(1, 2);
 
     } catch (Exception e) {
       System.out.println(e);

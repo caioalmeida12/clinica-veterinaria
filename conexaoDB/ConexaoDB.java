@@ -361,6 +361,20 @@ public class ConexaoDB {
         }
     }
 
+    // Insere uma nova entrada na tabela animal-cliente
+    public void insertAnimalCliente(int idAnimal, int idCliente) throws Exception {
+        try {
+            preparedStatement = connect
+                    .prepareStatement("INSERT INTO `animal-cliente` (`idAnimal`, `idCliente`) VALUES (?, ?)");
+            preparedStatement.setInt(1, idAnimal);
+            preparedStatement.setInt(2, idCliente);
+            preparedStatement.execute();
+        } catch (Exception e) {
+            System.out.println("Erro na função insertAnimalCliente() da classe ConexaoDB");
+            throw e;
+        }
+    }
+
     // You need to close the resultSet
     private void close() {
         try {
