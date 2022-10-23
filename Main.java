@@ -15,9 +15,9 @@ class Main {
 
     try {
       mysql = new ConexaoDB();
-      var resultado = mysql.selectProduto("").get(0);
+      var resultado = mysql.selectServico("").get(0);
       mysql = new ConexaoDB();
-      mysql.insertProduto(resultado);
+      mysql.insertServico(resultado);
 
     } catch (Exception e) {
       System.out.println(e);
