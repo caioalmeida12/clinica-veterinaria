@@ -4,9 +4,9 @@ public class Servico {
     Integer idProduto;
     String tipoServico;
     String descricaoServico;
-    Float precoServico;
+    Double precoServico;
 
-    public Servico(Integer idProduto, String tipoServico, String descricaoServico, Float precoServico) {
+    public Servico(Integer idProduto, String tipoServico, String descricaoServico, Double precoServico) {
         this.idProduto = idProduto;
         this.tipoServico = tipoServico;
         this.descricaoServico = descricaoServico;
@@ -37,11 +37,11 @@ public class Servico {
         this.descricaoServico = descricaoServico;
     }
 
-    public Float getPrecoServico() {
+    public Double getPrecoServico() {
         return precoServico;
     }
 
-    public void setPrecoServico(Float precoServico) {
+    public void setPrecoServico(Double precoServico) {
         this.precoServico = precoServico;
     }
 
