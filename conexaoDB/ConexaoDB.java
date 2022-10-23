@@ -361,6 +361,35 @@ public class ConexaoDB {
         }
     }
 
+    // Retorna todos os dados da tabela animal-cliente de acordo com um filtro,
+    // que pode ser vazio
+    public List<AnimalCliente> selectAnimalCliente(String filtro) throws Exception {
+        try {
+            // Armazena todos os dados retornados
+            List<AnimalCliente> resultado = new ArrayList<AnimalCliente>();
+            // Executa a consulta
+            resultSet = statement.executeQuery("SELECT * FROM animal-cliente " + filtro);
+            while (resultSet.next()) {
+                // Tratamento dos dados
+                var idAnimalCliente = resultSet.getInt("idAnimalCliente");
+                var idAnimal = resultSet.getInt("idAnimal");
+                var idCliente = resultSet.getInt("idCliente");
+
+                // Instancia uma tupla da entidade AnimalCliente
+                AnimalCliente temporario = new AnimalCliente(idAnimalCliente, idAnimal, idCliente);
+
+                // Envia a entidade para o resultado
+                resultado.add(temporario);
+            }
+            return resultado;
+        } catch (Exception e) {
+            System.out.println("Erro na função selectAnimalCliente() da classe ConexaoDB");
+            throw e;
+        } finally {
+            close();
+        }
+    }
+
     // Insere uma nova entrada na tabela animal-cliente
     public void insertAnimalCliente(int idAnimal, int idCliente) throws Exception {
         try {
