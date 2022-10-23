@@ -261,7 +261,7 @@ public class ConexaoDB {
                 var idServico = (Integer) resultSet.getInt("idServico");
                 var tipoServico = resultSet.getString("tipoServico");
                 var descricaoServico = resultSet.getString("descricaoServico");
-                var precoServico = (Float) resultSet.getFloat("precoServico");
+                var precoServico = (Double) resultSet.getDouble("precoServico");
 
                 // Instancia uma tupla da entidade Servico
                 Servico temporario = new Servico(idServico, tipoServico, descricaoServico, precoServico);
@@ -272,6 +272,23 @@ public class ConexaoDB {
             return resultado;
         } catch (Exception e) {
             System.out.println("Erro na função selectServico() da classe ConexaoDB");
+            throw e;
+        } finally {
+            close();
+        }
+    }
+
+    // Insere uma nova entrada do tipo Servico no banco de dados
+    public void insertServico(Servico servico) throws Exception {
+        try {
+            preparedStatement = connect.prepareStatement(
+                    "INSERT INTO `servico` (`tipoServico`, `descricaoServico`, `precoServico`) VALUES (?, ?, ?)");
+            preparedStatement.setString(1, servico.getTipoServico());
+            preparedStatement.setString(2, servico.getDescricaoServico());
+            preparedStatement.setDouble(3, servico.getPrecoServico());
+            preparedStatement.execute();
+        } catch (Exception e) {
+            System.out.println("Erro na função insertServico() da classe ConexaoDB");
             throw e;
         } finally {
             close();
