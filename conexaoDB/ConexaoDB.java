@@ -26,7 +26,7 @@ public class ConexaoDB {
             // Tenta conectar o DB
             Class.forName("com.mysql.jdbc.Driver");
             connect = DriverManager
-                    .getConnection("jdbc:mysql://localhost/clinica-veterinaria?"
+                    .getConnection("jdbc:mysql://localhost/clinica_veterinaria?"
                             + "user=root&password=");
             // .getConnection("jdbc:mysql://localhost/clinica_veterinaria?"
             // + "user=root&password=");
@@ -251,7 +251,7 @@ public class ConexaoDB {
     public void insertProduto(Produto produto) throws Exception {
         try {
             preparedStatement = connect
-                    .prepareStatement("INSERT INTO `produto` (`nomeProduto`, `precoProduto`) VALUES (?, ?)");
+                    .prepareStatement("INSERT INTO `produto` (`idProduto`,`nomeProduto`, `precoProduto`) VALUES (0,?,?)");
             preparedStatement.setString(1, produto.getNomeProduto());
             preparedStatement.setDouble(2, produto.getPrecoProduto());
             preparedStatement.execute();
