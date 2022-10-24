@@ -13,6 +13,12 @@ public class Servico {
         this.precoServico = precoServico;
     }
 
+    public Servico(String tipoServico, String descricaoServico, Double precoServico) {
+        this.tipoServico = tipoServico;
+        this.descricaoServico = descricaoServico;
+        this.precoServico = precoServico;
+    }
+
     public Integer getIdProduto() {
         return idProduto;
     }

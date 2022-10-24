@@ -297,7 +297,7 @@ public class ConexaoDB {
     public void insertServico(Servico servico) throws Exception {
         try {
             preparedStatement = connect.prepareStatement(
-                    "INSERT INTO `servico` (`tipoServico`, `descricaoServico`, `precoServico`) VALUES (?, ?, ?)");
+                    "INSERT INTO `servico` (`idServico`,`tipoServico`, `descricaoServico`, `precoServico`) VALUES (0,?, ?, ?)");
             preparedStatement.setString(1, servico.getTipoServico());
             preparedStatement.setString(2, servico.getDescricaoServico());
             preparedStatement.setDouble(3, servico.getPrecoServico());

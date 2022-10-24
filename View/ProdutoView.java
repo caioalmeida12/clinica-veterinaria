@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 
 public class ProdutoView extends JFrame {
     private JButton texto;
-    private JPanel main;
+    private JPanel produtoView;
     private JButton cadastrarProdutoButton;
     private JTextField txtNome;
     private JTextField txtPreco;
@@ -20,7 +20,7 @@ public class ProdutoView extends JFrame {
 
 
         //Configuração da tela mostrada
-setContentPane(main);
+setContentPane(produtoView);
         setTitle("Produto");
         setSize(500,500);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -45,7 +45,7 @@ setContentPane(main);
                 try {
                     mysql.insertProduto(pd);
                 } catch (Exception ex) {
-                    System.out.println("erro no view para inserir");
+                    System.out.println("erro no view para inserir produto");
                     throw new RuntimeException(ex);
                 }
 
