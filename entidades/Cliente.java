@@ -23,6 +23,15 @@ public class Cliente {
     this.enderecoCliente = enderecoCliente;
   }
 
+  public Cliente(String cpfCliente, String nomeCliente, Date nascimentoCliente, String emailCliente, String telefoneCliente, String enderecoCliente) {
+    this.cpfCliente = cpfCliente;
+    this.nomeCliente = nomeCliente;
+    this.nascimentoCliente = nascimentoCliente;
+    this.emailCliente = emailCliente;
+    this.telefoneCliente = telefoneCliente;
+    this.enderecoCliente = enderecoCliente;
+  }
+
   public Integer getIdCliente() {
     return idCliente;
   }
