@@ -8,12 +8,21 @@ public class Animal {
   private String racaAnimal;
   private Date nascimentoAnimal;
   private String especieAnimal;
-  private Character sexoAnimal;
+  private String sexoAnimal;
   private String corAnimal;
 
   public Animal(Integer idAnimal, String nomeAnimal, String racaAnimal, Date nascimentoAnimal, String especieAnimal,
-      Character sexoAnimal, String corAnimal) {
+                String sexoAnimal, String corAnimal) {
     this.idAnimal = idAnimal;
+    this.nomeAnimal = nomeAnimal;
+    this.racaAnimal = racaAnimal;
+    this.nascimentoAnimal = nascimentoAnimal;
+    this.especieAnimal = especieAnimal;
+    this.sexoAnimal = sexoAnimal;
+    this.corAnimal = corAnimal;
+  }
+
+  public Animal(String nomeAnimal, String racaAnimal, Date nascimentoAnimal, String especieAnimal, String sexoAnimal, String corAnimal) {
     this.nomeAnimal = nomeAnimal;
     this.racaAnimal = racaAnimal;
     this.nascimentoAnimal = nascimentoAnimal;
@@ -62,11 +71,11 @@ public class Animal {
     this.especieAnimal = especieAnimal;
   }
 
-  public Character getSexoAnimal() {
+  public String getSexoAnimal() {
     return sexoAnimal;
   }
 
-  public void setSexoAnimal(Character sexoAnimal) {
+  public void setSexoAnimal(String sexoAnimal) {
     this.sexoAnimal = sexoAnimal;
   }
 

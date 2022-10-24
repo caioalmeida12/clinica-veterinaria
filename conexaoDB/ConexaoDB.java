@@ -67,7 +67,7 @@ public class ConexaoDB {
                 var racaAnimal = resultSet.getString("racaAnimal");
                 var nascimentoAnimal = resultSet.getDate("nascimentoAnimal");
                 var especieAnimal = resultSet.getString("especieAnimal");
-                var sexoAnimal = resultSet.getString("sexoAnimal").charAt(0);
+                var sexoAnimal = resultSet.getString("sexoAnimal");
                 var corAnimal = resultSet.getString("corAnimal");
 
                 // Instancia uma tupla da entidade Animal
@@ -95,7 +95,7 @@ public class ConexaoDB {
             preparedStatement.setString(2, animal.getRacaAnimal());
             preparedStatement.setDate(3, (java.sql.Date) animal.getNascimentoAnimal());
             preparedStatement.setString(4, animal.getEspecieAnimal());
-            preparedStatement.setString(5, Character.toString(animal.getSexoAnimal()));
+            preparedStatement.setString(5, animal.getSexoAnimal());
             preparedStatement.setString(6, animal.getCorAnimal());
             preparedStatement.execute();
         } catch (Exception e) {
