@@ -17,7 +17,7 @@ public class ServicoView extends JFrame {
     public ServicoView() {
 
         setContentPane(servicoView);
-        setTitle("Produto");
+        setTitle("Servico");
         setSize(500,500);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);

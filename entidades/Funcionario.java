@@ -24,6 +24,16 @@ public class Funcionario {
     this.enderecoFuncionario = enderecoFuncionario;
   }
 
+  public Funcionario(String nomeFuncionario, Integer cpfFuncionario, Date nascimentoFuncionario, String emailFuncionario, Float salarioFuncionario, String telefoneFuncionario, String enderecoFuncionario) {
+    this.nomeFuncionario = nomeFuncionario;
+    this.cpfFuncionario = cpfFuncionario;
+    this.nascimentoFuncionario = nascimentoFuncionario;
+    this.emailFuncionario = emailFuncionario;
+    this.salarioFuncionario = salarioFuncionario;
+    this.telefoneFuncionario = telefoneFuncionario;
+    this.enderecoFuncionario = enderecoFuncionario;
+  }
+
   public Integer getIdFuncionario() {
     return idFuncionario;
   }
