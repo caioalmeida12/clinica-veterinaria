@@ -1,3 +1,4 @@
+import View.ClienteView;
 import conexaoDB.*;
 import entidades.*;
 
@@ -11,14 +12,18 @@ class Main {
     Locale.setDefault(Locale.US);
     Scanner input = new Scanner(System.in);
 
+
+
     ConexaoDB mysql = null;
 
-    try {
+    new ClienteView().setVisible(true);
+
+   /* try {
       mysql = new ConexaoDB();
       mysql.insertAnimalCliente(1, 2);
 
     } catch (Exception e) {
       System.out.println(e);
-    }
+    }*/
   }
 }

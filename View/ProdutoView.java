@@ -13,6 +13,7 @@ public class ProdutoView extends JFrame {
     private JButton cadastrarProdutoButton;
     private JTextField txtNome;
     private JTextField txtPreco;
+    private JButton voltarButton;
     private JTextField txtId;
 
 
@@ -53,13 +54,20 @@ setContentPane(produtoView);
             }
             }
         );
+
+        // Volta para a principal
+        voltarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+
+                new mainView().setVisible(true);
+            }
+        });
     }
 
-    //Deixar a tela executavel
-    public static void main(String[] args) {
 
-       new ProdutoView().setVisible(true);
-    }
+
 
 
 }

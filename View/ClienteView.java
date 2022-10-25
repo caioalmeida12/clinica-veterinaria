@@ -17,14 +17,19 @@ public class ClienteView extends JFrame{
     private JTextField txtTelefone;
     private JTextField txtEndereco;
     private JPanel clienteView;
+    private JButton voltarButton;
 
     public ClienteView() {
+
+        //Configuração da tela mostrada
 
         setContentPane(clienteView);
         setTitle("Cliente");
         setSize(500,500);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
+
+        //Ação realizada pelo botão de cadastrar
         cadastrarClienteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -54,10 +59,18 @@ public class ClienteView extends JFrame{
                 }
             }
         });
+        // Volta para a principal
+        voltarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                dispose();
+
+                new mainView().setVisible(true);
+
+            }
+        });
     }
 
-    public static void main(String[] args) {
 
-        new ClienteView().setVisible(true);
-    }
 }

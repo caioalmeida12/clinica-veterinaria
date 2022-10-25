@@ -16,14 +16,19 @@ public class Animal extends JFrame {
     private JComboBox txtSexo;
     private JTextField txtNascimento;
     private JPanel animalView;
+    private JButton voltarButton;
 
     public Animal() {
+
+        //Configuração da tela mostrada
 
         setContentPane(animalView);
         setTitle("Animal");
         setSize(500,500);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
+
+        //Ação realizada pelo botão de cadastrar
         cadastrarAnimalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -57,10 +62,19 @@ public class Animal extends JFrame {
 
             }
         });
+        // Volta para a principal
+        voltarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+               dispose();
+
+               new mainView().setVisible(true);
+
+
+            }
+        });
     }
 
-    public static void main(String[] args) {
 
-        new Animal().setVisible(true);
-    }
 }

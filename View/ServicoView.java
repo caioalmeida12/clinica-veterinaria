@@ -13,14 +13,19 @@ public class ServicoView extends JFrame {
     private JTextField txtDescricao;
     private JTextField txtPreco;
     private JPanel servicoView;
+    private JButton voltarButton;
 
     public ServicoView() {
+
+        //Configuração da tela mostrada
 
         setContentPane(servicoView);
         setTitle("Servico");
         setSize(500,500);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
+
+        //Ação realizada pelo botão de cadastrar
         cadastrarServicoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -46,9 +51,15 @@ public class ServicoView extends JFrame {
                 }
             }
         });
-    }
-    public static void main(String[] args) {
+        // Volta para a principal
+        voltarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
 
-        new ServicoView().setVisible(true);
+                new mainView().setVisible(true);
+            }
+        });
     }
+
 }

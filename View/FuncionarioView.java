@@ -7,8 +7,6 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 
 public class FuncionarioView extends JFrame {
     private JButton cadastrarFuncionarioButton;
@@ -20,14 +18,17 @@ public class FuncionarioView extends JFrame {
     private JTextField txtEndereco;
     private JFormattedTextField txtNascimento;
     private JPanel funcionarioView;
+    private JButton voltarButton;
 
     public FuncionarioView() {
-
+//Configuração da tela mostrada
         setContentPane(funcionarioView);
         setTitle("Funcionario");
         setSize(500,500);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
+
+        //Ação realizada pelo botão de cadastrar
         cadastrarFuncionarioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -66,11 +67,17 @@ public class FuncionarioView extends JFrame {
 
             }
         });
+        // Volta para a principal
+        voltarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+
+                new mainView().setVisible(true);
+            }
+        });
     }
 
-    public static void main(String[] args) {
 
-        new FuncionarioView().setVisible(true);
-    }
 
 }
