@@ -6,6 +6,7 @@ package clinica_veterinaria;
 
 import View.FuncionarioView;
 import View.ProdutoView;
+import conexaoDB.ConexaoDB;
 
 /**
  *
@@ -17,7 +18,15 @@ public class Clinica_veterinaria {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        new ProdutoView().setVisible(true);
+        // new ProdutoView().setVisible(true);
+        try {
+            var mysql = new ConexaoDB();
+            var animal = mysql.selectAnimal("").get(0);
+            mysql = new ConexaoDB();
+            animal.setCorAnimal("testeUpdate");
+            mysql.updateAnimal(animal);
+        } catch (Exception e) {
+        }
     }
 
 }

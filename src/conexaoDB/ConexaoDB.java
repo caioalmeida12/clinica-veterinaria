@@ -32,8 +32,6 @@ public class ConexaoDB {
             connect = DriverManager
                     .getConnection("jdbc:mysql://localhost/clinica-veterinaria?"
                             + "user=root&password=");
-            // .getConnection("jdbc:mysql://localhost/clinica_veterinaria?"
-            // + "user=root&password=");
 
             statement = connect.createStatement();
         } catch (Exception e) {
@@ -75,11 +73,11 @@ public class ConexaoDB {
                 var corAnimal = resultSet.getString("corAnimal");
 
                 // Instancia uma tupla da entidade Animal
-                Animal temporario = new Animal(idAnimal, nomeAnimal, racaAnimal, nascimentoAnimal, especieAnimal,
+                Animal animal = new Animal(idAnimal, nomeAnimal, racaAnimal, nascimentoAnimal, especieAnimal,
                         sexoAnimal, corAnimal);
 
                 // Envia a entidade para o resultado
-                resultado.add(temporario);
+                resultado.add(animal);
             }
             return resultado;
         } catch (Exception e) {
@@ -110,6 +108,27 @@ public class ConexaoDB {
         }
     }
 
+    // Altera os dados do Animal no banco de dados
+    public void updateAnimal(Animal animal) throws Exception {
+        try {
+            preparedStatement = connect.prepareStatement(
+                    "UPDATE animal SET nomeAnimal = ?, racaAnimal = ?, nascimentoAnimal = ?, especieAnimal = ?, sexoAnimal = ?, corAnimal = ? WHERE idAnimal = ? ");
+            preparedStatement.setString(1, animal.getNomeAnimal());
+            preparedStatement.setString(2, animal.getRacaAnimal());
+            preparedStatement.setDate(3, (java.sql.Date) animal.getNascimentoAnimal());
+            preparedStatement.setString(4, animal.getEspecieAnimal());
+            preparedStatement.setString(5, animal.getSexoAnimal());
+            preparedStatement.setString(6, animal.getCorAnimal());
+            preparedStatement.setInt(7, animal.getIdAnimal());
+            preparedStatement.execute();
+        } catch (Exception e) {
+            System.out.println("Erro na função updateAnimal() da classe ConexaoDB -> " + e);
+            throw e;
+        } finally {
+            close();
+        }
+    }
+
     // Retorna todos os dados da tabela cliente de acordo com um filtro,
     // que pode ser vazio
     public List<Cliente> selectCliente(String filtro) throws Exception {
@@ -129,11 +148,11 @@ public class ConexaoDB {
                 var enderecoCliente = resultSet.getString("enderecoCliente");
 
                 // Instancia uma tupla da entidade Cliente
-                Cliente temporario = new Cliente(idCliente, nomeCliente, cpfCliente, nascimentoCliente, emailCliente,
+                Cliente cliente = new Cliente(idCliente, nomeCliente, cpfCliente, nascimentoCliente, emailCliente,
                         telefoneCliente, enderecoCliente);
 
                 // Envia a entidade para o resultado
-                resultado.add(temporario);
+                resultado.add(cliente);
             }
             return resultado;
         } catch (Exception e) {
@@ -185,12 +204,12 @@ public class ConexaoDB {
                 var enderecoFuncionario = resultSet.getString("enderecoFuncionario");
 
                 // Instancia uma tupla da entidade Funcionario
-                Funcionario temporario = new Funcionario(idFuncionario, nomeFuncionario, cpfFuncionario,
+                Funcionario funcionario = new Funcionario(idFuncionario, nomeFuncionario, cpfFuncionario,
                         nascimentoFuncionario, emailFuncionario, salarioFuncionario, telefoneFuncionario,
                         enderecoFuncionario);
 
                 // Envia a entidade para o resultado
-                resultado.add(temporario);
+                resultado.add(funcionario);
             }
             return resultado;
         } catch (Exception e) {
@@ -237,10 +256,10 @@ public class ConexaoDB {
                 var precoProduto = resultSet.getDouble("precoProduto");
 
                 // Instancia uma tupla da entidade Funcionario
-                Produto temporario = new Produto(idProduto, nomeProduto, precoProduto);
+                Produto produto = new Produto(idProduto, nomeProduto, precoProduto);
 
                 // Envia a entidade para o resultado
-                resultado.add(temporario);
+                resultado.add(produto);
             }
             return resultado;
         } catch (Exception e) {
@@ -271,7 +290,7 @@ public class ConexaoDB {
     public void updateProduto(Produto produto) throws Exception {
         try {
             preparedStatement = connect
-                    .prepareStatement("update produto set nomeProduto = ?, precoProduto = ? where idProduto = ? ");
+                    .prepareStatement("UPDATE produto SET nomeProduto = ?, precoProduto = ? WHERE idProduto = ? ");
             preparedStatement.setString(1, produto.getNomeProduto());
             preparedStatement.setDouble(2, produto.getPrecoProduto());
             preparedStatement.setInt(3, produto.getIdProduto());
@@ -314,10 +333,10 @@ public class ConexaoDB {
                 var precoServico = (Double) resultSet.getDouble("precoServico");
 
                 // Instancia uma tupla da entidade Servico
-                Servico temporario = new Servico(idServico, tipoServico, descricaoServico, precoServico);
+                Servico servico = new Servico(idServico, tipoServico, descricaoServico, precoServico);
 
                 // Envia a entidade para o resultado
-                resultado.add(temporario);
+                resultado.add(servico);
             }
             return resultado;
         } catch (Exception e) {
@@ -363,10 +382,10 @@ public class ConexaoDB {
                 var quantidadeVenda = (Integer) resultSet.getInt("quantidadeProduto");
 
                 // Instancia uma tupla da entidade Venda
-                Venda temporario = new Venda(idVenda, idProduto, idCliente, idFuncionario, dataVenda, quantidadeVenda);
+                Venda venda = new Venda(idVenda, idProduto, idCliente, idFuncionario, dataVenda, quantidadeVenda);
 
                 // Envia a entidade para o resultado
-                resultado.add(temporario);
+                resultado.add(venda);
             }
             return resultado;
         } catch (Exception e) {
@@ -411,10 +430,10 @@ public class ConexaoDB {
                 var idCliente = resultSet.getInt("idCliente");
 
                 // Instancia uma tupla da entidade AnimalCliente
-                AnimalCliente temporario = new AnimalCliente(idAnimalCliente, idAnimal, idCliente);
+                AnimalCliente animalCliente = new AnimalCliente(idAnimalCliente, idAnimal, idCliente);
 
                 // Envia a entidade para o resultado
-                resultado.add(temporario);
+                resultado.add(animalCliente);
             }
             return resultado;
         } catch (Exception e) {
