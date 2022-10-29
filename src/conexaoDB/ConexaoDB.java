@@ -1,10 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package conexaoDB;
 
-import java.io.Console;
 import java.sql.*;
 import entidades.*;
 import java.util.Date;
@@ -56,6 +51,10 @@ public class ConexaoDB {
 
     // Retorna todos os dados da tabela animal de acordo com um filtro,
     // que pode ser vazio
+    public List<Animal> selectAnimal() throws Exception {
+        return this.selectAnimal("");
+    }
+
     public List<Animal> selectAnimal(String filtro) throws Exception {
         try {
             // Armazena todos os dados retornados

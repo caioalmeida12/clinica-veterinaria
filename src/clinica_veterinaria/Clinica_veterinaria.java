@@ -21,7 +21,7 @@ public class Clinica_veterinaria {
         // new ProdutoView().setVisible(true);
         try {
             var mysql = new ConexaoDB();
-            var animal = mysql.selectAnimal("").get(0);
+            var animal = mysql.selectAnimal().get(0);
             mysql = new ConexaoDB();
             animal.setCorAnimal("testeUpdate");
             mysql.updateAnimal(animal);
