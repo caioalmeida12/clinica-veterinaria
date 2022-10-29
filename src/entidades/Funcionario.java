@@ -5,14 +5,14 @@ import java.util.Date;
 public class Funcionario {
   private Integer idFuncionario;
   private String nomeFuncionario;
-  private Integer cpfFuncionario;
+  private String cpfFuncionario;
   private Date nascimentoFuncionario;
   private String emailFuncionario;
   private Float salarioFuncionario;
   private String telefoneFuncionario;
   private String enderecoFuncionario;
 
-  public Funcionario(Integer idFuncionario, String nomeFuncionario, Integer cpfFuncionario, Date nascimentoFuncionario,
+  public Funcionario(Integer idFuncionario, String nomeFuncionario, String cpfFuncionario, Date nascimentoFuncionario,
       String emailFuncionario, Float salarioFuncionario, String telefoneFuncionario, String enderecoFuncionario) {
     this.idFuncionario = idFuncionario;
     this.nomeFuncionario = nomeFuncionario;
@@ -24,7 +24,8 @@ public class Funcionario {
     this.enderecoFuncionario = enderecoFuncionario;
   }
 
-  public Funcionario(String nomeFuncionario, Integer cpfFuncionario, Date nascimentoFuncionario, String emailFuncionario, Float salarioFuncionario, String telefoneFuncionario, String enderecoFuncionario) {
+  public Funcionario(String nomeFuncionario, String cpfFuncionario, Date nascimentoFuncionario, String emailFuncionario,
+      Float salarioFuncionario, String telefoneFuncionario, String enderecoFuncionario) {
     this.nomeFuncionario = nomeFuncionario;
     this.cpfFuncionario = cpfFuncionario;
     this.nascimentoFuncionario = nascimentoFuncionario;
@@ -33,8 +34,6 @@ public class Funcionario {
     this.telefoneFuncionario = telefoneFuncionario;
     this.enderecoFuncionario = enderecoFuncionario;
   }
-  
-  
 
   public Integer getIdFuncionario() {
     return idFuncionario;
@@ -44,11 +43,11 @@ public class Funcionario {
     this.idFuncionario = idFuncionario;
   }
 
-  public Integer getCpfFuncionario() {
+  public String getCpfFuncionario() {
     return cpfFuncionario;
   }
 
-  public void setCpfFuncionario(Integer cpfFuncionario) {
+  public void setCpfFuncionario(String cpfFuncionario) {
     this.cpfFuncionario = cpfFuncionario;
   }
 
