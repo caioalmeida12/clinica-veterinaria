@@ -130,6 +130,10 @@ public class ConexaoDB {
 
     // Retorna todos os dados da tabela cliente de acordo com um filtro,
     // que pode ser vazio
+    public List<Cliente> selectCliente() throws Exception {
+        return this.selectCliente("");
+    }
+
     public List<Cliente> selectCliente(String filtro) throws Exception {
         try {
             // Armazena todos os dados retornados
