@@ -8,10 +8,10 @@ public class Clinica_veterinaria {
         // new ProdutoView().setVisible(true);
         try {
             var mysql = new ConexaoDB();
-            var cliente = mysql.selectCliente().get(0);
+            var resultado = mysql.selectFuncionario().get(0);
             mysql = new ConexaoDB();
-            cliente.setNomeCliente("testeUpdate");
-            mysql.updateCliente(cliente);
+            resultado.setNomeFuncionario("testeUpdate");
+            mysql.updateFuncionario(resultado);
         } catch (Exception e) {
         }
     }

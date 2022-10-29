@@ -304,7 +304,7 @@ public class FuncionarioView extends javax.swing.JFrame {
 
         private void cadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_cadastrarFuncionarioActionPerformed
                 String nome = txtNome.getText();
-                Integer cpf = Integer.valueOf(txtCPF.getText());
+                String cpf = txtCPF.getText();
                 String email = txtEmail.getText();
                 float salario = Float.parseFloat(txtSalario.getText());
                 Date data = Date.valueOf(txtNascimento.getText());

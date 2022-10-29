@@ -87,7 +87,7 @@ public class ConexaoDB {
         }
     }
 
-    // Insere uma nova entrada do tipo Animal no banco de dados
+    // Insere uma nova entrada do tipo animal no banco de dados
     public void insertAnimal(Animal animal) throws Exception {
         try {
             preparedStatement = connect.prepareStatement(
@@ -107,7 +107,7 @@ public class ConexaoDB {
         }
     }
 
-    // Altera os dados do Animal no banco de dados
+    // Altera os dados do animal no banco de dados
     public void updateAnimal(Animal animal) throws Exception {
         try {
             preparedStatement = connect.prepareStatement(
@@ -166,7 +166,7 @@ public class ConexaoDB {
         }
     }
 
-    // Insere uma nova entrada do tipo CLiente no banco de dados
+    // Insere uma nova entrada do tipo cliente no banco de dados
     public void insertCliente(Cliente cliente) throws Exception {
         try {
             preparedStatement = connect.prepareStatement(
@@ -186,7 +186,7 @@ public class ConexaoDB {
         }
     }
 
-    // Altera os dados do Cliente no banco de dados
+    // Altera os dados do cliente no banco de dados
     public void updateCliente(Cliente cliente) throws Exception {
         try {
             preparedStatement = connect.prepareStatement(
@@ -224,7 +224,7 @@ public class ConexaoDB {
                 // Tratamento dos dados
                 var idFuncionario = (Integer) resultSet.getInt("idFuncionario");
                 var nomeFuncionario = resultSet.getString("nomeFuncionario");
-                var cpfFuncionario = (Integer) resultSet.getInt("cpfFuncionario");
+                var cpfFuncionario = resultSet.getString("cpfFuncionario");
                 var nascimentoFuncionario = resultSet.getDate("nascimentoFuncionario");
                 var emailFuncionario = resultSet.getString("emailFuncionario");
                 var salarioFuncionario = (Float) resultSet.getFloat("salarioFuncionario");
@@ -253,7 +253,7 @@ public class ConexaoDB {
         try {
             preparedStatement = connect.prepareStatement(
                     "INSERT INTO `funcionario` (`cpfFuncionario`, `nomeFuncionario`, `nascimentoFuncionario`, `emailFuncionario`, `salarioFuncionario`, `enderecoFuncionario`, `telefoneFuncionario`) VALUES (?, ?, ?, ?, ?, ?, ?)");
-            preparedStatement.setInt(1, funcionario.getCpfFuncionario());
+            preparedStatement.setString(1, funcionario.getCpfFuncionario());
             preparedStatement.setString(2, funcionario.getNomeFuncionario());
             preparedStatement.setDate(3, (java.sql.Date) funcionario.getNascimentoFuncionario());
             preparedStatement.setString(4, funcionario.getEmailFuncionario());
@@ -263,6 +263,28 @@ public class ConexaoDB {
             preparedStatement.execute();
         } catch (Exception e) {
             System.out.println("Erro na função insertFuncionario() da classe ConexaoDB -> " + e);
+            throw e;
+        } finally {
+            close();
+        }
+    }
+
+    // Altera os dados do funcionario no banco de dados
+    public void updateFuncionario(Funcionario funcionario) throws Exception {
+        try {
+            preparedStatement = connect.prepareStatement(
+                    "UPDATE funcionario SET nomeFuncionario = ?, cpfFuncionario = ?, nascimentoFuncionario = ?, emailFuncionario = ?, salarioFuncionario = ?, telefoneFuncionario = ?, enderecoFuncionario = ? WHERE idFuncionario = ? ");
+            preparedStatement.setString(1, funcionario.getNomeFuncionario());
+            preparedStatement.setString(2, funcionario.getCpfFuncionario());
+            preparedStatement.setDate(3, (java.sql.Date) funcionario.getNascimentoFuncionario());
+            preparedStatement.setString(4, funcionario.getEmailFuncionario());
+            preparedStatement.setFloat(5, funcionario.getSalarioFuncionario());
+            preparedStatement.setString(6, funcionario.getTelefoneFuncionario());
+            preparedStatement.setString(7, funcionario.getEnderecoFuncionario());
+            preparedStatement.setInt(8, funcionario.getIdFuncionario());
+            preparedStatement.execute();
+        } catch (Exception e) {
+            System.out.println("Erro na função updateFuncionario() da classe ConexaoDB -> " + e);
             throw e;
         } finally {
             close();
