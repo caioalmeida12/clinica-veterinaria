@@ -188,6 +188,10 @@ public class ConexaoDB {
 
     // Retorna todos os dados da tabela funcionario de acordo com um filtro,
     // que pode ser vazio
+    public List<Funcionario> selectFuncionario() throws Exception {
+        return this.selectFuncionario("");
+    }
+
     public List<Funcionario> selectFuncionario(String filtro) throws Exception {
         try {
             // Armazena todos os dados retornados
