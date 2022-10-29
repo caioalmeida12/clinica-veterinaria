@@ -197,6 +197,7 @@ public class ConexaoDB {
             preparedStatement.setString(4, cliente.getEmailCliente());
             preparedStatement.setString(5, cliente.getTelefoneCliente());
             preparedStatement.setString(6, cliente.getEnderecoCliente());
+            preparedStatement.setString(7, cliente.getIdCliente());
             preparedStatement.execute();
         } catch (Exception e) {
             System.out.println("Erro na função updateCliente() da classe ConexaoDB -> " + e);
