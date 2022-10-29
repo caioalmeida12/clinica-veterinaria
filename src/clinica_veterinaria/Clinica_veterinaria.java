@@ -23,7 +23,7 @@ public class Clinica_veterinaria {
             var mysql = new ConexaoDB();
             var animal = mysql.selectAnimal().get(0);
             mysql = new ConexaoDB();
-            animal.setCorAnimal("testeUpdate");
+            animal.setCorAnimal("testeUpdate2");
             mysql.updateAnimal(animal);
         } catch (Exception e) {
         }

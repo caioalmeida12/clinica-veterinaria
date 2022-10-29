@@ -496,7 +496,7 @@ public class ConexaoDB {
                 connect.close();
             }
         } catch (Exception e) {
-            System.out.println("Erro na função close() da classe ConexaoDB \n" + e);
+            System.out.println("Erro na função close() da classe ConexaoDB -> " + e);
         }
     }
 
