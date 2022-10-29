@@ -250,6 +250,10 @@ public class ConexaoDB {
 
     // Retorna todos os dados da tabela Produto de acordo com um filtro,
     // que pode ser vazio
+    public List<Produto> selectProduto() throws Exception {
+        return this.selectProduto("");
+    }
+
     public List<Produto> selectProduto(String filtro) throws Exception {
         try {
             // Armazena todos os dados retornados
