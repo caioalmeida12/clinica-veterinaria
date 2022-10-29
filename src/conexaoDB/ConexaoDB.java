@@ -190,7 +190,7 @@ public class ConexaoDB {
     public void updateCliente(Cliente cliente) throws Exception {
         try {
             preparedStatement = connect.prepareStatement(
-                    "UPDATE cliente SET nomeCliente = ?, cpfCliente = ?, nascimentoCliente = ?, emailCliente = ?, telefoneCliente = ?, enderecoClinte = ? WHERE idCliente = ? ");
+                    "UPDATE cliente SET nomeCliente = ?, cpfCliente = ?, nascimentoCliente = ?, emailCliente = ?, telefoneCliente = ?, enderecoCliente = ? WHERE idCliente = ? ");
             preparedStatement.setString(1, cliente.getNomeCliente());
             preparedStatement.setString(2, cliente.getCpfCliente());
             preparedStatement.setDate(3, (java.sql.Date) cliente.getNascimentoCliente());
