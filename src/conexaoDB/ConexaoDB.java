@@ -436,6 +436,10 @@ public class ConexaoDB {
 
     // Retorna todos os dados da tabela animal-cliente de acordo com um filtro,
     // que pode ser vazio
+    public List<AnimalCliente> selectAnimalCliente() throws Exception {
+        return this.selectAnimalCliente("");
+    }
+
     public List<AnimalCliente> selectAnimalCliente(String filtro) throws Exception {
         try {
             // Armazena todos os dados retornados
