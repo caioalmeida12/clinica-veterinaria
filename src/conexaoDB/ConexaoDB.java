@@ -186,6 +186,26 @@ public class ConexaoDB {
         }
     }
 
+    // Altera os dados do Cliente no banco de dados
+    public void updateCliente(Cliente cliente) throws Exception {
+        try {
+            preparedStatement = connect.prepareStatement(
+                    "UPDATE cliente SET nomeCliente = ?, cpfCliente = ?, nascimentoCliente = ?, emailCliente = ?, telefoneCliente = ?, enderecoClinte = ? WHERE idCliente = ? ");
+            preparedStatement.setString(1, cliente.getNomeCliente());
+            preparedStatement.setString(2, cliente.getCpfCliente());
+            preparedStatement.setDate(3, (java.sql.Date) cliente.getNascimentoCliente());
+            preparedStatement.setString(4, cliente.getEmailCliente());
+            preparedStatement.setString(5, cliente.getTelefoneCliente());
+            preparedStatement.setString(6, cliente.getEnderecoCliente());
+            preparedStatement.execute();
+        } catch (Exception e) {
+            System.out.println("Erro na função updateCliente() da classe ConexaoDB -> " + e);
+            throw e;
+        } finally {
+            close();
+        }
+    }
+
     // Retorna todos os dados da tabela funcionario de acordo com um filtro,
     // que pode ser vazio
     public List<Funcionario> selectFuncionario() throws Exception {
