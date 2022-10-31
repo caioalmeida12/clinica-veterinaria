@@ -405,6 +405,23 @@ public class ConexaoDB {
         }
     }
 
+    // Insere uma nova entrada do tipo Servico no banco de dados
+    public void insertServico(Servico servico) throws Exception {
+        try {
+            preparedStatement = connect.prepareStatement(
+                    "INSERT INTO `servico` (`tipoServico`, `descricaoServico`, `precoServico`) VALUES (0,?, ?, ?)");
+            preparedStatement.setString(1, servico.getTipoServico());
+            preparedStatement.setString(2, servico.getDescricaoServico());
+            preparedStatement.setDouble(3, servico.getPrecoServico());
+            preparedStatement.execute();
+        } catch (Exception e) {
+            System.out.println("Erro na função insertServico() da classe ConexaoDB -> " + e);
+            throw e;
+        } finally {
+            close();
+        }
+    }
+
     // Altera os dados do servico no banco de dados
     public void updateServico(Servico servico) throws Exception {
         try {
@@ -418,23 +435,6 @@ public class ConexaoDB {
             preparedStatement.execute();
         } catch (Exception e) {
             System.out.println("Erro na função updateServico() da classe ConexaoDB -> " + e);
-            throw e;
-        } finally {
-            close();
-        }
-    }
-
-    // Insere uma nova entrada do tipo Servico no banco de dados
-    public void insertServico(Servico servico) throws Exception {
-        try {
-            preparedStatement = connect.prepareStatement(
-                    "INSERT INTO `servico` (`tipoServico`, `descricaoServico`, `precoServico`) VALUES (0,?, ?, ?)");
-            preparedStatement.setString(1, servico.getTipoServico());
-            preparedStatement.setString(2, servico.getDescricaoServico());
-            preparedStatement.setDouble(3, servico.getPrecoServico());
-            preparedStatement.execute();
-        } catch (Exception e) {
-            System.out.println("Erro na função insertServico() da classe ConexaoDB -> " + e);
             throw e;
         } finally {
             close();
