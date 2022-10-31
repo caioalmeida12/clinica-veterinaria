@@ -1,13 +1,13 @@
 package entidades;
 
 public class Servico {
-    Integer idProduto;
+    Integer idServico;
     String tipoServico;
     String descricaoServico;
     Double precoServico;
 
-    public Servico(Integer idProduto, String tipoServico, String descricaoServico, Double precoServico) {
-        this.idProduto = idProduto;
+    public Servico(Integer idServico, String tipoServico, String descricaoServico, Double precoServico) {
+        this.idServico = idServico;
         this.tipoServico = tipoServico;
         this.descricaoServico = descricaoServico;
         this.precoServico = precoServico;
@@ -19,12 +19,12 @@ public class Servico {
         this.precoServico = precoServico;
     }
 
-    public Integer getIdProduto() {
-        return idProduto;
+    public Integer getidServico() {
+        return idServico;
     }
 
-    public void setIdProduto(Integer idProduto) {
-        this.idProduto = idProduto;
+    public void setidServico(Integer idServico) {
+        this.idServico = idServico;
     }
 
     public String getTipoServico() {
