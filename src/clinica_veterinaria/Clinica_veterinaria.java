@@ -1,6 +1,7 @@
 package clinica_veterinaria;
 
 import conexaoDB.ConexaoDB;
+import entidades.Produto;
 
 public class Clinica_veterinaria {
 
@@ -8,10 +9,8 @@ public class Clinica_veterinaria {
         // new ProdutoView().setVisible(true);
         try {
             var mysql = new ConexaoDB();
-            var resultado = mysql.selectFuncionario().get(0);
-            mysql = new ConexaoDB();
-            resultado.setNomeFuncionario("testeUpdate");
-            mysql.updateFuncionario(resultado);
+            var produto = new Produto("testeInsert", 69d);
+            mysql.insertProduto(produto);
         } catch (Exception e) {
         }
     }
