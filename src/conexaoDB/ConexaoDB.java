@@ -340,7 +340,7 @@ public class ConexaoDB {
         }
     }
 
-    // Altera os dados do Produto no banco de dados
+    // Altera os dados do produto no banco de dados
     public void updateProduto(Produto produto) throws Exception {
         try {
             preparedStatement = connect
@@ -399,6 +399,25 @@ public class ConexaoDB {
             return resultado;
         } catch (Exception e) {
             System.out.println("Erro na função selectServico() da classe ConexaoDB -> " + e);
+            throw e;
+        } finally {
+            close();
+        }
+    }
+
+    // Altera os dados do servico no banco de dados
+    public void updateServico(Servico servico) throws Exception {
+        try {
+            preparedStatement = connect
+                    .prepareStatement(
+                            "UPDATE servico SET tipoServico = ?, descricaoServico = ?, precoServico = ? WHERE idServico = ? ");
+            preparedStatement.setString(1, servico.getTipoServico());
+            preparedStatement.setString(2, servico.getDescricaoServico());
+            preparedStatement.setDouble(3, servico.getPrecoServico());
+            preparedStatement.setInt(4, servico.getIdServico());
+            preparedStatement.execute();
+        } catch (Exception e) {
+            System.out.println("Erro na função updateServico() da classe ConexaoDB -> " + e);
             throw e;
         } finally {
             close();

@@ -19,11 +19,11 @@ public class Servico {
         this.precoServico = precoServico;
     }
 
-    public Integer getidServico() {
+    public Integer getIdServico() {
         return idServico;
     }
 
-    public void setidServico(Integer idServico) {
+    public void setIdServico(Integer idServico) {
         this.idServico = idServico;
     }
 

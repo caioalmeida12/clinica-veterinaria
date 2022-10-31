@@ -9,8 +9,10 @@ public class Clinica_veterinaria {
         // new ProdutoView().setVisible(true);
         try {
             var mysql = new ConexaoDB();
-            var produto = new Produto("testeInsert", 69d);
-            mysql.insertProduto(produto);
+            var resultado = mysql.selectProduto().get(0);
+            resultado.setNomeProduto("testeUpdateProduto");
+            mysql.conectar();
+            mysql.updateProduto(resultado);
         } catch (Exception e) {
         }
     }
