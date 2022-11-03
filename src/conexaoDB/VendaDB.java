@@ -14,6 +14,7 @@ public class VendaDB extends ConexaoDB {
 
     public List<Venda> selectVenda(String filtro) throws Exception {
         try {
+            this.conectar();
             // Armazena todos os dados retornados
             List<Venda> resultado = new ArrayList<Venda>();
             // Executa a consulta
@@ -44,6 +45,7 @@ public class VendaDB extends ConexaoDB {
     // Insere uma nova entrada do tipo Venda no banco de dados
     public void insertVenda(Venda venda) throws Exception {
         try {
+            this.conectar();
             preparedStatement = connect.prepareStatement(
                     "INSERT INTO `venda` (`idProduto`, `idCliente`, `idFuncionario`, `dataVenda`, `quantidadeProduto`) VALUES (?, ?, ?, ?, ?)");
             preparedStatement.setInt(1, venda.getProdutoVenda().getIdProduto());
@@ -63,6 +65,7 @@ public class VendaDB extends ConexaoDB {
     // Altera os dados do venda no banco de dados
     public void updateVenda(Venda venda) throws Exception {
         try {
+            this.conectar();
             preparedStatement = connect
                     .prepareStatement(
                             "UPDATE venda SET idProduto = ?, idCliente = ?, idFuncionario = ?, dataVenda = ?, quantidadeProduto = ? WHERE idVenda = ? ");
@@ -84,6 +87,7 @@ public class VendaDB extends ConexaoDB {
     // Excluir os dados do venda no banco de dados
     public void deleteVenda(Integer idVenda) throws Exception {
         try {
+            this.conectar();
             preparedStatement = connect.prepareStatement("DELETE FROM venda WHERE idVenda = ?");
             preparedStatement.setInt(1, idVenda);
             preparedStatement.execute();
