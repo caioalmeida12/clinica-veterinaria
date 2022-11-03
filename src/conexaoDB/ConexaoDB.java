@@ -128,6 +128,20 @@ public class ConexaoDB {
         }
     }
 
+    // Excluir os dados do animal no banco de dados
+    public void deleteAnimal(Integer idAnimal) throws Exception {
+        try {
+            preparedStatement = connect.prepareStatement("DELETE FROM animal WHERE idAnimal = ?");
+            preparedStatement.setInt(1, idAnimal);
+            preparedStatement.execute();
+        } catch (Exception e) {
+            System.out.println("Erro na função deleteAnimal() da classe ConexaoDB -> " + e.getMessage());
+            throw e;
+        } finally {
+            close();
+        }
+    }
+
     // Retorna todos os dados da tabela cliente de acordo com um filtro,
     // que pode ser vazio
     public List<Cliente> selectCliente() throws Exception {
@@ -360,7 +374,7 @@ public class ConexaoDB {
     // Excluir os dados do Produto no banco de dados
     public void deleteProduto(Produto produto) throws Exception {
         try {
-            preparedStatement = connect.prepareStatement("delete from produto where idProduto = ?");
+            preparedStatement = connect.prepareStatement("DELETE FROM produto WHERE idProduto = ?");
             preparedStatement.setInt(1, produto.getIdProduto());
             preparedStatement.execute();
         } catch (Exception e) {
