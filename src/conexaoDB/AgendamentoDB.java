@@ -13,6 +13,7 @@ public class AgendamentoDB extends ConexaoDB {
 
     public List<Agendamento> selectAgendamento(String filtro) throws Exception {
         try {
+            this.conectar();
             // Armazena todos os dados retornados
             List<Agendamento> resultado = new ArrayList<Agendamento>();
             // Executa a consulta
@@ -45,6 +46,7 @@ public class AgendamentoDB extends ConexaoDB {
     // Insere uma nova entrada na tabela agendamento
     public void insertAgendamento(Agendamento agendamento) throws Exception {
         try {
+            this.conectar();
             preparedStatement = connect
                     .prepareStatement(
                             "INSERT INTO `agendamento` (`idAnimal`, `idFuncionario`, `idServico`, `dataAgendamento`, `situacaoAgendamento`) VALUES (?, ?, ?, ?, ?)");
@@ -63,6 +65,7 @@ public class AgendamentoDB extends ConexaoDB {
     // Altera os dados do relacionamento agendamento no banco de dados
     public void updateAgendamento(Agendamento agendamento) throws Exception {
         try {
+            this.conectar();
             preparedStatement = connect
                     .prepareStatement(
                             "UPDATE agendamento SET idAnimal = ?, idFuncionario = ?, idServico = ?, dataAgendamento = ?, situacaoAgendamento = ? WHERE idAgendamento = ?");
@@ -84,6 +87,7 @@ public class AgendamentoDB extends ConexaoDB {
     // Excluir os dados do agendamento no banco de dados
     public void deleteAgendamento(Integer idAgendamento) throws Exception {
         try {
+            this.conectar();
             preparedStatement = connect.prepareStatement("DELETE FROM agendamento WHERE idAgendamento = ?");
             preparedStatement.setInt(1, idAgendamento);
             preparedStatement.execute();
