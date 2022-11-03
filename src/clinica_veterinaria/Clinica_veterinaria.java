@@ -1,5 +1,6 @@
 package clinica_veterinaria;
 
+import conexaoDB.AgendamentoDB;
 import conexaoDB.AnimalClienteDB;
 import conexaoDB.AnimalDB;
 import conexaoDB.ClienteDB;
@@ -8,6 +9,7 @@ import conexaoDB.FuncionarioDB;
 import conexaoDB.ProdutoDB;
 import conexaoDB.ServicoDB;
 import conexaoDB.VendaDB;
+import entidades.Agendamento;
 import entidades.AnimalCliente;
 import entidades.Produto;
 
@@ -16,8 +18,8 @@ public class Clinica_veterinaria {
     public static void main(String[] args) {
         // new ProdutoView().setVisible(true);
         try {
-            var mysql = new AnimalClienteDB();
-            var resultado = mysql.selectAnimalCliente().get(0);
+            var mysql = new AgendamentoDB();
+            var resultado = mysql.selectAgendamento().get(0);
             System.out.println(resultado.getIdAnimal());
         } catch (Exception e) {
         }
