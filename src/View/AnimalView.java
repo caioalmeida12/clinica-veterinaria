@@ -1,6 +1,6 @@
 package View;
 
-import conexaoDB.ConexaoDB;
+import conexaoDB.AnimalDB;
 import java.sql.Date;
 
 public class AnimalView extends javax.swing.JFrame {
@@ -195,8 +195,8 @@ public class AnimalView extends javax.swing.JFrame {
 
                 entidades.Animal animal = new entidades.Animal(nome, raca, data, especie, sexo, cor);
 
-                ConexaoDB mysql = null;
-                mysql = new ConexaoDB();
+                AnimalDB mysql = null;
+                mysql = new AnimalDB();
 
                 try {
                         mysql.insertAnimal(animal);
