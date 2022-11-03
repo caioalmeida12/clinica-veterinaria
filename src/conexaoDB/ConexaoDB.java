@@ -741,6 +741,20 @@ public class ConexaoDB {
         }
     }
 
+    // Excluir os dados do agendamento no banco de dados
+    public void deleteAgendamento(Integer idAgendamento) throws Exception {
+        try {
+            preparedStatement = connect.prepareStatement("DELETE FROM agendamento WHERE idAgendamento = ?");
+            preparedStatement.setInt(1, idAgendamento);
+            preparedStatement.execute();
+        } catch (Exception e) {
+            System.out.println("Erro na função deleteAgendamento() da classe ConexaoDB -> " + e.getMessage());
+            throw e;
+        } finally {
+            close();
+        }
+    }
+
     private void close() {
         try {
             if (resultSet != null) {
