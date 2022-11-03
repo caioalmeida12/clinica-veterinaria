@@ -651,6 +651,20 @@ public class ConexaoDB {
         }
     }
 
+    // Excluir os dados do animal no banco de dados
+    public void deleteAnimalCliente(Integer idAnimalCliente) throws Exception {
+        try {
+            preparedStatement = connect.prepareStatement("DELETE FROM `animal-cliente` WHERE idAnimalCliente = ?");
+            preparedStatement.setInt(1, idAnimalCliente);
+            preparedStatement.execute();
+        } catch (Exception e) {
+            System.out.println("Erro na função deleteAnimalCliente() da classe ConexaoDB -> " + e.getMessage());
+            throw e;
+        } finally {
+            close();
+        }
+    }
+
     // Retorna todos os dados da tabela agendamento de acordo com um filtro,
     // que pode ser vazio
     public List<Agendamento> selectAgendamento() throws Exception {
