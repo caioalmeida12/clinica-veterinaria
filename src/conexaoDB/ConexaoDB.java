@@ -1,10 +1,7 @@
 package conexaoDB;
 
 import java.sql.*;
-import entidades.*;
 import java.util.Date;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ConexaoDB {
     protected Connection connect = null;

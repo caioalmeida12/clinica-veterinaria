@@ -1,17 +1,7 @@
 package clinica_veterinaria;
 
-import conexaoDB.AgendamentoDB;
-import conexaoDB.AnimalClienteDB;
-import conexaoDB.AnimalDB;
-import conexaoDB.ClienteDB;
-import conexaoDB.ConexaoDB;
-import conexaoDB.FuncionarioDB;
-import conexaoDB.ProdutoDB;
-import conexaoDB.ServicoDB;
-import conexaoDB.VendaDB;
-import entidades.Agendamento;
-import entidades.AnimalCliente;
-import entidades.Produto;
+import conexaoDB.*;
+import entidades.*;
 
 public class Clinica_veterinaria {
 
