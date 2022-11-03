@@ -1,6 +1,6 @@
 package conexaoDB;
 
-import entidades.*;
+import entidades.Animal;
 import java.util.ArrayList;
 import java.util.List;
 
