@@ -527,7 +527,7 @@ public class ConexaoDB {
             // Armazena todos os dados retornados
             List<AnimalCliente> resultado = new ArrayList<AnimalCliente>();
             // Executa a consulta
-            resultSet = statement.executeQuery("SELECT * FROM animal-cliente " + filtro);
+            resultSet = statement.executeQuery("SELECT * FROM `animal-cliente` " + filtro);
             while (resultSet.next()) {
                 // Tratamento dos dados
                 var idAnimalCliente = resultSet.getInt("idAnimalCliente");
@@ -560,6 +560,24 @@ public class ConexaoDB {
         } catch (Exception e) {
             System.out.println("Erro na função insertAnimalCliente() da classe ConexaoDB -> " + e.getMessage());
             throw e;
+        }
+    }
+
+    // Altera os dados do relacionamento animal-cliente no banco de dados
+    public void updateAnimalCliente(AnimalCliente animalCliente) throws Exception {
+        try {
+            preparedStatement = connect
+                    .prepareStatement(
+                            "UPDATE `animal-cliente` SET idAnimal = ?, idCliente = ? WHERE idAnimalCliente = ?");
+            preparedStatement.setInt(1, animalCliente.getIdAnimal());
+            preparedStatement.setInt(2, animalCliente.getIdCliente());
+            preparedStatement.setInt(3, animalCliente.getIdAnimalCliente());
+            preparedStatement.execute();
+        } catch (Exception e) {
+            System.out.println("Erro na função updateAnimalCliente() da classe ConexaoDB -> " + e.getMessage());
+            throw e;
+        } finally {
+            close();
         }
     }
 

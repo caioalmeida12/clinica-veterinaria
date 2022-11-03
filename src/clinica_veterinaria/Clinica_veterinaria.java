@@ -9,12 +9,12 @@ public class Clinica_veterinaria {
         // new ProdutoView().setVisible(true);
         try {
             var mysql = new ConexaoDB();
-            var resultado = mysql.selectVenda().get(0);
-            resultado.setIdCliente(2);
+            var resultado = mysql.selectAnimalCliente().get(0);
+            resultado.setIdCliente(4);
             // System.out.println(resultado.getIdCliente());
             // System.out.println(resultado.getIdVenda());
             mysql.conectar();
-            mysql.updateVenda(resultado);
+            mysql.updateAnimalCliente(resultado);
         } catch (Exception e) {
         }
     }
