@@ -13,6 +13,7 @@ public class ProdutoDB extends ConexaoDB {
 
     public List<Produto> selectProduto(String filtro) throws Exception {
         try {
+            this.conectar();
             // Armazena todos os dados retornados
             List<Produto> resultado = new ArrayList<Produto>();
             // Executa a consulta
@@ -41,6 +42,7 @@ public class ProdutoDB extends ConexaoDB {
     // Insere uma nova entrada do tipo Produto no banco de dados
     public void insertProduto(Produto produto) throws Exception {
         try {
+            this.conectar();
             preparedStatement = connect.prepareStatement(
                     "INSERT INTO `produto` (`nomeProduto`, `precoProduto`) VALUES (?,?)");
             preparedStatement.setString(1, produto.getNomeProduto());
@@ -57,6 +59,7 @@ public class ProdutoDB extends ConexaoDB {
     // Altera os dados do produto no banco de dados
     public void updateProduto(Produto produto) throws Exception {
         try {
+            this.conectar();
             preparedStatement = connect
                     .prepareStatement("UPDATE produto SET nomeProduto = ?, precoProduto = ? WHERE idProduto = ? ");
             preparedStatement.setString(1, produto.getNomeProduto());
@@ -74,6 +77,7 @@ public class ProdutoDB extends ConexaoDB {
     // Excluir os dados do Produto no banco de dados
     public void deleteProduto(Produto produto) throws Exception {
         try {
+            this.conectar();
             preparedStatement = connect.prepareStatement("DELETE FROM produto WHERE idProduto = ?");
             preparedStatement.setInt(1, produto.getIdProduto());
             preparedStatement.execute();
