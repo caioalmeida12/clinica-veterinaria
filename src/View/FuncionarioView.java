@@ -1,6 +1,7 @@
 package View;
 
 import conexaoDB.ConexaoDB;
+import conexaoDB.FuncionarioDB;
 import entidades.Funcionario;
 import entidades.Produto;
 import java.sql.Date;
@@ -313,8 +314,7 @@ public class FuncionarioView extends javax.swing.JFrame {
 
                 Funcionario funcionario = new Funcionario(nome, cpf, data, email, salario, telefone, endereco);
 
-                ConexaoDB mysql = null;
-                mysql = new ConexaoDB();
+                FuncionarioDB mysql = new FuncionarioDB();
 
                 try {
                         mysql.insertFuncionario(funcionario);
@@ -408,7 +408,7 @@ public class FuncionarioView extends javax.swing.JFrame {
         private void listarValores() {
 
                 try {
-                        ConexaoDB mysql = new ConexaoDB();
+                        FuncionarioDB mysql = new FuncionarioDB();
                         DefaultTableModel model = (DefaultTableModel) tabelaFuncionario.getModel();
                         model.setNumRows(0);
 
