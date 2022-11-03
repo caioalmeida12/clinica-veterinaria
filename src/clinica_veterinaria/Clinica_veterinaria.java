@@ -6,6 +6,7 @@ import conexaoDB.ConexaoDB;
 import conexaoDB.FuncionarioDB;
 import conexaoDB.ProdutoDB;
 import conexaoDB.ServicoDB;
+import conexaoDB.VendaDB;
 import entidades.Produto;
 
 public class Clinica_veterinaria {
@@ -13,9 +14,9 @@ public class Clinica_veterinaria {
     public static void main(String[] args) {
         // new ProdutoView().setVisible(true);
         try {
-            var mysql = new ServicoDB();
-            var resultado = mysql.selectServico().get(0);
-            System.out.println(resultado.getDescricaoServico());
+            var mysql = new VendaDB();
+            var resultado = mysql.selectVenda().get(0);
+            System.out.println(resultado.getIdProduto());
         } catch (Exception e) {
         }
     }
