@@ -319,6 +319,20 @@ public class ConexaoDB {
         }
     }
 
+    // Excluir os dados do funcionario no banco de dados
+    public void deleteFuncionario(Integer idFuncionario) throws Exception {
+        try {
+            preparedStatement = connect.prepareStatement("DELETE FROM funcionario WHERE idFuncionario = ?");
+            preparedStatement.setInt(1, idFuncionario);
+            preparedStatement.execute();
+        } catch (Exception e) {
+            System.out.println("Erro na função deleteFuncionario() da classe ConexaoDB -> " + e.getMessage());
+            throw e;
+        } finally {
+            close();
+        }
+    }
+
     // Retorna todos os dados da tabela Produto de acordo com um filtro,
     // que pode ser vazio
     public List<Produto> selectProduto() throws Exception {
