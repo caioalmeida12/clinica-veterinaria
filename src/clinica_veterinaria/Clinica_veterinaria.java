@@ -10,10 +10,9 @@ public class Clinica_veterinaria {
         try {
             var mysql = new ConexaoDB();
             var resultado = mysql.selectAgendamento().get(0);
-            resultado.setIdAgendamento(7);
-            resultado.setSituacaoAgendamento("adiado");
+            resultado.setSituacaoAgendamento("realizado");
             mysql.conectar();
-            mysql.insertAgendamento(resultado);
+            mysql.updateAgendamento(resultado);
         } catch (Exception e) {
         }
     }
