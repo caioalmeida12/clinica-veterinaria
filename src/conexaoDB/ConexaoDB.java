@@ -221,6 +221,20 @@ public class ConexaoDB {
         }
     }
 
+    // Excluir os dados do cliente no banco de dados
+    public void deleteCliente(Integer idCliente) throws Exception {
+        try {
+            preparedStatement = connect.prepareStatement("DELETE FROM cliente WHERE idCliente = ?");
+            preparedStatement.setInt(1, idCliente);
+            preparedStatement.execute();
+        } catch (Exception e) {
+            System.out.println("Erro na função deleteCliente() da classe ConexaoDB -> " + e.getMessage());
+            throw e;
+        } finally {
+            close();
+        }
+    }
+
     // Retorna todos os dados da tabela funcionario de acordo com um filtro,
     // que pode ser vazio
     public List<Funcionario> selectFuncionario() throws Exception {
