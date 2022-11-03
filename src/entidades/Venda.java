@@ -1,11 +1,13 @@
 package entidades;
 
+import conexaoDB.ClienteDB;
 import conexaoDB.ConexaoDB;
 
 import java.util.Date;
 
 public class Venda {
 
+    ClienteDB clienteDB = new ClienteDB();
     ConexaoDB mysql = new ConexaoDB();
 
     Integer idVenda;
@@ -24,8 +26,8 @@ public class Venda {
 
         try {
             // popula o atributo clienteVenda
-            mysql.conectar();
-            this.clienteVenda = mysql.selectCliente("WHERE idCliente = " + idCliente).get(0);
+            this.mysql = new ClienteDB();
+            this.clienteVenda = clienteDB.selectCliente("WHERE idCliente = " + idCliente).get(0);
 
             // popula o atributo produtoVenda
             mysql.conectar();
