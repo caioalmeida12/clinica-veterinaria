@@ -483,6 +483,20 @@ public class ConexaoDB {
         }
     }
 
+    // Excluir os dados do servico no banco de dados
+    public void deleteServico(Integer idServico) throws Exception {
+        try {
+            preparedStatement = connect.prepareStatement("DELETE FROM servico WHERE idServico = ?");
+            preparedStatement.setInt(1, idServico);
+            preparedStatement.execute();
+        } catch (Exception e) {
+            System.out.println("Erro na função deleteServico() da classe ConexaoDB -> " + e.getMessage());
+            throw e;
+        } finally {
+            close();
+        }
+    }
+
     // Retorna todos os dados da tabela Venda de acordo com um filtro,
     // que pode ser vazio
     public List<Venda> selectVenda() throws Exception {
@@ -552,6 +566,20 @@ public class ConexaoDB {
             preparedStatement.execute();
         } catch (Exception e) {
             System.out.println("Erro na função updateVenda() da classe ConexaoDB -> " + e.getMessage());
+            throw e;
+        } finally {
+            close();
+        }
+    }
+
+    // Excluir os dados do venda no banco de dados
+    public void deleteVenda(Integer idVenda) throws Exception {
+        try {
+            preparedStatement = connect.prepareStatement("DELETE FROM venda WHERE idVenda = ?");
+            preparedStatement.setInt(1, idVenda);
+            preparedStatement.execute();
+        } catch (Exception e) {
+            System.out.println("Erro na função deleteVenda() da classe ConexaoDB -> " + e.getMessage());
             throw e;
         } finally {
             close();
