@@ -13,6 +13,7 @@ public class FuncionarioDB extends ConexaoDB {
 
     public List<Funcionario> selectFuncionario(String filtro) throws Exception {
         try {
+            this.conectar();
             // Armazena todos os dados retornados
             List<Funcionario> resultado = new ArrayList<Funcionario>();
             // Executa a consulta
@@ -49,6 +50,7 @@ public class FuncionarioDB extends ConexaoDB {
     // Insere uma nova entrada do tipo Funcionario no banco de dados
     public void insertFuncionario(Funcionario funcionario) throws Exception {
         try {
+            this.conectar();
             preparedStatement = connect.prepareStatement(
                     "INSERT INTO `funcionario` (`cpfFuncionario`, `nomeFuncionario`, `nascimentoFuncionario`, `emailFuncionario`, `salarioFuncionario`, `enderecoFuncionario`, `telefoneFuncionario`) VALUES (?, ?, ?, ?, ?, ?, ?)");
             preparedStatement.setString(1, funcionario.getCpfFuncionario());
@@ -70,6 +72,7 @@ public class FuncionarioDB extends ConexaoDB {
     // Altera os dados do funcionario no banco de dados
     public void updateFuncionario(Funcionario funcionario) throws Exception {
         try {
+            this.conectar();
             preparedStatement = connect.prepareStatement(
                     "UPDATE funcionario SET nomeFuncionario = ?, cpfFuncionario = ?, nascimentoFuncionario = ?, emailFuncionario = ?, salarioFuncionario = ?, telefoneFuncionario = ?, enderecoFuncionario = ? WHERE idFuncionario = ? ");
             preparedStatement.setString(1, funcionario.getNomeFuncionario());
@@ -92,6 +95,7 @@ public class FuncionarioDB extends ConexaoDB {
     // Excluir os dados do funcionario no banco de dados
     public void deleteFuncionario(Integer idFuncionario) throws Exception {
         try {
+            this.conectar();
             preparedStatement = connect.prepareStatement("DELETE FROM funcionario WHERE idFuncionario = ?");
             preparedStatement.setInt(1, idFuncionario);
             preparedStatement.execute();
