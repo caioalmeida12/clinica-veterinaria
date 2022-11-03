@@ -13,6 +13,7 @@ public class AnimalClienteDB extends ConexaoDB {
 
     public List<AnimalCliente> selectAnimalCliente(String filtro) throws Exception {
         try {
+            this.conectar();
             // Armazena todos os dados retornados
             List<AnimalCliente> resultado = new ArrayList<AnimalCliente>();
             // Executa a consulta
@@ -41,6 +42,7 @@ public class AnimalClienteDB extends ConexaoDB {
     // Insere uma nova entrada na tabela animal-cliente
     public void insertAnimalCliente(int idAnimal, int idCliente) throws Exception {
         try {
+            this.conectar();
             preparedStatement = connect
                     .prepareStatement("INSERT INTO `animal-cliente` (`idAnimal`, `idCliente`) VALUES (?, ?)");
             preparedStatement.setInt(1, idAnimal);
@@ -55,6 +57,7 @@ public class AnimalClienteDB extends ConexaoDB {
     // Altera os dados do relacionamento animal-cliente no banco de dados
     public void updateAnimalCliente(AnimalCliente animalCliente) throws Exception {
         try {
+            this.conectar();
             preparedStatement = connect
                     .prepareStatement(
                             "UPDATE `animal-cliente` SET idAnimal = ?, idCliente = ? WHERE idAnimalCliente = ?");
@@ -73,6 +76,7 @@ public class AnimalClienteDB extends ConexaoDB {
     // Excluir os dados do animal no banco de dados
     public void deleteAnimalCliente(Integer idAnimalCliente) throws Exception {
         try {
+            this.conectar();
             preparedStatement = connect.prepareStatement("DELETE FROM `animal-cliente` WHERE idAnimalCliente = ?");
             preparedStatement.setInt(1, idAnimalCliente);
             preparedStatement.execute();
