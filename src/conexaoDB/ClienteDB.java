@@ -13,6 +13,7 @@ public class ClienteDB extends ConexaoDB {
 
     public List<Cliente> selectCliente(String filtro) throws Exception {
         try {
+            this.conectar();
             // Armazena todos os dados retornados
             List<Cliente> resultado = new ArrayList<Cliente>();
             // Executa a consulta
@@ -46,6 +47,7 @@ public class ClienteDB extends ConexaoDB {
     // Insere uma nova entrada do tipo cliente no banco de dados
     public void insertCliente(Cliente cliente) throws Exception {
         try {
+            this.conectar();
             preparedStatement = connect.prepareStatement(
                     "INSERT INTO `cliente` (`nomeCliente`, `cpfCliente`, `nascimentoCliente`, `emailCliente`, `telefoneCliente`, `enderecoCliente`) VALUES (?, ?, ?, ?, ?, ?)");
             preparedStatement.setString(1, cliente.getNomeCliente());
@@ -66,6 +68,7 @@ public class ClienteDB extends ConexaoDB {
     // Altera os dados do cliente no banco de dados
     public void updateCliente(Cliente cliente) throws Exception {
         try {
+            this.conectar();
             preparedStatement = connect.prepareStatement(
                     "UPDATE cliente SET nomeCliente = ?, cpfCliente = ?, nascimentoCliente = ?, emailCliente = ?, telefoneCliente = ?, enderecoCliente = ? WHERE idCliente = ? ");
             preparedStatement.setString(1, cliente.getNomeCliente());
@@ -87,6 +90,7 @@ public class ClienteDB extends ConexaoDB {
     // Excluir os dados do cliente no banco de dados
     public void deleteCliente(Integer idCliente) throws Exception {
         try {
+            this.conectar();
             preparedStatement = connect.prepareStatement("DELETE FROM cliente WHERE idCliente = ?");
             preparedStatement.setInt(1, idCliente);
             preparedStatement.execute();
