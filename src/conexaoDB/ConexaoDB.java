@@ -30,7 +30,7 @@ public class ConexaoDB {
 
             statement = connect.createStatement();
         } catch (Exception e) {
-            System.out.println("Erro na função conectar() da classe ConexaoDB -> " + e);
+            System.out.println("Erro na função conectar() da classe ConexaoDB -> " + e.getMessage());
             throw e;
         }
     }
@@ -44,7 +44,7 @@ public class ConexaoDB {
 
             return currentTime;
         } catch (Exception e) {
-            System.out.println("Erro na função dateToDatetime() da classe ConexaoDB -> " + e);
+            System.out.println("Erro na função dateToDatetime() da classe ConexaoDB -> " + e.getMessage());
             throw e;
         }
     }
@@ -80,7 +80,7 @@ public class ConexaoDB {
             }
             return resultado;
         } catch (Exception e) {
-            System.out.println("Erro na função selectAnimal() da classe ConexaoDB -> " + e);
+            System.out.println("Erro na função selectAnimal() da classe ConexaoDB -> " + e.getMessage());
             throw e;
         } finally {
             close();
@@ -100,7 +100,7 @@ public class ConexaoDB {
             preparedStatement.setString(6, animal.getCorAnimal());
             preparedStatement.execute();
         } catch (Exception e) {
-            System.out.println("Erro na função insertAnimal() da classe ConexaoDB -> " + e);
+            System.out.println("Erro na função insertAnimal() da classe ConexaoDB -> " + e.getMessage());
             throw e;
         } finally {
             close();
@@ -121,7 +121,7 @@ public class ConexaoDB {
             preparedStatement.setInt(7, animal.getIdAnimal());
             preparedStatement.execute();
         } catch (Exception e) {
-            System.out.println("Erro na função updateAnimal() da classe ConexaoDB -> " + e);
+            System.out.println("Erro na função updateAnimal() da classe ConexaoDB -> " + e.getMessage());
             throw e;
         } finally {
             close();
@@ -159,7 +159,7 @@ public class ConexaoDB {
             }
             return resultado;
         } catch (Exception e) {
-            System.out.println("Erro na função selectCliente() da classe ConexaoDB -> " + e);
+            System.out.println("Erro na função selectCliente() da classe ConexaoDB -> " + e.getMessage());
             throw e;
         } finally {
             close();
@@ -179,7 +179,7 @@ public class ConexaoDB {
             preparedStatement.setString(6, cliente.getEnderecoCliente());
             preparedStatement.execute();
         } catch (Exception e) {
-            System.out.println("Erro na função insertCliente() da classe ConexaoDB -> " + e);
+            System.out.println("Erro na função insertCliente() da classe ConexaoDB -> " + e.getMessage());
             throw e;
         } finally {
             close();
@@ -200,7 +200,7 @@ public class ConexaoDB {
             preparedStatement.setInt(7, cliente.getIdCliente());
             preparedStatement.execute();
         } catch (Exception e) {
-            System.out.println("Erro na função updateCliente() da classe ConexaoDB -> " + e);
+            System.out.println("Erro na função updateCliente() da classe ConexaoDB -> " + e.getMessage());
             throw e;
         } finally {
             close();
@@ -241,7 +241,7 @@ public class ConexaoDB {
             }
             return resultado;
         } catch (Exception e) {
-            System.out.println("Erro na função selectFuncionario() da classe ConexaoDB -> " + e);
+            System.out.println("Erro na função selectFuncionario() da classe ConexaoDB -> " + e.getMessage());
             throw e;
         } finally {
             close();
@@ -262,7 +262,7 @@ public class ConexaoDB {
             preparedStatement.setString(7, funcionario.getTelefoneFuncionario());
             preparedStatement.execute();
         } catch (Exception e) {
-            System.out.println("Erro na função insertFuncionario() da classe ConexaoDB -> " + e);
+            System.out.println("Erro na função insertFuncionario() da classe ConexaoDB -> " + e.getMessage());
             throw e;
         } finally {
             close();
@@ -284,7 +284,7 @@ public class ConexaoDB {
             preparedStatement.setInt(8, funcionario.getIdFuncionario());
             preparedStatement.execute();
         } catch (Exception e) {
-            System.out.println("Erro na função updateFuncionario() da classe ConexaoDB -> " + e);
+            System.out.println("Erro na função updateFuncionario() da classe ConexaoDB -> " + e.getMessage());
             throw e;
         } finally {
             close();
@@ -317,7 +317,7 @@ public class ConexaoDB {
             }
             return resultado;
         } catch (Exception e) {
-            System.out.println("Erro na função selectProduto() da classe ConexaoDB -> " + e);
+            System.out.println("Erro na função selectProduto() da classe ConexaoDB -> " + e.getMessage());
             throw e;
         } finally {
             close();
@@ -333,7 +333,7 @@ public class ConexaoDB {
             preparedStatement.setDouble(2, produto.getPrecoProduto());
             preparedStatement.execute();
         } catch (Exception e) {
-            System.out.println("Erro na função insertProduto() da classe ConexaoDB -> " + e);
+            System.out.println("Erro na função insertProduto() da classe ConexaoDB -> " + e.getMessage());
             throw e;
         } finally {
             close();
@@ -350,7 +350,7 @@ public class ConexaoDB {
             preparedStatement.setInt(3, produto.getIdProduto());
             preparedStatement.execute();
         } catch (Exception e) {
-            System.out.println("Erro na função updateProduto() da classe ConexaoDB -> " + e);
+            System.out.println("Erro na função updateProduto() da classe ConexaoDB -> " + e.getMessage());
             throw e;
         } finally {
             close();
@@ -364,7 +364,7 @@ public class ConexaoDB {
             preparedStatement.setInt(1, produto.getIdProduto());
             preparedStatement.execute();
         } catch (Exception e) {
-            System.out.println("Erro na função deleteProduto() da classe ConexaoDB -> " + e);
+            System.out.println("Erro na função deleteProduto() da classe ConexaoDB -> " + e.getMessage());
             throw e;
         } finally {
             close();
@@ -398,7 +398,7 @@ public class ConexaoDB {
             }
             return resultado;
         } catch (Exception e) {
-            System.out.println("Erro na função selectServico() da classe ConexaoDB -> " + e);
+            System.out.println("Erro na função selectServico() da classe ConexaoDB -> " + e.getMessage());
             throw e;
         } finally {
             close();
@@ -415,7 +415,7 @@ public class ConexaoDB {
             preparedStatement.setDouble(3, servico.getPrecoServico());
             preparedStatement.execute();
         } catch (Exception e) {
-            System.out.println("Erro na função insertServico() da classe ConexaoDB -> " + e);
+            System.out.println("Erro na função insertServico() da classe ConexaoDB -> " + e.getMessage());
             throw e;
         } finally {
             close();
@@ -434,7 +434,7 @@ public class ConexaoDB {
             preparedStatement.setInt(4, servico.getIdServico());
             preparedStatement.execute();
         } catch (Exception e) {
-            System.out.println("Erro na função updateServico() da classe ConexaoDB -> " + e);
+            System.out.println("Erro na função updateServico() da classe ConexaoDB -> " + e.getMessage());
             throw e;
         } finally {
             close();
@@ -464,13 +464,12 @@ public class ConexaoDB {
 
                 // Instancia uma tupla da entidade Venda
                 Venda venda = new Venda(idVenda, idProduto, idCliente, idFuncionario, dataVenda, quantidadeVenda);
-
                 // Envia a entidade para o resultado
                 resultado.add(venda);
             }
             return resultado;
         } catch (Exception e) {
-            System.out.println("Erro na função selectVenda() da classe ConexaoDB -> " + e);
+            System.out.println("Erro na função selectVenda() da classe ConexaoDB -> " + e.getMessage());
             throw e;
         } finally {
             close();
@@ -489,7 +488,28 @@ public class ConexaoDB {
             preparedStatement.setInt(5, venda.getQuantidadeProduto());
             preparedStatement.execute();
         } catch (Exception e) {
-            System.out.println("Erro na função insertVenda() da classe ConexaoDB -> " + e);
+            System.out.println("Erro na função insertVenda() da classe ConexaoDB -> " + e.getMessage());
+            throw e;
+        } finally {
+            close();
+        }
+    }
+
+    // Altera os dados do venda no banco de dados
+    public void updateVenda(Venda venda) throws Exception {
+        try {
+            preparedStatement = connect
+                    .prepareStatement(
+                            "UPDATE venda SET idProduto = ?, idCliente = ?, idFuncionario = ?, dataVenda = ?, quantidadeProduto = ? WHERE idVenda = ? ");
+            preparedStatement.setInt(1, venda.getIdProduto());
+            preparedStatement.setInt(2, venda.getIdCliente());
+            preparedStatement.setInt(3, venda.getIdFuncionario());
+            preparedStatement.setDate(4, (java.sql.Date) venda.getDataVenda());
+            preparedStatement.setInt(5, venda.getQuantidadeProduto());
+            preparedStatement.setInt(6, venda.getIdVenda());
+            preparedStatement.execute();
+        } catch (Exception e) {
+            System.out.println("Erro na função updateVenda() da classe ConexaoDB -> " + e.getMessage());
             throw e;
         } finally {
             close();
@@ -522,7 +542,7 @@ public class ConexaoDB {
             }
             return resultado;
         } catch (Exception e) {
-            System.out.println("Erro na função selectAnimalCliente() da classe ConexaoDB -> " + e);
+            System.out.println("Erro na função selectAnimalCliente() da classe ConexaoDB -> " + e.getMessage());
             throw e;
         } finally {
             close();
@@ -538,7 +558,7 @@ public class ConexaoDB {
             preparedStatement.setInt(2, idCliente);
             preparedStatement.execute();
         } catch (Exception e) {
-            System.out.println("Erro na função insertAnimalCliente() da classe ConexaoDB -> " + e);
+            System.out.println("Erro na função insertAnimalCliente() da classe ConexaoDB -> " + e.getMessage());
             throw e;
         }
     }
@@ -558,7 +578,7 @@ public class ConexaoDB {
                 connect.close();
             }
         } catch (Exception e) {
-            System.out.println("Erro na função close() da classe ConexaoDB -> " + e);
+            System.out.println("Erro na função close() da classe ConexaoDB -> " + e.getMessage());
         }
     }
 
