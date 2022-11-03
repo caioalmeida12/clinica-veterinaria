@@ -1,6 +1,7 @@
 package View;
 
 import conexaoDB.ConexaoDB;
+import conexaoDB.ProdutoDB;
 import entidades.Produto;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -391,8 +392,8 @@ public class ProdutoView extends javax.swing.JFrame {
         String nome = txtNome.getText();
         Double preco = Double.valueOf(txtPreco.getText());
         Produto pd = new Produto(nome, preco);
-        ConexaoDB mysql = null;
-        mysql = new ConexaoDB();
+        ProdutoDB mysql = null;
+        mysql = new ProdutoDB();
 
         try {
             mysql.insertProduto(pd);
@@ -407,7 +408,7 @@ public class ProdutoView extends javax.swing.JFrame {
 
         try {
 
-            ConexaoDB mysql = new ConexaoDB();
+            ProdutoDB mysql = new ProdutoDB();
             DefaultTableModel model = (DefaultTableModel) tabelaProduto.getModel();
             model.setNumRows(0);
 
@@ -455,8 +456,8 @@ public class ProdutoView extends javax.swing.JFrame {
 
         Produto produto = new Produto(idProduto, nomeProduto, precoProduto);
 
-        ConexaoDB mysql = null;
-        mysql = new ConexaoDB();
+        ProdutoDB mysql = null;
+        mysql = new ProdutoDB();
 
         try {
             mysql.updateProduto(produto);
@@ -475,8 +476,8 @@ public class ProdutoView extends javax.swing.JFrame {
 
         Produto produto = new Produto(idProduto);
 
-        ConexaoDB mysql = null;
-        mysql = new ConexaoDB();
+        ProdutoDB mysql = null;
+        mysql = new ProdutoDB();
 
         try {
             mysql.deleteProduto(produto);
