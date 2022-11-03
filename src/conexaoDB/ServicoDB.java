@@ -13,6 +13,7 @@ public class ServicoDB extends ConexaoDB {
 
     public List<Servico> selectServico(String filtro) throws Exception {
         try {
+            this.conectar();
             // Armazena todos os dados retornados
             List<Servico> resultado = new ArrayList<Servico>();
             // Executa a consulta
@@ -42,6 +43,7 @@ public class ServicoDB extends ConexaoDB {
     // Insere uma nova entrada do tipo Servico no banco de dados
     public void insertServico(Servico servico) throws Exception {
         try {
+            this.conectar();
             preparedStatement = connect.prepareStatement(
                     "INSERT INTO `servico` (`tipoServico`, `descricaoServico`, `precoServico`) VALUES (0,?, ?, ?)");
             preparedStatement.setString(1, servico.getTipoServico());
@@ -59,6 +61,7 @@ public class ServicoDB extends ConexaoDB {
     // Altera os dados do servico no banco de dados
     public void updateServico(Servico servico) throws Exception {
         try {
+            this.conectar();
             preparedStatement = connect
                     .prepareStatement(
                             "UPDATE servico SET tipoServico = ?, descricaoServico = ?, precoServico = ? WHERE idServico = ? ");
@@ -78,6 +81,7 @@ public class ServicoDB extends ConexaoDB {
     // Excluir os dados do servico no banco de dados
     public void deleteServico(Integer idServico) throws Exception {
         try {
+            this.conectar();
             preparedStatement = connect.prepareStatement("DELETE FROM servico WHERE idServico = ?");
             preparedStatement.setInt(1, idServico);
             preparedStatement.execute();
