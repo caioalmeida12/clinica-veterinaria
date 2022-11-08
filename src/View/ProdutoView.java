@@ -348,7 +348,6 @@ private void inserirProduto() {
             model.setNumRows(0);
             String filtro = txtFiltro.getText();
             
-            
             ArrayList<Produto> resultado = (ArrayList<Produto>) produto.selectProduto("Where idProduto = "+filtro);
 
             for (int num = 0; num < resultado.size(); num++) {
