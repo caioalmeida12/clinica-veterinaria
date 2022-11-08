@@ -189,6 +189,8 @@ public class ProdutoView extends javax.swing.JFrame {
     private void cadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarProdutoActionPerformed
         // TODO add your handling code here:
         
+        //Inseri um novo produto e atualiza a tabela
+        
         inserirProduto();
         listarValores();
         
@@ -197,11 +199,15 @@ public class ProdutoView extends javax.swing.JFrame {
     private void tabelaProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaProdutoMouseClicked
         // TODO add your handling code here:
         
+        //Carrega os valores dos campos para os campos de texto
+        
         CarregarProduto();
     }//GEN-LAST:event_tabelaProdutoMouseClicked
 
     private void excluirProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirProdutoActionPerformed
         // TODO add your handling code here:
+        
+        //Deleta o campo selecionado da tabela e mostra a tabela atualizada
         
         deletarProduto();
         listarValores();
@@ -209,6 +215,8 @@ public class ProdutoView extends javax.swing.JFrame {
 
     private void apagarCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apagarCamposActionPerformed
         // TODO add your handling code here:
+        
+        //Apaga os campos dos campos de texto e mostra os valores da tabela
         
         apagaCampos();
         listarValores();
