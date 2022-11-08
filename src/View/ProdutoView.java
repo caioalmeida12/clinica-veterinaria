@@ -312,7 +312,6 @@ private void inserirProduto() {
             System.out.println(filtro);
 
             ArrayList<Produto> resultado = (ArrayList<Produto>) produto.selectProduto();
-
             for (int num = 0; num < resultado.size(); num++) {
 
                 model.addRow(new Object[] {
