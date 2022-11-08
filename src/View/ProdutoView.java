@@ -217,12 +217,16 @@ public class ProdutoView extends javax.swing.JFrame {
     private void alterarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarProdutoActionPerformed
         // TODO add your handling code here:
         
+        //Altera os valores e depois mostra os valores atualizados
+        
         AlterarProduto();
         listarValores();
     }//GEN-LAST:event_alterarProdutoActionPerformed
 
     private void buscarFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarFiltroActionPerformed
         // TODO add your handling code here:
+        
+        // Corre o campo para ver se tem algo escrito e pesquisar por filtro, se não tiver faz a busca completa
        
         if (txtFiltro.getText().length() > 0) {
         listarValoresFiltro();
@@ -284,6 +288,8 @@ public class ProdutoView extends javax.swing.JFrame {
     private javax.swing.JTextField txtPreco;
     // End of variables declaration//GEN-END:variables
 
+    
+    //Inserir produto
 private void inserirProduto() {
 
         String nome = txtNome.getText();
@@ -300,6 +306,8 @@ private void inserirProduto() {
 
     }
 
+
+//Lista os valores na tabela
  private void listarValores() {
 
         try {
@@ -330,6 +338,7 @@ private void inserirProduto() {
     }
  
  
+ //Lista os valores na tabela com Filtro
  private void listarValoresFiltro() {
 
         try {
@@ -358,6 +367,8 @@ private void inserirProduto() {
         }
     }
  
+ 
+ // Carrega valores nos campos de textos
   private void CarregarProduto() {
 
         int setar = tabelaProduto.getSelectedRow();
@@ -367,6 +378,7 @@ private void inserirProduto() {
         txtPreco.setText(tabelaProduto.getModel().getValueAt(setar, 2).toString());
 
     }
+  // Deleta o produto
   
   private void deletarProduto() {
 
@@ -387,6 +399,8 @@ private void inserirProduto() {
 
     }
   
+  //Apaga os campos que estão no campo de texto
+  
   public void apagaCampos(){
       
       txtId.setText("");
@@ -394,6 +408,8 @@ private void inserirProduto() {
       txtPreco.setText("");
       
   }
+  
+  //Altera os valores do produto, com base no valor dos campos de texto
   
   private void AlterarProduto() {
 
