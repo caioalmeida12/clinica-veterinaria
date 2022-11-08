@@ -1,12 +1,13 @@
 package clinica_veterinaria;
 
+import View.ProdutoView;
 import conexaoDB.*;
 import entidades.*;
 
 public class Clinica_veterinaria {
 
     public static void main(String[] args) {
-        // new ProdutoView().setVisible(true);
+        new ProdutoView().setVisible(true);
         try {
             var mysql = new AnimalDB();
             var resultado = mysql.selectAnimal().get(0);
