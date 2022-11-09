@@ -58,6 +58,8 @@ public class FuncionarioView extends javax.swing.JFrame {
         alterarFuncionario = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
+        apagaCampos = new javax.swing.JButton();
+        excluirFuncionario = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -155,6 +157,20 @@ public class FuncionarioView extends javax.swing.JFrame {
             }
         });
 
+        apagaCampos.setText("Apagar Campos");
+        apagaCampos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                apagaCamposActionPerformed(evt);
+            }
+        });
+
+        excluirFuncionario.setText("Excluir");
+        excluirFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluirFuncionarioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -169,7 +185,9 @@ public class FuncionarioView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cadastrarFuncionario)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(alterarFuncionario))
+                        .addComponent(alterarFuncionario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(excluirFuncionario))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -177,7 +195,9 @@ public class FuncionarioView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(214, 214, 214)
+                        .addComponent(apagaCampos))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -223,7 +243,8 @@ public class FuncionarioView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(apagaCampos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -239,8 +260,9 @@ public class FuncionarioView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cadastrarFuncionario)
-                    .addComponent(alterarFuncionario))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                    .addComponent(alterarFuncionario)
+                    .addComponent(excluirFuncionario))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );
@@ -266,6 +288,19 @@ public class FuncionarioView extends javax.swing.JFrame {
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdActionPerformed
+
+    private void apagaCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apagaCamposActionPerformed
+        // TODO add your handling code here:
+        
+        
+        apagaCampos();
+    }//GEN-LAST:event_apagaCamposActionPerformed
+
+    private void excluirFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirFuncionarioActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_excluirFuncionarioActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
@@ -341,7 +376,9 @@ public class FuncionarioView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton alterarFuncionario;
+    private javax.swing.JButton apagaCampos;
     private javax.swing.JButton cadastrarFuncionario;
+    private javax.swing.JButton excluirFuncionario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -461,6 +498,39 @@ public class FuncionarioView extends javax.swing.JFrame {
         txtSalario.setText(tabelaFuncionario.getModel().getValueAt(setar, 5).toString());
         txtTelefone.setText(tabelaFuncionario.getModel().getValueAt(setar, 6).toString());
         txtEndereco.setText(tabelaFuncionario.getModel().getValueAt(setar, 7).toString());
+
+    }
+     
+      public void apagaCampos(){
+      
+      txtId.setText("");
+      txtNome.setText("");
+     txtEmail.setText("");
+        txtCPF.setText("");
+        txtNascimento.setText("");
+        txtSalario.setText("");
+        txtTelefone.setText("");
+        txtEndereco.setText("");
+      
+  }
+      
+      
+       private void deletarFuncionario() {
+
+        int id;
+
+        id = Integer.parseInt(txtId.getText());
+
+       Funcionario funcionario = new Funcionario(id);
+
+        FuncionarioDB mysql = new FuncionarioDB();
+
+        try {
+            mysql.deleteFuncionario(funcionario);
+        } catch (Exception ex) {
+            System.out.println("erro no view para excluir produto");
+            throw new RuntimeException(ex);
+        }
 
     }
 }

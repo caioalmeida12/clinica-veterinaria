@@ -35,6 +35,12 @@ public class Funcionario {
     this.enderecoFuncionario = enderecoFuncionario;
   }
 
+    public Funcionario(Integer idFuncionario) {
+        this.idFuncionario = idFuncionario;
+    }
+  
+  
+
   public Integer getIdFuncionario() {
     return idFuncionario;
   }
