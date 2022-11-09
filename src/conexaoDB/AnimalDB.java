@@ -89,10 +89,14 @@ public class AnimalDB extends ConexaoDB {
 
     // Excluir os dados do animal no banco de dados
     public void deleteAnimal(Animal animal) throws Exception {
+        this.deleteAnimal(animal.getIdAnimal());
+    }
+
+    public void deleteAnimal(Integer idAnimal) throws Exception {
         try {
             this.conectar();
             preparedStatement = connect.prepareStatement("DELETE FROM animal WHERE idAnimal = ?");
-            preparedStatement.setInt(1, animal.getIdAnimal());
+            preparedStatement.setInt(1, idAnimal);
             preparedStatement.execute();
         } catch (Exception e) {
             System.out.println("Erro na função deleteAnimal() da classe ConexaoDB -> " + e.getMessage());

@@ -76,10 +76,14 @@ public class ProdutoDB extends ConexaoDB {
 
     // Excluir os dados do Produto no banco de dados
     public void deleteProduto(Produto produto) throws Exception {
+        this.deleteProduto(produto.getIdProduto());
+    }
+
+    public void deleteProduto(Integer idProduto) throws Exception {
         try {
             this.conectar();
             preparedStatement = connect.prepareStatement("DELETE FROM produto WHERE idProduto = ?");
-            preparedStatement.setInt(1, produto.getIdProduto());
+            preparedStatement.setInt(1, idProduto);
             preparedStatement.execute();
         } catch (Exception e) {
             System.out.println("Erro na função deleteProduto() da classe ConexaoDB -> " + e.getMessage());

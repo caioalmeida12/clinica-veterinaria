@@ -85,6 +85,10 @@ public class VendaDB extends ConexaoDB {
     }
 
     // Excluir os dados do venda no banco de dados
+    public void deleteVenda(Venda venda) throws Exception {
+        this.deleteVenda(venda.getIdVenda());
+    }
+
     public void deleteVenda(Integer idVenda) throws Exception {
         try {
             this.conectar();

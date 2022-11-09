@@ -94,10 +94,14 @@ public class FuncionarioDB extends ConexaoDB {
 
     // Excluir os dados do funcionario no banco de dados
     public void deleteFuncionario(Funcionario funcionario) throws Exception {
+        this.deleteFuncionario(funcionario.getIdFuncionario());
+    }
+
+    public void deleteFuncionario(Integer idFuncionario) throws Exception {
         try {
             this.conectar();
             preparedStatement = connect.prepareStatement("DELETE FROM funcionario WHERE idFuncionario = ?");
-            preparedStatement.setInt(1,funcionario.getIdFuncionario());
+            preparedStatement.setInt(1, idFuncionario);
             preparedStatement.execute();
         } catch (Exception e) {
             System.out.println("Erro na função deleteFuncionario() da classe ConexaoDB -> " + e.getMessage());

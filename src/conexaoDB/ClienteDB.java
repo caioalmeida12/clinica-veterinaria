@@ -88,6 +88,10 @@ public class ClienteDB extends ConexaoDB {
     }
 
     // Excluir os dados do cliente no banco de dados
+    public void deleteCliente(Cliente cliente) throws Exception {
+        this.deleteCliente(cliente.getIdCliente());
+    }
+
     public void deleteCliente(Integer idCliente) throws Exception {
         try {
             this.conectar();

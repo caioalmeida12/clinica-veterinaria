@@ -79,6 +79,10 @@ public class ServicoDB extends ConexaoDB {
     }
 
     // Excluir os dados do servico no banco de dados
+    public void deleteServico(Servico servico) throws Exception {
+        this.deleteServico(servico.getIdServico());
+    }
+
     public void deleteServico(Integer idServico) throws Exception {
         try {
             this.conectar();
