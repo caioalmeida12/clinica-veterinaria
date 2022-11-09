@@ -60,6 +60,9 @@ public class FuncionarioView extends javax.swing.JFrame {
         txtId = new javax.swing.JTextField();
         apagaCampos = new javax.swing.JButton();
         excluirFuncionario = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        txtFiltro = new javax.swing.JTextField();
+        buscarFiltro = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -171,6 +174,15 @@ public class FuncionarioView extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setText("Inserir id ");
+
+        buscarFiltro.setText("Buscar");
+        buscarFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarFiltroActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -182,12 +194,6 @@ public class FuncionarioView extends javax.swing.JFrame {
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cadastrarFuncionario)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(alterarFuncionario)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(excluirFuncionario))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -219,7 +225,22 @@ public class FuncionarioView extends javax.swing.JFrame {
                             .addComponent(jLabel6)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtFiltro))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cadastrarFuncionario)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(alterarFuncionario)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(excluirFuncionario)
+                            .addComponent(buscarFiltro))))
                 .addContainerGap(153, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -262,7 +283,12 @@ public class FuncionarioView extends javax.swing.JFrame {
                     .addComponent(cadastrarFuncionario)
                     .addComponent(alterarFuncionario)
                     .addComponent(excluirFuncionario))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarFiltro))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );
@@ -299,8 +325,19 @@ public class FuncionarioView extends javax.swing.JFrame {
     private void excluirFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirFuncionarioActionPerformed
         // TODO add your handling code here:
         
-        
+        deletarFuncionario();
+        listarValores();
     }//GEN-LAST:event_excluirFuncionarioActionPerformed
+
+    private void buscarFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarFiltroActionPerformed
+        // TODO add your handling code here:
+        
+         if (txtFiltro.getText().length() > 0) {
+        listarValoresFiltro();
+        }else{
+            listarValores();
+        }
+    }//GEN-LAST:event_buscarFiltroActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
@@ -377,6 +414,7 @@ public class FuncionarioView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton alterarFuncionario;
     private javax.swing.JButton apagaCampos;
+    private javax.swing.JButton buscarFiltro;
     private javax.swing.JButton cadastrarFuncionario;
     private javax.swing.JButton excluirFuncionario;
     private javax.swing.JLabel jLabel1;
@@ -387,6 +425,7 @@ public class FuncionarioView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
@@ -394,6 +433,7 @@ public class FuncionarioView extends javax.swing.JFrame {
     private javax.swing.JTextField txtCPF;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereco;
+    private javax.swing.JTextField txtFiltro;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNascimento;
     private javax.swing.JTextField txtNome;
@@ -435,6 +475,42 @@ public class FuncionarioView extends javax.swing.JFrame {
 
         }
     }
+    
+    private void listarValoresFiltro() {
+
+        try {
+            FuncionarioDB funcionario = new FuncionarioDB();
+            DefaultTableModel model = (DefaultTableModel) tabelaFuncionario.getModel();
+            model.setNumRows(0);
+
+            String filtro = txtFiltro.getText();
+
+           
+
+            ArrayList<Funcionario> resultado = (ArrayList<Funcionario>) funcionario.selectFuncionario("Where idFuncionario = "+ filtro);
+
+            for (int num = 0; num < resultado.size(); num++) {
+
+                model.addRow(new Object[] {
+
+                        resultado.get(num).getIdFuncionario(),
+                        resultado.get(num).getNomeFuncionario(),
+                        resultado.get(num).getEmailFuncionario(),
+                        resultado.get(num).getCpfFuncionario(),
+                        resultado.get(num).getNascimentoFuncionario(),
+                        resultado.get(num).getSalarioFuncionario(),
+                        resultado.get(num).getTelefoneFuncionario(),
+                        resultado.get(num).getEnderecoFuncionario()
+                });
+            }
+
+        } catch (Exception e) {
+            System.out.println("erro");
+            throw new RuntimeException(e);
+
+        }
+    }
+
     
     private void cadastrarFuncionario(){
         
