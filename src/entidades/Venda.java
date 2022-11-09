@@ -9,19 +9,19 @@ import java.util.Date;
 
 public class Venda {
 
-    ClienteDB clienteDB = new ClienteDB();
-    FuncionarioDB funcionarioDB = new FuncionarioDB();
-    ProdutoDB produtoDB = new ProdutoDB();
-    ConexaoDB mysql = new ConexaoDB();
+    private ClienteDB clienteDB = new ClienteDB();
+    private FuncionarioDB funcionarioDB = new FuncionarioDB();
+    private ProdutoDB produtoDB = new ProdutoDB();
+    private ConexaoDB mysql = new ConexaoDB();
 
-    Integer idVenda;
-    int idProduto, idCliente, idFuncionario;
-    Produto produtoVenda;
-    Cliente clienteVenda;
-    Funcionario funcionarioVenda;
-    Date dataVenda;
-    Integer quantidadeProduto;
-    Double valorVenda;
+    private Integer idVenda;
+    private int idProduto, idCliente, idFuncionario;
+    private Produto produtoVenda;
+    private Cliente clienteVenda;
+    private Funcionario funcionarioVenda;
+    private Date dataVenda;
+    private Integer quantidadeProduto;
+    private Double valorVenda;
 
     public Venda(int idVenda, int idProduto, int idCliente, int idFuncionario, Date dataVenda,
             Integer quantidadeVenda) {
