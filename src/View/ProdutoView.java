@@ -450,13 +450,11 @@ private void inserirProduto() {
   
   private void AlterarProduto() {
 
-        int idProduto;
-        String nomeProduto;
-        double precoProduto;
+        
 
-        idProduto = Integer.parseInt(txtId.getText());
-        nomeProduto = txtNome.getText();
-        precoProduto = Double.valueOf(txtPreco.getText());
+       int idProduto = Integer.parseInt(txtId.getText());
+        String nomeProduto = txtNome.getText();
+       double precoProduto = Double.valueOf(txtPreco.getText());
 
         Produto produto = new Produto(idProduto, nomeProduto, precoProduto);
 
