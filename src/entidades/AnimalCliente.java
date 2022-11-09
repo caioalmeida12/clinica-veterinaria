@@ -1,7 +1,9 @@
 package entidades;
 
 public class AnimalCliente {
-    Integer idAnimalCliente, idAnimal, idCliente;
+    Integer idAnimalCliente;
+    Integer idAnimal;
+    Integer idCliente;
 
     public AnimalCliente(Integer idAnimalCliente, Integer idAnimal, Integer idCliente) {
         this.idAnimalCliente = idAnimalCliente;
