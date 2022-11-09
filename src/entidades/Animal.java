@@ -3,13 +3,13 @@ package entidades;
 import java.util.Date;
 
 public class Animal {
-  private Integer idAnimal;
-  private String nomeAnimal;
-  private String racaAnimal;
-  private Date nascimentoAnimal;
-  private String especieAnimal;
-  private String sexoAnimal;
-  private String corAnimal;
+  public Integer idAnimal;
+  public String nomeAnimal;
+  public String racaAnimal;
+  public Date nascimentoAnimal;
+  public String especieAnimal;
+  public String sexoAnimal;
+  public String corAnimal;
 
   public Animal(Integer idAnimal, String nomeAnimal, String racaAnimal, Date nascimentoAnimal, String especieAnimal,
                 String sexoAnimal, String corAnimal) {
@@ -30,6 +30,12 @@ public class Animal {
     this.sexoAnimal = sexoAnimal;
     this.corAnimal = corAnimal;
   }
+
+    public Animal(Integer idAnimal) {
+        this.idAnimal = idAnimal;
+    }
+  
+  
 
   public Integer getIdAnimal() {
     return idAnimal;

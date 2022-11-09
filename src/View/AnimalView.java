@@ -59,6 +59,7 @@ public class AnimalView extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
         apagarCampos = new javax.swing.JButton();
+        excluirAnimal = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -145,6 +146,13 @@ public class AnimalView extends javax.swing.JFrame {
             }
         });
 
+        excluirAnimal.setText("Excluir");
+        excluirAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluirAnimalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -190,7 +198,9 @@ public class AnimalView extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(cadastrarAnimal)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(alterarAnimal))
+                        .addComponent(alterarAnimal)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(excluirAnimal))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -231,7 +241,8 @@ public class AnimalView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cadastrarAnimal)
-                    .addComponent(alterarAnimal))
+                    .addComponent(alterarAnimal)
+                    .addComponent(excluirAnimal))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(7, Short.MAX_VALUE))
@@ -259,6 +270,14 @@ public class AnimalView extends javax.swing.JFrame {
         
         apagaCampos();
     }//GEN-LAST:event_apagarCamposActionPerformed
+
+    private void excluirAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirAnimalActionPerformed
+        // TODO add your handling code here:
+        
+        
+        deletarAnimal();
+        listarValores();
+    }//GEN-LAST:event_excluirAnimalActionPerformed
 
     private void txtSexoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtSexoActionPerformed
         // TODO add your handling code here:
@@ -318,6 +337,7 @@ public class AnimalView extends javax.swing.JFrame {
     private javax.swing.JButton alterarAnimal;
     private javax.swing.JButton apagarCampos;
     private javax.swing.JButton cadastrarAnimal;
+    private javax.swing.JButton excluirAnimal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -447,5 +467,25 @@ public void cadastrarAnimal(){
       
       
   }
+   
+   
+    private void deletarAnimal() {
+
+       
+
+        int idAnimal = Integer.parseInt(txtId.getText());
+
+        Animal animal = new Animal(idAnimal);
+
+        AnimalDB mysql = new AnimalDB();
+
+        try {
+            mysql.deleteAnimal(idAnimal);
+        } catch (Exception ex) {
+            System.out.println("erro no view para excluir produto");
+            throw new RuntimeException(ex);
+        }
+
+    }
 
 }

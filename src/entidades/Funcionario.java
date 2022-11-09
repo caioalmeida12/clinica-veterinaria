@@ -3,14 +3,14 @@ package entidades;
 import java.util.Date;
 
 public class Funcionario {
-  private Integer idFuncionario;
-  private String nomeFuncionario;
-  private String cpfFuncionario;
-  private Date nascimentoFuncionario;
-  private String emailFuncionario;
-  private Float salarioFuncionario;
-  private String telefoneFuncionario;
-  private String enderecoFuncionario;
+  public Integer idFuncionario;
+  public String nomeFuncionario;
+  public String cpfFuncionario;
+  public Date nascimentoFuncionario;
+  public String emailFuncionario;
+  public Float salarioFuncionario;
+  public String telefoneFuncionario;
+  public String enderecoFuncionario;
 
   public Funcionario(Integer idFuncionario, String nomeFuncionario, String cpfFuncionario, Date nascimentoFuncionario,
       String emailFuncionario, Float salarioFuncionario, String telefoneFuncionario, String enderecoFuncionario) {

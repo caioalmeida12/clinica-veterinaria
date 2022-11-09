@@ -2,9 +2,9 @@ package entidades;
 
 public class Produto {
 
-  private Integer idProduto;
-  private String nomeProduto;
-  private Double precoProduto;
+  public Integer idProduto;
+  public String nomeProduto;
+  public Double precoProduto;
 
   public Produto(Integer idProduto, String nomeProduto, Double precoProduto) {
     this.idProduto = idProduto;

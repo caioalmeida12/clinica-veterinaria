@@ -9,7 +9,7 @@ import entidades.*;
 public class Clinica_veterinaria {
 
     public static void main(String[] args) {
-        new FuncionarioView().setVisible(true);
+        new AnimalView().setVisible(true);
         try {
             var mysql = new AnimalDB();
             var resultado = mysql.selectAnimal().get(0);
