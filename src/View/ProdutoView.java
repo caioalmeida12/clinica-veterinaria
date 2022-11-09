@@ -47,7 +47,7 @@ public class ProdutoView extends javax.swing.JFrame {
         alterarProduto = new javax.swing.JButton();
         txtFiltro = new javax.swing.JTextField();
         buscarFiltro = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        combo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -117,7 +117,12 @@ public class ProdutoView extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("Inserir Id");
+        combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id", "Nome" }));
+        combo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -150,8 +155,7 @@ public class ProdutoView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(excluirProduto))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(jLabel4)
+                        .addComponent(combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -183,7 +187,7 @@ public class ProdutoView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buscarFiltro)
-                    .addComponent(jLabel4))
+                    .addComponent(combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -254,6 +258,10 @@ public class ProdutoView extends javax.swing.JFrame {
         
     }//GEN-LAST:event_buscarFiltroActionPerformed
 
+    private void comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -294,11 +302,11 @@ public class ProdutoView extends javax.swing.JFrame {
     private javax.swing.JButton apagarCampos;
     private javax.swing.JButton buscarFiltro;
     private javax.swing.JButton cadastrarProduto;
+    private javax.swing.JComboBox<String> combo;
     private javax.swing.JButton excluirProduto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelaProduto;
     private javax.swing.JTextField txtFiltro;
@@ -365,9 +373,19 @@ private void inserirProduto() {
             ProdutoDB produto = new ProdutoDB();
             DefaultTableModel model = (DefaultTableModel) tabelaProduto.getModel();
             model.setNumRows(0);
-            String filtro = txtFiltro.getText();
+            String filtro = null;
             
-            ArrayList<Produto> resultado = (ArrayList<Produto>) produto.selectProduto("Where idProduto = "+filtro);
+            int valorCombo = combo.getSelectedIndex();
+            
+            if(valorCombo == 0 ){
+                
+                filtro = "Where idProduto= "+txtFiltro.getText();
+            }else{
+                
+                filtro = "Where nomeProduto LIKE '%"+txtFiltro.getText()+"%'";
+            }
+            
+            ArrayList<Produto> resultado = (ArrayList<Produto>) produto.selectProduto(filtro);
 
             for (int num = 0; num < resultado.size(); num++) {
 
