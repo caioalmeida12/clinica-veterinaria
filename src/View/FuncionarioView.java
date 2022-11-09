@@ -63,6 +63,7 @@ public class FuncionarioView extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         txtFiltro = new javax.swing.JTextField();
         buscarFiltro = new javax.swing.JButton();
+        combo = new javax.swing.JComboBox<>();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -183,6 +184,8 @@ public class FuncionarioView extends javax.swing.JFrame {
             }
         });
 
+        combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id", "Nome", " " }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -240,7 +243,10 @@ public class FuncionarioView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(excluirFuncionario)
-                            .addComponent(buscarFiltro))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(buscarFiltro)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(153, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -287,7 +293,8 @@ public class FuncionarioView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscarFiltro))
+                    .addComponent(buscarFiltro)
+                    .addComponent(combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
@@ -416,6 +423,7 @@ public class FuncionarioView extends javax.swing.JFrame {
     private javax.swing.JButton apagaCampos;
     private javax.swing.JButton buscarFiltro;
     private javax.swing.JButton cadastrarFuncionario;
+    private javax.swing.JComboBox<String> combo;
     private javax.swing.JButton excluirFuncionario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -483,11 +491,21 @@ public class FuncionarioView extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) tabelaFuncionario.getModel();
             model.setNumRows(0);
 
-            String filtro = txtFiltro.getText();
+            String filtro = null;
+            
+            int valorCombo = combo.getSelectedIndex();
+            
+            if(valorCombo == 0 ){
+                
+                filtro = "Where idFuncionario = "+txtFiltro.getText();
+            }else{
+                
+                filtro = "Where nomeFuncionario LIKE '%"+txtFiltro.getText()+"%'";
+            }
 
            
 
-            ArrayList<Funcionario> resultado = (ArrayList<Funcionario>) funcionario.selectFuncionario("Where idFuncionario = "+ filtro);
+            ArrayList<Funcionario> resultado = (ArrayList<Funcionario>) funcionario.selectFuncionario(filtro);
 
             for (int num = 0; num < resultado.size(); num++) {
 

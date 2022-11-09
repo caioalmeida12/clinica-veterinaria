@@ -40,7 +40,7 @@ public class FuncionarioDB extends ConexaoDB {
             }
             return resultado;
         } catch (Exception e) {
-            System.out.println("Erro na função selectFuncionario() da classe ConexaoDB -> " + e.getMessage());
+            System.out.println("Erro na função filtro selectFuncionario() da classe ConexaoDB -> " + e.getMessage());
             throw e;
         } finally {
             close();
