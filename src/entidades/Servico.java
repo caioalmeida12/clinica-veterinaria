@@ -1,10 +1,10 @@
 package entidades;
 
 public class Servico {
-    Integer idServico;
-    String tipoServico;
-    String descricaoServico;
-    Double precoServico;
+    private Integer idServico;
+    private String tipoServico;
+    private String descricaoServico;
+    private Double precoServico;
 
     public Servico(Integer idServico, String tipoServico, String descricaoServico, Double precoServico) {
         this.idServico = idServico;

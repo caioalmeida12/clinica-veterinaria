@@ -3,12 +3,12 @@ package entidades;
 import java.sql.Date;
 
 public class Agendamento {
-    Integer idAgendamento;
-    Integer idAnimal;
-    Integer idFuncionario;
-    Integer idServico;
-    Date dataAgendamento;
-    String situacaoAgendamento;
+    private Integer idAgendamento;
+    private Integer idAnimal;
+    private Integer idFuncionario;
+    private Integer idServico;
+    private Date dataAgendamento;
+    private String situacaoAgendamento;
 
     public Agendamento(Integer idAgendamento, Integer idAnimal, Integer idFuncionario, Integer idServico,
             Date dataAgendamento, String situacaoAgendamento) {

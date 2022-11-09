@@ -85,6 +85,10 @@ public class AgendamentoDB extends ConexaoDB {
     }
 
     // Excluir os dados do agendamento no banco de dados
+    public void deleteAgendamento(Agendamento agendamento) throws Exception {
+        this.deleteAgendamento(agendamento.getIdAgendamento());
+    }
+
     public void deleteAgendamento(Integer idAgendamento) throws Exception {
         try {
             this.conectar();

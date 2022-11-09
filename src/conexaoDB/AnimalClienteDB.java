@@ -74,6 +74,10 @@ public class AnimalClienteDB extends ConexaoDB {
     }
 
     // Excluir os dados do animal no banco de dados
+    public void deleteAnimalCliente(AnimalCliente animalCliente) throws Exception {
+        this.deleteAnimalCliente(animalCliente.getIdAnimalCliente());
+    }
+
     public void deleteAnimalCliente(Integer idAnimalCliente) throws Exception {
         try {
             this.conectar();
