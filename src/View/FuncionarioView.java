@@ -56,6 +56,8 @@ public class FuncionarioView extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelaFuncionario = new javax.swing.JTable();
         alterarFuncionario = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -113,21 +115,26 @@ public class FuncionarioView extends javax.swing.JFrame {
 
         tabelaFuncionario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Id", "Nome", "Email", "Cpf", "Nascimento", "Salario", "Telefone"
+                "Id", "Nome", "Email", "Cpf", "Nascimento", "Salario", "Telefone", "Endereco"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tabelaFuncionario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaFuncionarioMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(tabelaFuncionario);
@@ -139,6 +146,15 @@ public class FuncionarioView extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setText("Id");
+
+        txtId.setEditable(false);
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -146,6 +162,10 @@ public class FuncionarioView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cadastrarFuncionario)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -185,7 +205,10 @@ public class FuncionarioView extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -217,7 +240,7 @@ public class FuncionarioView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cadastrarFuncionario)
                     .addComponent(alterarFuncionario))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );
@@ -231,6 +254,18 @@ public class FuncionarioView extends javax.swing.JFrame {
         AlterarFuncionario();
         listarValores();
     }//GEN-LAST:event_alterarFuncionarioActionPerformed
+
+    private void tabelaFuncionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaFuncionarioMouseClicked
+        // TODO add your handling code here:
+        
+        CarregarFuncionario();
+        listarValores();
+        
+    }//GEN-LAST:event_tabelaFuncionarioMouseClicked
+
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
@@ -314,6 +349,7 @@ public class FuncionarioView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
@@ -321,6 +357,7 @@ public class FuncionarioView extends javax.swing.JFrame {
     private javax.swing.JTextField txtCPF;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereco;
+    private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNascimento;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtSalario;
@@ -350,7 +387,8 @@ public class FuncionarioView extends javax.swing.JFrame {
                         resultado.get(num).getCpfFuncionario(),
                         resultado.get(num).getNascimentoFuncionario(),
                         resultado.get(num).getSalarioFuncionario(),
-                        resultado.get(num).getTelefoneFuncionario()
+                        resultado.get(num).getTelefoneFuncionario(),
+                        resultado.get(num).getEnderecoFuncionario()
                 });
             }
 
@@ -393,8 +431,9 @@ public class FuncionarioView extends javax.swing.JFrame {
         Date data = Date.valueOf(txtNascimento.getText());
         String telefone = txtTelefone.getText();
         String endereco = txtEndereco.getText();
+        int id = Integer.parseInt(txtId.getText());
         
-        Funcionario funcionario = new Funcionario(nome, cpf, data, email, salario, telefone, endereco);
+        Funcionario funcionario = new Funcionario(id,nome, cpf, data, email, salario, telefone, endereco);
 
       
 
@@ -406,6 +445,22 @@ public class FuncionarioView extends javax.swing.JFrame {
             System.out.println("erro no view para alterar funcionario");
             throw new RuntimeException(ex);
         }
+
+    }
+    
+    
+     private void CarregarFuncionario() {
+
+        int setar = tabelaFuncionario.getSelectedRow();
+
+        txtId.setText(tabelaFuncionario.getModel().getValueAt(setar, 0).toString());
+        txtNome.setText(tabelaFuncionario.getModel().getValueAt(setar, 1).toString());
+        txtEmail.setText(tabelaFuncionario.getModel().getValueAt(setar, 2).toString());
+        txtCPF.setText(tabelaFuncionario.getModel().getValueAt(setar, 3).toString());
+        txtNascimento.setText(tabelaFuncionario.getModel().getValueAt(setar, 4).toString());
+        txtSalario.setText(tabelaFuncionario.getModel().getValueAt(setar, 5).toString());
+        txtTelefone.setText(tabelaFuncionario.getModel().getValueAt(setar, 6).toString());
+        txtEndereco.setText(tabelaFuncionario.getModel().getValueAt(setar, 7).toString());
 
     }
 }
