@@ -60,6 +60,9 @@ public class AnimalView extends javax.swing.JFrame {
         txtId = new javax.swing.JTextField();
         apagarCampos = new javax.swing.JButton();
         excluirAnimal = new javax.swing.JButton();
+        combo = new javax.swing.JComboBox<>();
+        txtFiltro = new javax.swing.JTextField();
+        buscarFiltro = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -153,6 +156,15 @@ public class AnimalView extends javax.swing.JFrame {
             }
         });
 
+        combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id", "Nome" }));
+
+        buscarFiltro.setText("Buscar");
+        buscarFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarFiltroActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -196,14 +208,21 @@ public class AnimalView extends javax.swing.JFrame {
                                 .addComponent(apagarCampos))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(cadastrarAnimal)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(alterarAnimal)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(excluirAnimal))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cadastrarAnimal))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(alterarAnimal)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(excluirAnimal))
+                            .addComponent(txtFiltro))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscarFiltro)))
                 .addContainerGap(146, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -243,9 +262,14 @@ public class AnimalView extends javax.swing.JFrame {
                     .addComponent(cadastrarAnimal)
                     .addComponent(alterarAnimal)
                     .addComponent(excluirAnimal))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarFiltro))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -278,6 +302,17 @@ public class AnimalView extends javax.swing.JFrame {
         deletarAnimal();
         listarValores();
     }//GEN-LAST:event_excluirAnimalActionPerformed
+
+    private void buscarFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarFiltroActionPerformed
+        // TODO add your handling code here:
+        
+        
+                if (txtFiltro.getText().length() > 0) {
+        listarValoresFiltro();
+        }else{
+            listarValores();
+        }
+    }//GEN-LAST:event_buscarFiltroActionPerformed
 
     private void txtSexoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtSexoActionPerformed
         // TODO add your handling code here:
@@ -336,7 +371,9 @@ public class AnimalView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton alterarAnimal;
     private javax.swing.JButton apagarCampos;
+    private javax.swing.JButton buscarFiltro;
     private javax.swing.JButton cadastrarAnimal;
+    private javax.swing.JComboBox<String> combo;
     private javax.swing.JButton excluirAnimal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -351,6 +388,7 @@ public class AnimalView extends javax.swing.JFrame {
     private javax.swing.JTable tabelaAnimal;
     private javax.swing.JTextField txtCor;
     private javax.swing.JTextField txtEspecie;
+    private javax.swing.JTextField txtFiltro;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNascimento;
     private javax.swing.JTextField txtNome;
@@ -391,6 +429,56 @@ private void listarValores() {
 
         }
     }
+
+
+
+private void listarValoresFiltro() {
+
+        try {
+            AnimalDB animal = new AnimalDB();
+            DefaultTableModel model = (DefaultTableModel) tabelaAnimal.getModel();
+            model.setNumRows(0);
+            
+            
+            String filtro = null;
+            
+            int valorCombo = combo.getSelectedIndex();
+            
+            if(valorCombo == 0 ){
+                
+                filtro = "Where idAnimal= "+txtFiltro.getText();
+            }else{
+                
+                filtro = "Where nomeAnimal LIKE '%"+txtFiltro.getText()+"%'";
+            }
+
+            
+
+            ArrayList<Animal> resultado = (ArrayList<Animal>)animal.selectAnimal(filtro);
+
+            for (int num = 0; num < resultado.size(); num++) {
+
+                model.addRow(new Object[] {
+
+                        resultado.get(num).getIdAnimal(),
+                        resultado.get(num).getNomeAnimal(),
+                        resultado.get(num).getRacaAnimal(),
+                        resultado.get(num).getCorAnimal(),
+                        resultado.get(num).getSexoAnimal(),
+                        resultado.get(num).getEspecieAnimal(),
+                        resultado.get(num).getNascimentoAnimal()
+                });
+            }
+
+        } catch (Exception e) {
+            System.out.println("erro");
+            throw new RuntimeException(e);
+
+        }
+    }
+
+
+
 
 public void cadastrarAnimal(){
     
@@ -487,5 +575,7 @@ public void cadastrarAnimal(){
         }
 
     }
+    
+    
 
 }
