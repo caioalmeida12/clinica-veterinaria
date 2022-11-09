@@ -22,7 +22,7 @@ public class ConexaoDB {
             // Tenta conectar o DB
             Class.forName("com.mysql.jdbc.Driver");
             connect = DriverManager
-                    .getConnection("jdbc:mysql://localhost/clinica-veterinaria?"
+                    .getConnection("jdbc:mysql://localhost/clinica_veterinaria?"
                             + "user=root&password=");
 
             statement = connect.createStatement();
