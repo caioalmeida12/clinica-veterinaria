@@ -289,6 +289,8 @@ public class ClienteView extends javax.swing.JFrame {
 
     private void tabelaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClienteMouseClicked
         // TODO add your handling code here:
+        
+        CarregarCliente();
 
         
 
@@ -440,6 +442,20 @@ public class ClienteView extends javax.swing.JFrame {
             throw new RuntimeException(e);
 
         }
+    }
+    
+     private void CarregarCliente() {
+
+        int setar = tabelaCliente.getSelectedRow();
+
+        txtId.setText(tabelaCliente.getModel().getValueAt(setar, 0).toString());
+        txtNome.setText(tabelaCliente.getModel().getValueAt(setar, 1).toString());
+        txtEmail.setText(tabelaCliente.getModel().getValueAt(setar, 2).toString());
+        txtCPF.setText(tabelaCliente.getModel().getValueAt(setar, 3).toString());
+        txtNascimento.setText(tabelaCliente.getModel().getValueAt(setar, 4).toString());
+        txtTelefone.setText(tabelaCliente.getModel().getValueAt(setar, 5).toString());
+        txtEndereco.setText(tabelaCliente.getModel().getValueAt(setar, 6).toString());
+
     }
 
 
