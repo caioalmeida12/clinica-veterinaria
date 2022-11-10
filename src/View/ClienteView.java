@@ -316,12 +316,18 @@ public class ClienteView extends javax.swing.JFrame {
 
     private void apagaCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apagaCamposActionPerformed
         // TODO add your handling code here:
+        
+        
+        apagaCampos();
 
         
     }//GEN-LAST:event_apagaCamposActionPerformed
 
     private void excluirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirClienteActionPerformed
         // TODO add your handling code here:
+        
+        deletarCliente();
+        listarValores();
 
        
     }//GEN-LAST:event_excluirClienteActionPerformed
@@ -457,6 +463,38 @@ public class ClienteView extends javax.swing.JFrame {
         txtEndereco.setText(tabelaCliente.getModel().getValueAt(setar, 6).toString());
 
     }
+     
+     private void deletarCliente() {
+
+       
+
+        int id = Integer.parseInt(txtId.getText());
+
+       Cliente cliente = new Cliente(id);
+
+        ClienteDB mysql = new ClienteDB();
+
+        try {
+            mysql.deleteCliente(id);
+        } catch (Exception ex) {
+            System.out.println("erro no view para excluir cliente");
+            throw new RuntimeException(ex);
+        }
+
+    }
+     
+     
+      public void apagaCampos(){
+      
+      txtId.setText("");
+      txtNome.setText("");
+     txtEmail.setText("");
+        txtCPF.setText("");
+        txtNascimento.setText("");
+        txtTelefone.setText("");
+        txtEndereco.setText("");
+      
+  }
 
 
 }

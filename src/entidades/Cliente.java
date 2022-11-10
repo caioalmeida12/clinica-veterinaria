@@ -32,6 +32,12 @@ public class Cliente {
     this.enderecoCliente = enderecoCliente;
   }
 
+    public Cliente(Integer idCliente) {
+        this.idCliente = idCliente;
+    }
+  
+  
+
   public Integer getIdCliente() {
     return idCliente;
   }
