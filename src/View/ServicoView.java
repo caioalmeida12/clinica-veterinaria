@@ -38,7 +38,7 @@ public class ServicoView extends javax.swing.JFrame {
         txtPreco = new javax.swing.JTextField();
         cadastrarServico = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaProduto = new javax.swing.JTable();
+        tabelaServico = new javax.swing.JTable();
         excluirServico = new javax.swing.JButton();
         apagarCampos = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -61,7 +61,7 @@ public class ServicoView extends javax.swing.JFrame {
             }
         });
 
-        tabelaProduto.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaServico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -80,12 +80,12 @@ public class ServicoView extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tabelaProduto.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabelaServico.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelaProdutoMouseClicked(evt);
+                tabelaServicoMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tabelaProduto);
+        jScrollPane1.setViewportView(tabelaServico);
 
         excluirServico.setText("Excluir");
         excluirServico.addActionListener(new java.awt.event.ActionListener() {
@@ -227,13 +227,15 @@ public class ServicoView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_cadastrarServicoActionPerformed
 
-    private void tabelaProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaProdutoMouseClicked
+    private void tabelaServicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaServicoMouseClicked
         // TODO add your handling code here:
 
         //Carrega os valores dos campos para os campos de texto
+        
+        CarregarServico();
 
         
-    }//GEN-LAST:event_tabelaProdutoMouseClicked
+    }//GEN-LAST:event_tabelaServicoMouseClicked
 
     private void excluirServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirServicoActionPerformed
         // TODO add your handling code here:
@@ -323,7 +325,7 @@ public class ServicoView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabelaProduto;
+    private javax.swing.JTable tabelaServico;
     private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtFiltro;
     private javax.swing.JTextField txtId;
@@ -356,7 +358,7 @@ private void cadastrarServico() {
         try {
 
             ServicoDB servico = new ServicoDB();
-            DefaultTableModel model = (DefaultTableModel) tabelaProduto.getModel();
+            DefaultTableModel model = (DefaultTableModel) tabelaServico.getModel();
             model.setNumRows(0);
 
             String filtro = txtId.getText();
@@ -379,6 +381,17 @@ private void cadastrarServico() {
             throw new RuntimeException(e);
 
         }
+    }
+ 
+ private void CarregarServico() {
+
+        int setar = tabelaServico.getSelectedRow();
+
+        txtId.setText(tabelaServico.getModel().getValueAt(setar, 0).toString());
+        txtTipo.setText(tabelaServico.getModel().getValueAt(setar, 1).toString());
+        txtDescricao.setText(tabelaServico.getModel().getValueAt(setar, 2).toString());
+        txtPreco.setText(tabelaServico.getModel().getValueAt(setar, 3).toString());
+
     }
  
 
