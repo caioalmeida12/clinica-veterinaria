@@ -278,6 +278,12 @@ public class ClienteView extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         
+         if (txtFiltro.getText().length() > 0) {
+        listarValoresFiltro();
+        }else{
+            listarValores();
+        }
+        
     }//GEN-LAST:event_buscarFiltroActionPerformed
 
     private void cadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarClienteActionPerformed
@@ -431,6 +437,50 @@ public class ClienteView extends javax.swing.JFrame {
            
 
             ArrayList<Cliente> resultado = (ArrayList<Cliente>) cliente.selectCliente();
+
+            for (int num = 0; num < resultado.size(); num++) {
+
+                model.addRow(new Object[] {
+
+                        resultado.get(num).getIdCliente(),
+                        resultado.get(num).getNomeCliente(),
+                        resultado.get(num).getEmailCliente(),
+                        resultado.get(num).getCpfCliente(),
+                        resultado.get(num).getNascimentoCliente(),
+                        resultado.get(num).getTelefoneCliente(),
+                        resultado.get(num).getEnderecoCliente()
+                });
+            }
+
+        } catch (Exception e) {
+            System.out.println("erro");
+            throw new RuntimeException(e);
+
+        }
+    }
+    
+    private void listarValoresFiltro() {
+
+        try {
+            ClienteDB cliente = new ClienteDB();
+            DefaultTableModel model = (DefaultTableModel) tabelaCliente.getModel();
+            model.setNumRows(0);
+
+            String filtro = null;
+            
+            int valorCombo = combo.getSelectedIndex();
+            
+            if(valorCombo == 0 ){
+                
+                filtro = "Where idCliente = "+txtFiltro.getText();
+            }else{
+                
+                filtro = "Where nomeCliente LIKE '%"+txtFiltro.getText()+"%'";
+            }
+
+           
+
+            ArrayList<Cliente> resultado = (ArrayList<Cliente>) cliente.selectCliente(filtro);
 
             for (int num = 0; num < resultado.size(); num++) {
 
