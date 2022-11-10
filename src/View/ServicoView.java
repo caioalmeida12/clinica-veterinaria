@@ -241,6 +241,10 @@ public class ServicoView extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         //Deleta o campo selecionado da tabela e mostra a tabela atualizada
+        
+        
+        deletarProduto();
+        listarValores();
 
       
     }//GEN-LAST:event_excluirServicoActionPerformed
@@ -391,6 +395,26 @@ private void cadastrarServico() {
         txtTipo.setText(tabelaServico.getModel().getValueAt(setar, 1).toString());
         txtDescricao.setText(tabelaServico.getModel().getValueAt(setar, 2).toString());
         txtPreco.setText(tabelaServico.getModel().getValueAt(setar, 3).toString());
+
+    }
+ 
+ 
+ private void deletarProduto() {
+
+       
+
+        int idServico = Integer.parseInt(txtId.getText());
+
+        Servico servico = new Servico(idServico);
+
+        ServicoDB mysql = new ServicoDB();
+
+        try {
+            mysql.deleteServico(idServico);
+        } catch (Exception ex) {
+            System.out.println("erro no view para excluir servico");
+            throw new RuntimeException(ex);
+        }
 
     }
  

@@ -19,6 +19,12 @@ public class Servico {
         this.precoServico = precoServico;
     }
 
+    public Servico(Integer idServico) {
+        this.idServico = idServico;
+    }
+    
+    
+
     public Integer getIdServico() {
         return idServico;
     }
