@@ -468,7 +468,7 @@ private void cadastrarServico() {
     }
  
  
-   public void apagaCampos(){
+   private void apagaCampos(){
       
       txtId.setText("");
       txtTipo.setText("");

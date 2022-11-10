@@ -543,7 +543,7 @@ public void cadastrarAnimal(){
 
     }
   
-   public void apagaCampos(){
+   private void apagaCampos(){
       
       txtId.setText("");
         txtNome.setText("");
