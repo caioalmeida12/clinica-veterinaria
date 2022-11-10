@@ -9,6 +9,8 @@ import conexaoDB.FuncionarioDB;
 import entidades.Cliente;
 import entidades.Funcionario;
 import java.sql.Date;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,6 +23,7 @@ public class ClienteView extends javax.swing.JFrame {
      */
     public ClienteView() {
         initComponents();
+        listarValores();
     }
 
     /**
@@ -41,7 +44,7 @@ public class ClienteView extends javax.swing.JFrame {
         txtNascimento = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tabelaFuncionario = new javax.swing.JTable();
+        tabelaCliente = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         alterarCliente = new javax.swing.JButton();
@@ -86,7 +89,7 @@ public class ClienteView extends javax.swing.JFrame {
 
         jLabel5.setText("Telefone");
 
-        tabelaFuncionario.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -105,12 +108,12 @@ public class ClienteView extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tabelaFuncionario.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabelaCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelaFuncionarioMouseClicked(evt);
+                tabelaClienteMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(tabelaFuncionario);
+        jScrollPane2.setViewportView(tabelaCliente);
 
         jLabel6.setText("Endereco");
 
@@ -281,14 +284,15 @@ public class ClienteView extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         cadastrarCliente();
+        listarValores();
     }//GEN-LAST:event_cadastrarClienteActionPerformed
 
-    private void tabelaFuncionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaFuncionarioMouseClicked
+    private void tabelaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClienteMouseClicked
         // TODO add your handling code here:
 
         
 
-    }//GEN-LAST:event_tabelaFuncionarioMouseClicked
+    }//GEN-LAST:event_tabelaClienteMouseClicked
 
     private void alterarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarClienteActionPerformed
         // TODO add your handling code here:
@@ -370,7 +374,7 @@ public class ClienteView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tabelaFuncionario;
+    private javax.swing.JTable tabelaCliente;
     private javax.swing.JTextField txtCPF;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereco;
@@ -402,6 +406,40 @@ public class ClienteView extends javax.swing.JFrame {
             throw new RuntimeException(ex);
         }
         
+    }
+    
+    private void listarValores() {
+
+        try {
+            ClienteDB cliente = new ClienteDB();
+            DefaultTableModel model = (DefaultTableModel) tabelaCliente.getModel();
+            model.setNumRows(0);
+
+           
+
+           
+
+            ArrayList<Cliente> resultado = (ArrayList<Cliente>) cliente.selectCliente();
+
+            for (int num = 0; num < resultado.size(); num++) {
+
+                model.addRow(new Object[] {
+
+                        resultado.get(num).getIdCliente(),
+                        resultado.get(num).getNomeCliente(),
+                        resultado.get(num).getEmailCliente(),
+                        resultado.get(num).getCpfCliente(),
+                        resultado.get(num).getNascimentoCliente(),
+                        resultado.get(num).getTelefoneCliente(),
+                        resultado.get(num).getEnderecoCliente()
+                });
+            }
+
+        } catch (Exception e) {
+            System.out.println("erro");
+            throw new RuntimeException(e);
+
+        }
     }
 
 
