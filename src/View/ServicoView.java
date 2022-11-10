@@ -263,6 +263,9 @@ public class ServicoView extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         //Altera os valores e depois mostra os valores atualizados
+        
+        AlterarServico();
+        listarValores();
 
         
     }//GEN-LAST:event_alterarServicoActionPerformed
@@ -429,6 +432,29 @@ private void cadastrarServico() {
       txtPreco.setText("");
       
   }
+   
+   
+   private void AlterarServico() {
+
+        
+
+       int id = Integer.parseInt(txtId.getText());
+       String tipo = txtTipo.getText();
+        String descricao = txtDescricao.getText();
+        Double preco = Double.valueOf(txtPreco.getText());
+
+        Servico servico = new Servico(id, tipo, descricao, preco);
+
+        ServicoDB mysql = new ServicoDB();
+
+        try {
+            mysql.updateServico(servico);
+        } catch (Exception ex) {
+            System.out.println("erro no view para alterar servico");
+            throw new RuntimeException(ex);
+        }
+
+    }
  
 
 }
