@@ -298,6 +298,9 @@ public class ClienteView extends javax.swing.JFrame {
 
     private void alterarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarClienteActionPerformed
         // TODO add your handling code here:
+        
+        AlterarCliente();
+        listarValores();
 
         
     }//GEN-LAST:event_alterarClienteActionPerformed
@@ -495,6 +498,32 @@ public class ClienteView extends javax.swing.JFrame {
         txtEndereco.setText("");
       
   }
+      
+      
+      private void AlterarCliente() {
+
+           String nome = txtNome.getText();
+        String cpf = txtCPF.getText();
+        String email = txtEmail.getText();
+        Date data = Date.valueOf(txtNascimento.getText());
+        String telefone = txtTelefone.getText();
+        String endereco = txtEndereco.getText();
+        int id = Integer.parseInt(txtId.getText());
+        
+        Cliente cliente = new Cliente(id, nome, cpf, data, email, telefone, endereco);
+
+      
+
+        ClienteDB mysql = new ClienteDB();
+
+        try {
+            mysql.updateCliente(cliente);
+        } catch (Exception ex) {
+            System.out.println("erro no view para alterar cliente");
+            throw new RuntimeException(ex);
+        }
+
+    }
 
 
 }
