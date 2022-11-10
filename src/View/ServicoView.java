@@ -253,6 +253,8 @@ public class ServicoView extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         //Apaga os campos dos campos de texto e mostra os valores da tabela
+        
+        apagaCampos();
 
         
     }//GEN-LAST:event_apagarCamposActionPerformed
@@ -417,6 +419,16 @@ private void cadastrarServico() {
         }
 
     }
+ 
+ 
+   public void apagaCampos(){
+      
+      txtId.setText("");
+      txtTipo.setText("");
+      txtDescricao.setText("");
+      txtPreco.setText("");
+      
+  }
  
 
 }
