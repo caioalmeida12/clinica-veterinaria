@@ -275,7 +275,11 @@ public class ServicoView extends javax.swing.JFrame {
 
         // Corre o campo para ver se tem algo escrito e pesquisar por filtro, se não tiver faz a busca completa
 
-        
+        if (txtFiltro.getText().length() > 0) {
+        listarValoresFiltro();
+        }else{
+            listarValores();
+        }
 
     }//GEN-LAST:event_buscarFiltroActionPerformed
 
@@ -374,6 +378,46 @@ private void cadastrarServico() {
             System.out.println(filtro);
 
             ArrayList<Servico> resultado = (ArrayList<Servico>) servico.selectServico();
+            for (int num = 0; num < resultado.size(); num++) {
+
+                model.addRow(new Object[] {
+
+                        resultado.get(num).getIdServico(),
+                        resultado.get(num).getTipoServico(),
+                        resultado.get(num).getDescricaoServico(),
+                        resultado.get(num).getPrecoServico()
+                });
+            }
+
+        } catch (Exception e) {
+            System.out.println("erro");
+            throw new RuntimeException(e);
+
+        }
+    }
+ 
+ 
+ private void listarValoresFiltro() {
+
+        try {
+
+            ServicoDB servico = new ServicoDB();
+            DefaultTableModel model = (DefaultTableModel) tabelaServico.getModel();
+            model.setNumRows(0);
+
+           String filtro = null;
+            
+            int valorCombo = combo.getSelectedIndex();
+            
+            if(valorCombo == 0 ){
+                
+                filtro = "Where idServico= "+txtFiltro.getText();
+            }else{
+                
+                filtro = "Where tipoServico LIKE '%"+txtFiltro.getText()+"%'";
+            }
+
+            ArrayList<Servico> resultado = (ArrayList<Servico>) servico.selectServico(filtro);
             for (int num = 0; num < resultado.size(); num++) {
 
                 model.addRow(new Object[] {
