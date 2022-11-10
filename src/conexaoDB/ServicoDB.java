@@ -45,7 +45,7 @@ public class ServicoDB extends ConexaoDB {
         try {
             this.conectar();
             preparedStatement = connect.prepareStatement(
-                    "INSERT INTO `servico` (`tipoServico`, `descricaoServico`, `precoServico`) VALUES (0,?, ?, ?)");
+                    "INSERT INTO `servico` (`tipoServico`, `descricaoServico`, `precoServico`) VALUES (?, ?, ?)");
             preparedStatement.setString(1, servico.getTipoServico());
             preparedStatement.setString(2, servico.getDescricaoServico());
             preparedStatement.setDouble(3, servico.getPrecoServico());

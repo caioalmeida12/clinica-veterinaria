@@ -40,7 +40,7 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtNome" min="-2" pref="145" max="-2" attributes="0"/>
+                                  <Component id="txtTipo" min="-2" pref="145" max="-2" attributes="0"/>
                                   <Component id="txtDescricao" min="-2" pref="90" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -50,11 +50,11 @@
                   </Group>
                   <Component id="jScrollPane1" alignment="0" min="-2" pref="452" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="cadastrarProduto" min="-2" max="-2" attributes="0"/>
+                      <Component id="cadastrarServico" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="alterarProduto" min="-2" max="-2" attributes="0"/>
+                      <Component id="alterarServico" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="excluirProduto" min="-2" max="-2" attributes="0"/>
+                      <Component id="excluirServico" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="combo" min="-2" max="-2" attributes="0"/>
@@ -66,7 +66,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtPreco" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtPreco" min="-2" pref="111" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -84,7 +84,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtTipo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="apagarCampos" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -99,9 +99,9 @@
               </Group>
               <EmptySpace pref="22" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="cadastrarProduto" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="alterarProduto" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="excluirProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cadastrarServico" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="alterarServico" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="excluirServico" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -117,16 +117,16 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JTextField" name="txtNome">
+    <Component class="javax.swing.JTextField" name="txtTipo">
     </Component>
     <Component class="javax.swing.JTextField" name="txtPreco">
     </Component>
-    <Component class="javax.swing.JButton" name="cadastrarProduto">
+    <Component class="javax.swing.JButton" name="cadastrarServico">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cadastrar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastrarProdutoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastrarServicoActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -141,7 +141,7 @@
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="4">
                 <Column editable="false" title="Id" type="java.lang.Object"/>
-                <Column editable="true" title="Nome" type="java.lang.Object"/>
+                <Column editable="true" title="Tipo" type="java.lang.Object"/>
                 <Column editable="false" title="Descricao" type="java.lang.Object"/>
                 <Column editable="true" title="Preco" type="java.lang.Object"/>
               </Table>
@@ -180,12 +180,12 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="excluirProduto">
+    <Component class="javax.swing.JButton" name="excluirServico">
       <Properties>
         <Property name="text" type="java.lang.String" value="Excluir"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="excluirProdutoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="excluirServicoActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="apagarCampos">
@@ -201,17 +201,17 @@
         <Property name="text" type="java.lang.String" value="Id"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="alterarProduto">
+    <Component class="javax.swing.JButton" name="alterarServico">
       <Properties>
         <Property name="text" type="java.lang.String" value="Alterar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="alterarProdutoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="alterarServicoActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nome"/>
+        <Property name="text" type="java.lang.String" value="Tipo"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtFiltro">

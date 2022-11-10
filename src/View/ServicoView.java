@@ -22,6 +22,7 @@ public class ServicoView extends javax.swing.JFrame {
      */
     public ServicoView() {
         initComponents();
+        listarValores();
     }
 
     /**
@@ -33,15 +34,15 @@ public class ServicoView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtNome = new javax.swing.JTextField();
+        txtTipo = new javax.swing.JTextField();
         txtPreco = new javax.swing.JTextField();
-        cadastrarProduto = new javax.swing.JButton();
+        cadastrarServico = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaProduto = new javax.swing.JTable();
-        excluirProduto = new javax.swing.JButton();
+        excluirServico = new javax.swing.JButton();
         apagarCampos = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        alterarProduto = new javax.swing.JButton();
+        alterarServico = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtFiltro = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -53,10 +54,10 @@ public class ServicoView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        cadastrarProduto.setText("Cadastrar");
-        cadastrarProduto.addActionListener(new java.awt.event.ActionListener() {
+        cadastrarServico.setText("Cadastrar");
+        cadastrarServico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastrarProdutoActionPerformed(evt);
+                cadastrarServicoActionPerformed(evt);
             }
         });
 
@@ -68,7 +69,7 @@ public class ServicoView extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Id", "Nome", "Descricao", "Preco"
+                "Id", "Tipo", "Descricao", "Preco"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -86,10 +87,10 @@ public class ServicoView extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabelaProduto);
 
-        excluirProduto.setText("Excluir");
-        excluirProduto.addActionListener(new java.awt.event.ActionListener() {
+        excluirServico.setText("Excluir");
+        excluirServico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                excluirProdutoActionPerformed(evt);
+                excluirServicoActionPerformed(evt);
             }
         });
 
@@ -102,14 +103,14 @@ public class ServicoView extends javax.swing.JFrame {
 
         jLabel1.setText("Id");
 
-        alterarProduto.setText("Alterar");
-        alterarProduto.addActionListener(new java.awt.event.ActionListener() {
+        alterarServico.setText("Alterar");
+        alterarServico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                alterarProdutoActionPerformed(evt);
+                alterarServicoActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Nome");
+        jLabel2.setText("Tipo");
 
         jLabel3.setText("Preco");
 
@@ -155,17 +156,17 @@ public class ServicoView extends javax.swing.JFrame {
                                     .addComponent(jLabel4))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(18, 18, 18)
                         .addComponent(apagarCampos))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cadastrarProduto)
+                        .addComponent(cadastrarServico)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(alterarProduto)
+                        .addComponent(alterarServico)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(excluirProduto))
+                        .addComponent(excluirServico))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -175,7 +176,7 @@ public class ServicoView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -188,7 +189,7 @@ public class ServicoView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(apagarCampos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -200,9 +201,9 @@ public class ServicoView extends javax.swing.JFrame {
                     .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cadastrarProduto)
-                    .addComponent(alterarProduto)
-                    .addComponent(excluirProduto))
+                    .addComponent(cadastrarServico)
+                    .addComponent(alterarServico)
+                    .addComponent(excluirServico))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -216,61 +217,54 @@ public class ServicoView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarProdutoActionPerformed
+    private void cadastrarServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarServicoActionPerformed
         // TODO add your handling code here:
 
         //Inseri um novo produto e atualiza a tabela
 
-        inserirProduto();
+        cadastrarServico();
         listarValores();
 
-    }//GEN-LAST:event_cadastrarProdutoActionPerformed
+    }//GEN-LAST:event_cadastrarServicoActionPerformed
 
     private void tabelaProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaProdutoMouseClicked
         // TODO add your handling code here:
 
         //Carrega os valores dos campos para os campos de texto
 
-        CarregarProduto();
+        
     }//GEN-LAST:event_tabelaProdutoMouseClicked
 
-    private void excluirProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirProdutoActionPerformed
+    private void excluirServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirServicoActionPerformed
         // TODO add your handling code here:
 
         //Deleta o campo selecionado da tabela e mostra a tabela atualizada
 
-        deletarProduto();
-        listarValores();
-    }//GEN-LAST:event_excluirProdutoActionPerformed
+      
+    }//GEN-LAST:event_excluirServicoActionPerformed
 
     private void apagarCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apagarCamposActionPerformed
         // TODO add your handling code here:
 
         //Apaga os campos dos campos de texto e mostra os valores da tabela
 
-        apagaCampos();
-        listarValores();
+        
     }//GEN-LAST:event_apagarCamposActionPerformed
 
-    private void alterarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarProdutoActionPerformed
+    private void alterarServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarServicoActionPerformed
         // TODO add your handling code here:
 
         //Altera os valores e depois mostra os valores atualizados
 
-        AlterarProduto();
-        listarValores();
-    }//GEN-LAST:event_alterarProdutoActionPerformed
+        
+    }//GEN-LAST:event_alterarServicoActionPerformed
 
     private void buscarFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarFiltroActionPerformed
         // TODO add your handling code here:
 
         // Corre o campo para ver se tem algo escrito e pesquisar por filtro, se não tiver faz a busca completa
 
-        if (txtFiltro.getText().length() > 0) {
-            listarValoresFiltro();
-        }else{
-            listarValores();
-        }
+        
 
     }//GEN-LAST:event_buscarFiltroActionPerformed
 
@@ -318,12 +312,12 @@ public class ServicoView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton alterarProduto;
+    private javax.swing.JButton alterarServico;
     private javax.swing.JButton apagarCampos;
     private javax.swing.JButton buscarFiltro;
-    private javax.swing.JButton cadastrarProduto;
+    private javax.swing.JButton cadastrarServico;
     private javax.swing.JComboBox<String> combo;
-    private javax.swing.JButton excluirProduto;
+    private javax.swing.JButton excluirServico;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -333,17 +327,17 @@ public class ServicoView extends javax.swing.JFrame {
     private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtFiltro;
     private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtPreco;
+    private javax.swing.JTextField txtTipo;
     // End of variables declaration//GEN-END:variables
 
 
-private void inserirServico() {
+private void cadastrarServico() {
 
-        String nome = txtNome.getText();
-        Double preco = Double.valueOf(txtPreco.getText());
+        String tipo = txtTipo.getText();
         String descricao = txtDescricao.getText();
-        Servico servico = new Servico(nome, descricao, preco);
+        Double preco = Double.valueOf(txtPreco.getText());
+        Servico servico = new Servico(tipo, descricao, preco);
         ServicoDB mysql = new ServicoDB();
 
         try {
@@ -361,21 +355,22 @@ private void inserirServico() {
 
         try {
 
-            ProdutoDB produto = new ProdutoDB();
+            ServicoDB servico = new ServicoDB();
             DefaultTableModel model = (DefaultTableModel) tabelaProduto.getModel();
             model.setNumRows(0);
 
             String filtro = txtId.getText();
             System.out.println(filtro);
 
-            ArrayList<Produto> resultado = (ArrayList<Produto>) produto.selectProduto();
+            ArrayList<Servico> resultado = (ArrayList<Servico>) servico.selectServico();
             for (int num = 0; num < resultado.size(); num++) {
 
                 model.addRow(new Object[] {
 
-                        resultado.get(num).getIdProduto(),
-                        resultado.get(num).getNomeProduto(),
-                        resultado.get(num).getPrecoProduto()
+                        resultado.get(num).getIdServico(),
+                        resultado.get(num).getTipoServico(),
+                        resultado.get(num).getDescricaoServico(),
+                        resultado.get(num).getPrecoServico()
                 });
             }
 
