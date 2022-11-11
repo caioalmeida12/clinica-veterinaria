@@ -585,7 +585,7 @@ public class FuncionarioView extends javax.swing.JFrame {
 
     }
      
-      public void apagaCampos(){
+      private void apagaCampos(){
       
       txtId.setText("");
       txtNome.setText("");

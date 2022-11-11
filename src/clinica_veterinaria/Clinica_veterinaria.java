@@ -1,5 +1,6 @@
 package clinica_veterinaria;
 
+import View.AgendamentoView;
 import View.AnimalView;
 import View.ClienteView;
 import View.FuncionarioView;
@@ -11,7 +12,7 @@ import entidades.*;
 public class Clinica_veterinaria {
 
     public static void main(String[] args) {
-        new ClienteView().setVisible(true);
+        new AgendamentoView().setVisible(true);
         try {
             var mysql = new AnimalDB();
             var resultado = mysql.selectAnimal().get(0);

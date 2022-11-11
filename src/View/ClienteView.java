@@ -537,7 +537,7 @@ public class ClienteView extends javax.swing.JFrame {
     }
      
      
-      public void apagaCampos(){
+      private void apagaCampos(){
       
       txtId.setText("");
       txtNome.setText("");
