@@ -9,7 +9,6 @@ import conexaoDB.AgendamentoDB;
 
 import conexaoDB.FuncionarioDB;
 import entidades.Agendamento;
-import entidades.Agendamento2;
 import entidades.Funcionario;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -191,7 +190,7 @@ private void listarValoresFiltro() {
 
            
 
-            ArrayList<Agendamento2> resultado = (ArrayList<Agendamento2>) agendamento.selectAgendamento2(filtro);
+            ArrayList<Agendamento> resultado = (ArrayList<Agendamento>) agendamento.selectAgendamento2(filtro);
 
             for (int num = 0; num < resultado.size(); num++) {
 

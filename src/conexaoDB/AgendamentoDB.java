@@ -1,7 +1,6 @@
 package conexaoDB;
 
 import entidades.Agendamento;
-import entidades.Agendamento2;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,15 +50,15 @@ public class AgendamentoDB extends ConexaoDB {
         }
     }
     
-    public List<Agendamento2> selectAgendamento2() throws Exception {
+    public List<Agendamento> selectAgendamento2() throws Exception {
         return this.selectAgendamento2("");
     }
 
-    public List<Agendamento2> selectAgendamento2(String filtro) throws Exception {
+    public List<Agendamento> selectAgendamento2(String filtro) throws Exception {
         try {
             this.conectar();
             // Armazena todos os dados retornados
-            List<Agendamento2> resultado = new ArrayList<Agendamento2>();
+            List<Agendamento> resultado = new ArrayList<Agendamento>();
             // Executa a consulta
             /*SELECT animal.nomeAnimal,funcionario.nomeFuncionario,servico.tipoServico FROM agendamento 
             INNER join animal on agendamento.idAnimal = animal.idAnimal 
@@ -79,7 +78,7 @@ public class AgendamentoDB extends ConexaoDB {
             var situacaoAgendamento = resultSet.getString("situacaoAgendamento");
 
                 // Instancia uma tupla da entidade agendamento
-               Agendamento2 agendamento = new Agendamento2(idAgendamento,nomeAnimal,nomeFuncionario,tipoServico,dataAgendamento,situacaoAgendamento);
+               Agendamento agendamento = new Agendamento(idAgendamento,nomeAnimal,nomeFuncionario,tipoServico,dataAgendamento,situacaoAgendamento);
 
                 // Envia a entidade para o resultado
                 resultado.add(agendamento);
