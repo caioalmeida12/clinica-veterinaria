@@ -4,9 +4,12 @@
  */
 package View;
 
+
 import conexaoDB.AgendamentoDB;
+
 import conexaoDB.FuncionarioDB;
 import entidades.Agendamento;
+import entidades.Agendamento2;
 import entidades.Funcionario;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -64,7 +67,7 @@ public class AgendamentoView extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Ti", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
+                "IdAgendamento", "Animal", "Funcionario", "Servico", "Data", "Situação"
             }
         ));
         jScrollPane1.setViewportView(tabelaAgendamento);
@@ -184,20 +187,20 @@ private void listarValoresFiltro() {
             DefaultTableModel model = (DefaultTableModel) tabelaAgendamento.getModel();
             model.setNumRows(0);
             
-            String filtro = "INNER join animal on agendamento.idAnimal = animal.idAnimal INNER JOIN funcionario on agendamento.idFuncionario = funcionario.idFuncionario INNER JOIN servico on agendamento.idServico = servico.idServico";
+            String filtro = "";
 
            
 
-            ArrayList<Agendamento> resultado = (ArrayList<Agendamento>) agendamento.selectAgendamento(filtro);
+            ArrayList<Agendamento2> resultado = (ArrayList<Agendamento2>) agendamento.selectAgendamento2(filtro);
 
             for (int num = 0; num < resultado.size(); num++) {
 
                 model.addRow(new Object[] {
 
                         resultado.get(num).getIdAgendamento(),
-                        resultado.get(num).getIdAnimal(),
-                        resultado.get(num).getIdFuncionario(),
-                        resultado.get(num).getIdServico(),
+                        resultado.get(num).getNomeAnimal(),
+                        resultado.get(num).getNomeFuncionario(),
+                        resultado.get(num).getTipoServico(),
                         resultado.get(num).getDataAgendamento(),
                         resultado.get(num).getSituacaoAgendamento(),
                         

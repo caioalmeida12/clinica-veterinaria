@@ -1,6 +1,7 @@
 package conexaoDB;
 
 import entidades.Agendamento;
+import entidades.Agendamento2;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +22,10 @@ public class AgendamentoDB extends ConexaoDB {
             INNER join animal on agendamento.idAnimal = animal.idAnimal 
             INNER JOIN funcionario on agendamento.idFuncionario = funcionario.idFuncionario
             INNER JOIN servico on agendamento.idServico = servico.idServico;*/
-            resultSet = statement.executeQuery("SELECT * FROM agendamento " + filtro);
+            
+            
+            
+            resultSet = statement.executeQuery("SELECT * FROM agendamento  " + filtro);
             while (resultSet.next()) {
                 // Tratamento dos dados
                 var idAgendamento = resultSet.getInt("idAgendamento");
@@ -46,6 +50,50 @@ public class AgendamentoDB extends ConexaoDB {
             close();
         }
     }
+    
+    public List<Agendamento2> selectAgendamento2() throws Exception {
+        return this.selectAgendamento2("");
+    }
+
+    public List<Agendamento2> selectAgendamento2(String filtro) throws Exception {
+        try {
+            this.conectar();
+            // Armazena todos os dados retornados
+            List<Agendamento2> resultado = new ArrayList<Agendamento2>();
+            // Executa a consulta
+            /*SELECT animal.nomeAnimal,funcionario.nomeFuncionario,servico.tipoServico FROM agendamento 
+            INNER join animal on agendamento.idAnimal = animal.idAnimal 
+            INNER JOIN funcionario on agendamento.idFuncionario = funcionario.idFuncionario
+            INNER JOIN servico on agendamento.idServico = servico.idServico;*/
+            
+            
+            
+            resultSet = statement.executeQuery("SELECT idAgendamento,nomeAnimal,nomeFuncionario,tipoServico,dataAgendamento,situacaoAgendamento FROM agendamento INNER join animal on agendamento.idAnimal = animal.idAnimal INNER JOIN funcionario on agendamento.idFuncionario = funcionario.idFuncionario INNER JOIN servico on agendamento.idServico = servico.idServico;  " + filtro);
+            while (resultSet.next()) {
+                // Tratamento dos dados
+            var idAgendamento = resultSet.getInt("idAgendamento");
+            var nomeAnimal = resultSet.getString("nomeAnimal");
+            var nomeFuncionario = resultSet.getString("nomeFuncionario");
+            var tipoServico = resultSet.getString("tipoServico");
+            var dataAgendamento = resultSet.getDate("dataAgendamento");
+            var situacaoAgendamento = resultSet.getString("situacaoAgendamento");
+
+                // Instancia uma tupla da entidade agendamento
+               Agendamento2 agendamento = new Agendamento2(idAgendamento,nomeAnimal,nomeFuncionario,tipoServico,dataAgendamento,situacaoAgendamento);
+
+                // Envia a entidade para o resultado
+                resultado.add(agendamento);
+            }
+            return resultado;
+        } catch (Exception e) {
+            System.out.println("Erro na função selectAgendamento2() da classe ConexaoDB -> " + e.getMessage());
+            throw e;
+        } finally {
+            close();
+        }
+    }
+    
+    
 
     // Insere uma nova entrada na tabela agendamento
     public void insertAgendamento(Agendamento agendamento) throws Exception {

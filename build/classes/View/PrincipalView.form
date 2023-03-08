@@ -25,12 +25,15 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="AnimalView" alignment="0" max="32767" attributes="0"/>
-                  <Component id="ClienteView" alignment="0" max="32767" attributes="0"/>
-                  <Component id="FuncionarioView" alignment="0" max="32767" attributes="0"/>
-                  <Component id="ProdutoView" max="32767" attributes="0"/>
-                  <Component id="ServicoView" min="-2" pref="112" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="AgendamentoView" min="-2" pref="112" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="AnimalView" alignment="0" max="32767" attributes="0"/>
+                      <Component id="ClienteView" alignment="0" max="32767" attributes="0"/>
+                      <Component id="FuncionarioView" alignment="0" max="32767" attributes="0"/>
+                      <Component id="ProdutoView" max="32767" attributes="0"/>
+                      <Component id="ServicoView" min="-2" pref="112" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace pref="160" max="32767" attributes="0"/>
           </Group>
@@ -49,7 +52,9 @@
               <Component id="ProdutoView" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="ServicoView" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="120" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="AgendamentoView" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="91" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -93,6 +98,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ServicoViewActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="AgendamentoView">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Agendamento"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AgendamentoViewActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
