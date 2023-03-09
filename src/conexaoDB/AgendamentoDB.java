@@ -53,12 +53,16 @@ public class AgendamentoDB extends ConexaoDB {
     public List<Agendamento> selectAgendamento2() throws Exception {
         return this.selectAgendamento2("");
     }
+    
+    
 
     public List<Agendamento> selectAgendamento2(String filtro) throws Exception {
         try {
             this.conectar();
             // Armazena todos os dados retornados
             List<Agendamento> resultado = new ArrayList<Agendamento>();
+            
+
             // Executa a consulta
             /*SELECT animal.nomeAnimal,funcionario.nomeFuncionario,servico.tipoServico FROM agendamento 
             INNER join animal on agendamento.idAnimal = animal.idAnimal 
@@ -67,7 +71,10 @@ public class AgendamentoDB extends ConexaoDB {
             
             
             
-            resultSet = statement.executeQuery("SELECT idAgendamento,nomeAnimal,nomeFuncionario,tipoServico,dataAgendamento,situacaoAgendamento FROM agendamento INNER join animal on agendamento.idAnimal = animal.idAnimal INNER JOIN funcionario on agendamento.idFuncionario = funcionario.idFuncionario INNER JOIN servico on agendamento.idServico = servico.idServico;  " + filtro);
+            resultSet = statement.executeQuery("SELECT idAgendamento,nomeAnimal,nomeFuncionario,tipoServico,dataAgendamento,situacaoAgendamento FROM agendamento "
+                    + "INNER join animal on agendamento.idAnimal = animal.idAnimal "
+                    + "INNER JOIN funcionario on agendamento.idFuncionario = funcionario.idFuncionario "
+                    + "INNER JOIN servico on agendamento.idServico = servico.idServico;  " + filtro);
             while (resultSet.next()) {
                 // Tratamento dos dados
             var idAgendamento = resultSet.getInt("idAgendamento");

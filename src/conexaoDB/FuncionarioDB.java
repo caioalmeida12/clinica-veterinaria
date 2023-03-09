@@ -46,6 +46,23 @@ public class FuncionarioDB extends ConexaoDB {
             close();
         }
     }
+    
+    public List<String> selectFuncionarioNames() throws Exception {
+    try {
+        this.conectar();
+        List<String> resultado = new ArrayList<>();
+        resultSet = statement.executeQuery("SELECT nomeFuncionario FROM funcionario");
+        while (resultSet.next()) {
+            resultado.add(resultSet.getString("nomeFuncionario"));
+        }
+        return resultado;
+    } catch (Exception e) {
+        System.out.println("Erro na função selectFuncionarioNames() da classe ConexaoDB -> " + e.getMessage());
+        throw e;
+    } finally {
+        close();
+    }
+}
 
     // Insere uma nova entrada do tipo Funcionario no banco de dados
     public void insertFuncionario(Funcionario funcionario) throws Exception {

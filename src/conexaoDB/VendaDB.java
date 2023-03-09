@@ -1,5 +1,6 @@
 package conexaoDB;
 
+import entidades.Agendamento;
 import entidades.Venda;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ public class VendaDB extends ConexaoDB {
         try {
             this.conectar();
             // Armazena todos os dados retornados
+            
             List<Venda> resultado = new ArrayList<Venda>();
             // Executa a consulta
             resultSet = statement.executeQuery("SELECT * FROM venda " + filtro);
@@ -36,6 +38,48 @@ public class VendaDB extends ConexaoDB {
             return resultado;
         } catch (Exception e) {
             System.out.println("Erro na função selectVenda() da classe ConexaoDB -> " + e.getMessage());
+            throw e;
+        } finally {
+            close();
+        }
+    }
+    
+     public List<Venda> selectVenda2(String filtro) throws Exception {
+        try {
+            this.conectar();
+            // Armazena todos os dados retornados
+            List<Venda> resultado = new ArrayList<Venda>();
+            
+
+            // Executa a consulta
+            /*SELECT animal.nomeAnimal,funcionario.nomeFuncionario,servico.tipoServico FROM agendamento 
+            INNER join animal on agendamento.idAnimal = animal.idAnimal 
+            INNER JOIN funcionario on agendamento.idFuncionario = funcionario.idFuncionario
+            INNER JOIN servico on agendamento.idServico = servico.idServico;*/
+            
+            
+            
+            resultSet = statement.executeQuery("SELECT idVenda,produto.nomeProduto,cliente.nomeCliente,funcionario.nomeFuncionario,dataVenda,quantidadeProduto FROM `venda` "
+                    + "INNER JOIN produto on venda.idProduto = produto.idProduto "
+                    + "INNER join cliente on venda.idCliente = cliente.idCliente "
+                    + "INNER JOIN funcionario on venda.idFuncionario = funcionario.idFuncionario;" + filtro);
+            while (resultSet.next()) {
+                // Tratamento dos dados
+            var idAgendamento = resultSet.getInt("idAgendamento");
+            var nomeAnimal = resultSet.getString("nomeAnimal");
+            var nomeFuncionario = resultSet.getString("nomeFuncionario");
+            var tipoServico = resultSet.getString("tipoServico");
+            var dataAgendamento = resultSet.getDate("dataAgendamento");
+            var situacaoAgendamento = resultSet.getString("situacaoAgendamento");
+
+                // Instancia uma tupla da entidade agendamentoAgendamento agendamento = new Agendamento(idAgendamento,nomeAnimal,nomeFuncionario,tipoServico,dataAgendamento,situacaoAgendamento);
+
+                // Envia a entidade para o resultado
+                resultado.add();
+            }
+            return resultado;
+        } catch (Exception e) {
+            System.out.println("Erro na função selectAgendamento2() da classe ConexaoDB -> " + e.getMessage());
             throw e;
         } finally {
             close();

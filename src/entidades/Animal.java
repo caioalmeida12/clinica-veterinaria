@@ -22,6 +22,10 @@ public class Animal {
     this.corAnimal = corAnimal;
   }
 
+    public Animal(String nomeAnimal) {
+        this.nomeAnimal = nomeAnimal;
+    }
+
   public Animal(String nomeAnimal, String racaAnimal, Date nascimentoAnimal, String especieAnimal, String sexoAnimal, String corAnimal) {
     this.nomeAnimal = nomeAnimal;
     this.racaAnimal = racaAnimal;

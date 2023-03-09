@@ -39,6 +39,23 @@ public class ServicoDB extends ConexaoDB {
             close();
         }
     }
+    
+    public List<String> selectServiceNames() throws Exception {
+    try {
+        this.conectar();
+        List<String> resultado = new ArrayList<>();
+        resultSet = statement.executeQuery("SELECT tipoServico FROM servico");
+        while (resultSet.next()) {
+            resultado.add(resultSet.getString("tipoServico"));
+        }
+        return resultado;
+    } catch (Exception e) {
+        System.out.println("Erro na função selectServiceNames() da classe ConexaoDB -> " + e.getMessage());
+        throw e;
+    } finally {
+        close();
+    }
+}
 
     // Insere uma nova entrada do tipo Servico no banco de dados
     public void insertServico(Servico servico) throws Exception {

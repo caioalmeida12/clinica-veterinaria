@@ -6,11 +6,14 @@ package View;
 
 
 import conexaoDB.AgendamentoDB;
+import conexaoDB.AnimalDB;
 
 import conexaoDB.FuncionarioDB;
+import conexaoDB.ServicoDB;
 import entidades.Agendamento;
 import entidades.Funcionario;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -42,6 +45,14 @@ public class AgendamentoView extends javax.swing.JFrame {
         tabelaAgendamento = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         comboSituacao = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        comboAnimal = new javax.swing.JComboBox<>();
+        comboFuncionario = new javax.swing.JComboBox<>();
+        comboServico = new javax.swing.JComboBox<>();
+        txtData = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,6 +82,14 @@ public class AgendamentoView extends javax.swing.JFrame {
 
         comboSituacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "aguardando", "realizado" }));
 
+        jLabel2.setText("Animal");
+
+        jLabel3.setText("Funcionario");
+
+        jLabel4.setText("Servico");
+
+        jLabel6.setText("Data");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,15 +97,33 @@ public class AgendamentoView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(comboSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(comboServico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -96,13 +133,29 @@ public class AgendamentoView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(comboAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(comboFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(comboServico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(comboSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(65, 65, 65)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -150,18 +203,50 @@ public class AgendamentoView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> comboAnimal;
+    private javax.swing.JComboBox<String> comboFuncionario;
+    private javax.swing.JComboBox<String> comboServico;
     private javax.swing.JComboBox<String> comboSituacao;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelaAgendamento;
+    private javax.swing.JTextField txtData;
     private javax.swing.JTextField txtId;
     // End of variables declaration//GEN-END:variables
 
 
 private void listarValoresFiltro() {
+    try {
+             AnimalDB animalDB = new AnimalDB(); // instancia a classe AnimalDB
+             FuncionarioDB funcionarioDB = new FuncionarioDB();
+             ServicoDB servicoDB = new ServicoDB();
+    List<String> nomesAnimais = animalDB.selectAnimalNames(); // chama o método na instância criada
+    List<String> nomesFuncionarios = funcionarioDB.selectFuncionarioNames();
+    List<String> tipoServicos = servicoDB.selectServiceNames();// chama o novo método na instância criada
+    
+    for (String tipoServico : tipoServicos) {
+    comboServico.addItem( tipoServico);
+}
+    for (String nomeFuncionario : nomesFuncionarios) {
+    comboFuncionario.addItem(nomeFuncionario);
+}
+    
+    
+    for (String nomeAnimal : nomesAnimais) {
+        comboAnimal.addItem(nomeAnimal);
+        
+    }
+} catch (Exception e) {
+    // tratamento de erro
+}
 
         try {
+            
             AgendamentoDB agendamento = new AgendamentoDB();
             DefaultTableModel model = (DefaultTableModel) tabelaAgendamento.getModel();
             model.setNumRows(0);
@@ -193,11 +278,17 @@ private void listarValoresFiltro() {
         }
     }
 
+
+
   private void CarregarAgendamento() {
 
         int setar = tabelaAgendamento.getSelectedRow();
 
-        txtId.setText(tabelaAgendamento.getModel().getValueAt(setar, 0).toString());        
+        txtId.setText(tabelaAgendamento.getModel().getValueAt(setar, 0).toString());     
+        comboAnimal.setSelectedItem(tabelaAgendamento.getModel().getValueAt(setar, 1).toString());
+        comboFuncionario.setSelectedItem(tabelaAgendamento.getModel().getValueAt(setar, 2).toString());
+        comboServico.setSelectedItem(tabelaAgendamento.getModel().getValueAt(setar, 3).toString());
+        txtData.setText(tabelaAgendamento.getModel().getValueAt(setar, 4).toString());    
         comboSituacao.setSelectedItem(tabelaAgendamento.getModel().getValueAt(setar, 5).toString());
 
 

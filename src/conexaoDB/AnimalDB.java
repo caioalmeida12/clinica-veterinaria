@@ -43,6 +43,26 @@ public class AnimalDB extends ConexaoDB {
             close();
         }
     }
+    
+   
+    public List<String> selectAnimalNames() throws Exception {
+    try {
+        this.conectar();
+        List<String> resultado = new ArrayList<>();
+        resultSet = statement.executeQuery("SELECT nomeAnimal FROM animal");
+        while (resultSet.next()) {
+            resultado.add(resultSet.getString("nomeAnimal"));
+        }
+        return resultado;
+    } catch (Exception e) {
+        System.out.println("Erro na função selectAnimalNames() da classe ConexaoDB -> " + e.getMessage());
+        throw e;
+    } finally {
+        close();
+    }
+}
+    
+    
 
     // Insere uma nova entrada do tipo animal no banco de dados
     public void insertAnimal(Animal animal) throws Exception {
