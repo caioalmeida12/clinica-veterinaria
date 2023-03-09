@@ -52,10 +52,7 @@ public class VendaDB extends ConexaoDB {
             
 
             // Executa a consulta
-            /*SELECT animal.nomeAnimal,funcionario.nomeFuncionario,servico.tipoServico FROM agendamento 
-            INNER join animal on agendamento.idAnimal = animal.idAnimal 
-            INNER JOIN funcionario on agendamento.idFuncionario = funcionario.idFuncionario
-            INNER JOIN servico on agendamento.idServico = servico.idServico;*/
+           
             
             
             
