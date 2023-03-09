@@ -43,6 +43,23 @@ public class ClienteDB extends ConexaoDB {
             close();
         }
     }
+    
+    public List<String> selectClienteNames() throws Exception {
+    try {
+        this.conectar();
+        List<String> resultado = new ArrayList<>();
+        resultSet = statement.executeQuery("SELECT nomeCliente FROM cliente");
+        while (resultSet.next()) {
+            resultado.add(resultSet.getString("nomeCliente"));
+        }
+        return resultado;
+    } catch (Exception e) {
+        System.out.println("Erro na função selectClienteNames() da classe ConexaoDB -> " + e.getMessage());
+        throw e;
+    } finally {
+        close();
+    }
+}
 
     // Insere uma nova entrada do tipo cliente no banco de dados
     public void insertCliente(Cliente cliente) throws Exception {

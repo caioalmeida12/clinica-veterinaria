@@ -32,6 +32,7 @@ public class PrincipalView extends javax.swing.JFrame {
         ProdutoView = new javax.swing.JButton();
         ServicoView = new javax.swing.JButton();
         AgendamentoView = new javax.swing.JButton();
+        VendaView = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,6 +78,13 @@ public class PrincipalView extends javax.swing.JFrame {
             }
         });
 
+        VendaView.setText("Vendas");
+        VendaView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VendaViewActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -84,6 +92,7 @@ public class PrincipalView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(128, 128, 128)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(VendaView, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(AgendamentoView, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(AnimalView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -108,7 +117,9 @@ public class PrincipalView extends javax.swing.JFrame {
                 .addComponent(ServicoView)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(AgendamentoView)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(VendaView)
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         pack();
@@ -160,6 +171,13 @@ public class PrincipalView extends javax.swing.JFrame {
          dispose();
     }//GEN-LAST:event_AgendamentoViewActionPerformed
 
+    private void VendaViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VendaViewActionPerformed
+        // TODO add your handling code here:
+        
+        new VendaView().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_VendaViewActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -202,5 +220,6 @@ public class PrincipalView extends javax.swing.JFrame {
     private javax.swing.JButton FuncionarioView;
     private javax.swing.JButton ProdutoView;
     private javax.swing.JButton ServicoView;
+    private javax.swing.JButton VendaView;
     // End of variables declaration//GEN-END:variables
 }

@@ -14,17 +14,21 @@ public class Venda {
     private ProdutoDB produtoDB = new ProdutoDB();
     private ConexaoDB mysql = new ConexaoDB();
 
-    private Integer idVenda;
-    private int idProduto, idCliente, idFuncionario;
+    
     private Produto produtoVenda;
     private Cliente clienteVenda;
     private Funcionario funcionarioVenda;
+    private Integer idVenda;
+    private int idProduto, idCliente, idFuncionario;
     private Date dataVenda;
     private Integer quantidadeProduto;
+    private String nomeFuncionario;
+    private String nomeCliente;
+    private String nomeProduto;
     private Double valorVenda;
 
     public Venda(int idVenda, int idProduto, int idCliente, int idFuncionario, Date dataVenda,
-            Integer quantidadeVenda) {
+            Integer quantidadeVenda, Double valorVenda) {
 
         this.idVenda = (Integer) idVenda;
 
@@ -46,6 +50,26 @@ public class Venda {
         }
     }
 
+    public Venda(Integer idVenda, int idProduto, int idCliente, int idFuncionario, Date dataVenda, Integer quantidadeProduto) {
+        this.idVenda = idVenda;
+        this.idProduto = idProduto;
+        this.idCliente = idCliente;
+        this.idFuncionario = idFuncionario;
+        this.dataVenda = dataVenda;
+        this.quantidadeProduto = quantidadeProduto;
+       
+    }
+
+    public Venda(Integer idVenda, Date dataVenda, Integer quantidadeProduto, String nomeFuncionario, String nomeCliente, String nomeProduto) {
+        this.idVenda = idVenda;
+        this.dataVenda = dataVenda;
+        this.quantidadeProduto = quantidadeProduto;
+        this.nomeFuncionario = nomeFuncionario;
+        this.nomeCliente = nomeCliente;
+        this.nomeProduto = nomeProduto;
+        
+    }
+
     public Integer getIdVenda() {
         return idVenda;
     }
@@ -54,7 +78,7 @@ public class Venda {
         this.idVenda = idVenda;
     }
 
-    public int getIdProduto() {
+   public int getIdProduto() {
         return (this.idProduto != 0) ? this.idProduto : this.getProdutoVenda().getIdProduto();
     }
 
@@ -117,16 +141,34 @@ public class Venda {
         return quantidadeProduto;
     }
 
+    public String getNomeFuncionario() {
+        return nomeFuncionario;
+    }
+
+    public void setNomeFuncionario(String nomeFuncionario) {
+        this.nomeFuncionario = nomeFuncionario;
+    }
+
+    public String getNomeCliente() {
+        return nomeCliente;
+    }
+
+    public void setNomeCliente(String nomeCliente) {
+        this.nomeCliente = nomeCliente;
+    }
+
+    public String getNomeProduto() {
+        return nomeProduto;
+    }
+
+    public void setNomeProduto(String nomeProduto) {
+        this.nomeProduto = nomeProduto;
+    }
+
     public void setQuantidadeProduto(Integer quantidadeProduto) {
         this.quantidadeProduto = quantidadeProduto;
     }
 
-    public Double getValorVenda() {
-        return valorVenda;
-    }
-
-    public void setValorVenda(Double valorVenda) {
-        this.valorVenda = valorVenda;
-    }
+   
 
 }

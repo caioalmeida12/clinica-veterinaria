@@ -38,6 +38,23 @@ public class ProdutoDB extends ConexaoDB {
             close();
         }
     }
+    
+    public List<String> selectProdutoNames() throws Exception {
+    try {
+        this.conectar();
+        List<String> resultado = new ArrayList<>();
+        resultSet = statement.executeQuery("SELECT nomeProduto FROM produto");
+        while (resultSet.next()) {
+            resultado.add(resultSet.getString("nomeProduto"));
+        }
+        return resultado;
+    } catch (Exception e) {
+        System.out.println("Erro na função selectProdutoNames() da classe ConexaoDB -> " + e.getMessage());
+        throw e;
+    } finally {
+        close();
+    }
+}
 
     // Insere uma nova entrada do tipo Produto no banco de dados
     public void insertProduto(Produto produto) throws Exception {

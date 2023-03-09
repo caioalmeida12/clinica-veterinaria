@@ -62,26 +62,26 @@ public class VendaDB extends ConexaoDB {
                     + "INNER JOIN funcionario on venda.idFuncionario = funcionario.idFuncionario;" + filtro);
             while (resultSet.next()) {
                 // Tratamento dos dados
-            var idAgendamento = resultSet.getInt("idAgendamento");
-            var nomeAnimal = resultSet.getString("nomeAnimal");
+            var idVenda = resultSet.getInt("idVenda");
+            var nomeProduto = resultSet.getString("nomeProduto");
+            var nomeCliente = resultSet.getString("nomeCliente");
             var nomeFuncionario = resultSet.getString("nomeFuncionario");
-            var tipoServico = resultSet.getString("tipoServico");
-            var dataAgendamento = resultSet.getDate("dataAgendamento");
-            var situacaoAgendamento = resultSet.getString("situacaoAgendamento");
+            var dataVenda = resultSet.getDate("dataVenda");
+            var quantidadeProduto = resultSet.getInt("quantidadeProduto");
 
                 // Instancia uma tupla da entidade agendamentoAgendamento agendamento = new Agendamento(idAgendamento,nomeAnimal,nomeFuncionario,tipoServico,dataAgendamento,situacaoAgendamento);
-
+                  Venda venda = new Venda(idVenda, dataVenda, quantidadeProduto, nomeFuncionario, nomeCliente, nomeProduto);
                 // Envia a entidade para o resultado
-                resultado.add();
+                resultado.add(venda);
             }
             return resultado;
         } catch (Exception e) {
-            System.out.println("Erro na função selectAgendamento2() da classe ConexaoDB -> " + e.getMessage());
+            System.out.println("Erro na função selectVenda2() da classe ConexaoDB -> " + e.getMessage());
             throw e;
         } finally {
             close();
         }
-    }
+    };
 
     // Insere uma nova entrada do tipo Venda no banco de dados
     public void insertVenda(Venda venda) throws Exception {
